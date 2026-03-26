@@ -52,6 +52,25 @@ body {
     rgba(255,255,255,0.02) 80px
   );
 }
+.home-link {
+  position: absolute;
+  top: 16px; left: 16px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+  z-index: 10;
+}
+.home-link:hover { background: rgba(255,255,255,0.22); }
 .hero-tag {
   display: inline-block;
   background: var(--accent);
@@ -1117,6 +1136,7 @@ textarea { min-height: 80px; }
 
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
+  <a href="index.html" class="home-link">← Home</a>
   <div class="hero-tag">🐾 Year 9 Enrichment</div>
   <h1>My Favourite <span>Pet</span> Leaflet</h1>
   <p>Learn Microsoft Word skills by creating an awesome information leaflet all about your favourite pet!</p>
