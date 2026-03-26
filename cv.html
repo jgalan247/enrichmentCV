@@ -1,0 +1,3457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your CV – Word Skills for Y9</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #faf9f6;
+  --card: #ffffff;
+  --l1: #e63946;
+  --l1-light: #fdecea;
+  --l2: #2a9d8f;
+  --l2-light: #e8f7f5;
+  --accent: #f4a261;
+  --gold: #e9c46a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --success: #06d6a0;
+  --radius: 14px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: white;
+  padding: 52px 24px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.02) 40px,
+    rgba(255,255,255,0.02) 80px
+  );
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(26px, 5vw, 46px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.hero h1 span { color: var(--accent); }
+.hero p {
+  font-size: 16px;
+  opacity: 0.75;
+  max-width: 480px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+.hero-pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── NAV ── */
+nav {
+  background: white;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-tab {
+  flex-shrink: 0;
+  padding: 16px 22px;
+  border: none;
+  background: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-tab:hover { color: var(--ink); }
+.nav-tab.active-l1 { color: var(--l1); border-bottom-color: var(--l1); }
+.nav-tab.active-l2 { color: var(--l2); border-bottom-color: var(--l2); }
+.nav-tab .check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  transition: all 0.2s;
+}
+.nav-tab.done .check { background: var(--success); border-color: var(--success); color: white; }
+
+/* ── MAIN ── */
+main { max-width: 860px; margin: 0 auto; padding: 36px 16px 80px; }
+
+.panel { display: none; animation: fadeUp 0.35s ease; }
+.panel.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── LESSON BANNER ── */
+.lesson-banner {
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  color: white;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.lesson-banner.l1 { background: linear-gradient(130deg, #e63946 0%, #c1121f 100%); }
+.lesson-banner.l2 { background: linear-gradient(130deg, #2a9d8f 0%, #1a6b62 100%); }
+.banner-icon {
+  font-size: 52px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+.banner-text .lesson-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+.banner-text h2 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.banner-text p { font-size: 14px; opacity: 0.85; line-height: 1.5; }
+
+/* ── OBJECTIVES ── */
+.objectives {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);
+}
+.objectives h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.obj-list { display: flex; flex-direction: column; gap: 8px; }
+.obj-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.obj-num {
+  width: 22px; height: 22px;
+  background: var(--ink);
+  color: white;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── SECTION CARD ── */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.card h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card p { font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 10px; }
+.card p:last-child { margin-bottom: 0; }
+
+/* ── CALLOUTS ── */
+.callout {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-body strong { display: block; font-weight: 700; margin-bottom: 3px; }
+.callout.tip { background: #fffbeb; border: 1px solid #fde68a; }
+.callout.tip::before { content: '💡'; font-size: 18px; }
+.callout.word { background: #eff6ff; border: 1px solid #bfdbfe; }
+.callout.word::before { content: '📘'; font-size: 18px; }
+.callout.watch { background: #fdf4ff; border: 1px solid #e9d5ff; }
+.callout.watch::before { content: '👀'; font-size: 18px; }
+.callout.check { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.callout.check::before { content: '✅'; font-size: 18px; }
+
+/* ── STEP-BY-STEP ── */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.step.l1 .step-num { background: var(--l1); }
+.step.l2 .step-num { background: var(--l2); }
+.step-body { flex: 1; }
+.step-body strong { display: block; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.step-body p, .step-body span { font-size: 14px; color: #4b5563; line-height: 1.6; }
+.step-body .kbd {
+  display: inline-block;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-bottom: 3px solid #9ca3af;
+  border-radius: 5px;
+  padding: 1px 8px;
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--ink);
+  margin: 0 2px;
+}
+.step-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  margin-top: 10px;
+  background: #f9fafb;
+  padding: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── ACTIVITY ── */
+.activity {
+  background: linear-gradient(135deg, #fef9ef, #fff7ed);
+  border: 2px dashed var(--gold);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.activity-header h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #92400e;
+}
+.activity-tag {
+  background: var(--gold);
+  color: #78350f;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.activity p { font-size: 14px; line-height: 1.7; color: #78350f; margin-bottom: 8px; }
+
+/* ── QUIZ ── */
+.quiz-wrap { display: flex; flex-direction: column; gap: 20px; }
+.q-block {}
+.q-block .q-text { font-size: 15px; font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
+.q-options { display: flex; flex-direction: column; gap: 6px; }
+.q-opt {
+  padding: 11px 16px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.18s;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+.q-opt:hover:not(.locked) { border-color: var(--ink); }
+.q-opt .opt-badge {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  background: var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.18s;
+}
+.q-opt.correct { border-color: var(--success); background: #f0fdf4; }
+.q-opt.correct .opt-badge { background: var(--success); color: white; }
+.q-opt.wrong { border-color: var(--l1); background: #fdecea; }
+.q-opt.wrong .opt-badge { background: var(--l1); color: white; }
+.q-feedback { font-size: 13px; font-weight: 600; margin-top: 8px; min-height: 18px; }
+.q-feedback.good { color: #065f46; }
+.q-feedback.bad { color: var(--l1); }
+
+/* ── MATCH GAME ── */
+.match-area { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.match-col { display: flex; flex-direction: column; gap: 8px; }
+.match-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.match-card {
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: white;
+  user-select: none;
+}
+.match-card:hover:not(.matched):not(.locked) { border-color: var(--ink); }
+.match-card.selected { border-color: var(--l2); background: var(--l2-light); color: var(--l2); }
+.match-card.matched { border-color: var(--success); background: #f0fdf4; color: #065f46; cursor: default; }
+.match-card.wrong { border-color: var(--l1); background: var(--l1-light); animation: shake 0.3s; }
+@keyframes shake { 0%,100%{transform:none} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+#match-status { font-size: 14px; font-weight: 700; min-height: 20px; text-align: center; margin-top: 8px; }
+
+/* ── SORTING ── */
+.sort-list { display: flex; flex-direction: column; gap: 8px; }
+.sort-item {
+  padding: 12px 16px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  user-select: none;
+}
+.sort-item:hover { border-color: var(--l2); box-shadow: 0 2px 10px rgba(42,157,143,0.1); }
+.sort-item.dragging { opacity: 0.45; cursor: grabbing; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.sort-item.over { border-color: var(--l2); background: var(--l2-light); }
+.sort-handle { color: #d1d5db; font-size: 18px; }
+.sort-pos {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--border);
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+#sort-check-btn { margin-top: 12px; }
+#sort-feedback { font-size: 14px; font-weight: 700; margin-top: 10px; min-height: 18px; }
+
+/* ── WORKSHEET ── */
+.worksheet {
+  background: white;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.worksheet-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+}
+.ws-icon { font-size: 28px; }
+.worksheet-header h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+}
+.worksheet-header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.field { margin-bottom: 18px; }
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field .hint { font-size: 12px; color: #9ca3af; font-weight: 400; text-transform: none; letter-spacing: 0; margin-bottom: 6px; display: block; font-style: italic; }
+input[type=text], textarea, select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fafafa;
+  transition: border-color 0.2s, background 0.2s;
+  resize: vertical;
+}
+input[type=text]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--l2);
+  background: white;
+}
+textarea { min-height: 80px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:540px){ .field-row { grid-template-columns: 1fr; } }
+
+.tag-input-wrap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px; border: 2px solid var(--border); border-radius: 10px; background: #fafafa; min-height: 48px; cursor: text; transition: border-color 0.2s; }
+.tag-input-wrap:focus-within { border-color: var(--l2); background: white; }
+.skill-tag {
+  background: var(--l2-light);
+  color: var(--l2);
+  border: 1px solid #a7f3d0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.skill-tag button { background: none; border: none; cursor: pointer; color: var(--l2); font-size: 14px; line-height: 1; padding: 0; font-weight: 700; }
+.tag-input {
+  border: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  min-width: 120px;
+  flex: 1;
+}
+
+/* ── WORD VISUAL MOCK ── */
+.word-mock {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+}
+.word-mock-bar {
+  background: #2b579a;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.word-mock-bar span { color: white; font-size: 13px; font-weight: 600; opacity: 0.9; }
+.word-mock-ribbon {
+  background: #f3f3f3;
+  border-bottom: 1px solid #d1d5db;
+  padding: 6px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.ribbon-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ribbon-btn.highlight { background: #fff3cd; border-color: var(--gold); }
+.word-mock-body {
+  background: #e5e7eb;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+.word-page {
+  background: white;
+  width: 100%;
+  max-width: 460px;
+  min-height: 120px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.word-page table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.word-page td, .word-page th { border: 1px solid #d1d5db; padding: 6px 8px; text-align: left; }
+.word-page th { background: #f9fafb; font-weight: 700; }
+
+/* ── CHECKLIST ── */
+.checklist { display: flex; flex-direction: column; gap: 10px; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+}
+.check-item:hover { border-color: var(--l2); }
+.check-item.checked { border-color: var(--success); background: #f0fdf4; }
+.check-box {
+  width: 22px; height: 22px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: all 0.18s;
+}
+.check-item.checked .check-box { background: var(--success); border-color: var(--success); color: white; }
+
+/* ── CV PREVIEW ── */
+.cv-preview {
+  background: white;
+  border: 2px solid #2b579a;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.cv-preview-bar {
+  background: #2b579a;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cv-preview-bar span { color: white; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 14px; }
+.cv-preview-body { padding: 24px; }
+.cv-name { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; border-bottom: 3px solid #2b579a; padding-bottom: 8px; margin-bottom: 16px; }
+.cv-section { margin-bottom: 18px; }
+.cv-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2b579a;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cv-section-title::after { content: ''; flex: 1; height: 1px; background: #e5e7eb; }
+.cv-profile-text { font-size: 13px; line-height: 1.6; color: #374151; font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 12px; }
+.cv-skills-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.cv-skill-chip { background: #eff6ff; color: #1d4ed8; border-radius: 5px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
+.cv-skill-chip.empty { background: #f3f4f6; color: #d1d5db; }
+.cv-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.cv-table td, .cv-table th { border: 1px solid #e5e7eb; padding: 6px 10px; text-align: left; }
+.cv-table th { background: #f9fafb; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+.cv-photo-box {
+  width: 70px; height: 70px;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+  float: right;
+  margin-left: 12px;
+  margin-bottom: 8px;
+}
+.cv-bullet { display: flex; flex-direction: column; gap: 4px; }
+.cv-bullet li { font-size: 13px; color: #374151; margin-left: 14px; }
+#preview-name { font-style: normal; }
+#preview-profile { color: #374151; }
+#preview-skills-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-dark { background: var(--ink); color: white; }
+.btn-dark:hover { background: #2d2d44; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+.btn-red { background: var(--l1); color: white; }
+.btn-red:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(230,57,70,0.3); }
+.btn-teal { background: var(--l2); color: white; }
+.btn-teal:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(42,157,143,0.3); }
+.btn-outline { background: transparent; border: 2px solid var(--ink); color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ── PROGRESS ── */
+.progress-strip {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow);
+}
+.progress-strip .label { font-size: 13px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.progress-bar { flex: 1; height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.l1 { background: var(--l1); }
+.progress-fill.l2 { background: var(--l2); }
+.progress-strip .pct { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 15px; }
+
+/* ── WORD SKILL BADGE ── */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1e3a8a;
+  color: white;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 4px 2px;
+}
+.skill-badge .badge-icon { font-size: 14px; }
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── END CARD ── */
+.end-card {
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+  margin-top: 8px;
+}
+.end-card.l1 { background: linear-gradient(135deg, var(--l1-light), #fff); border: 2px solid var(--l1); }
+.end-card.l2 { background: linear-gradient(135deg, var(--l2-light), #fff); border: 2px solid var(--l2); }
+.end-card .end-emoji { font-size: 52px; margin-bottom: 12px; }
+.end-card h3 { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.end-card p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 400px; margin: 0 auto 20px; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 600px) {
+  .match-area { grid-template-columns: 1fr; }
+  .lesson-banner { padding: 20px; }
+  .banner-icon { font-size: 36px; }
+}
+
+/* ══════════════════════════════════════
+   COMPARE ACTIVITY STYLES
+══════════════════════════════════════ */
+.compare-intro {
+  background: white;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--l1);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.compare-intro h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.compare-intro p { font-size: 14px; line-height: 1.7; color: #374151; }
+
+/* CV side-by-side */
+.cv-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media(max-width: 680px) { .cv-compare-grid { grid-template-columns: 1fr; } }
+
+.cv-compare-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.22s;
+  box-shadow: var(--shadow);
+}
+.cv-compare-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+.cv-compare-card.picked-good { border-color: var(--success); box-shadow: 0 0 0 3px rgba(6,214,160,0.25), 0 8px 28px rgba(6,214,160,0.12); }
+.cv-compare-card.picked-bad  { border-color: var(--l1);     box-shadow: 0 0 0 3px rgba(230,57,70,0.2),  0 8px 28px rgba(230,57,70,0.1); }
+
+.cv-compare-label {
+  padding: 10px 16px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cv-compare-card.cva .cv-compare-label { background: #e8f0fe; color: #1a56db; }
+.cv-compare-card.cvb .cv-compare-label { background: #fce8e8; color: #c0392b; }
+
+/* Good CV document */
+.cv-doc-good {
+  background: white;
+  padding: 18px;
+  font-family: 'Times New Roman', serif;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #1a1a2e;
+  min-height: 300px;
+}
+.cvdg-name { font-size: 19px; font-weight: bold; text-align: center; color: #1a3a5c; border-bottom: 2px solid #1a3a5c; padding-bottom: 5px; margin-bottom: 4px; }
+.cvdg-contact { text-align: center; font-size: 10px; color: #555; margin-bottom: 10px; }
+.cvdg-photo { width: 48px; height: 48px; background: #d0d8e4; border-radius: 4px; float: right; margin-left: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.cvdg-section { margin-bottom: 9px; }
+.cvdg-heading { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #1a3a5c; border-bottom: 1px solid #d0d8e4; padding-bottom: 2px; margin-bottom: 4px; }
+.cvdg-body { font-size: 10px; color: #333; line-height: 1.5; }
+.cvdg-body ul { padding-left: 13px; }
+.cvdg-body li { margin-bottom: 2px; }
+.cvdg-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+.cvdg-table th { background: #eef2f8; font-weight: bold; padding: 3px 5px; border: 1px solid #c8d4e3; font-size: 9px; }
+.cvdg-table td { padding: 3px 5px; border: 1px solid #c8d4e3; }
+
+/* Bad CV document */
+.cv-doc-bad {
+  background: #fffef0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #111;
+  padding: 14px;
+  font-size: 11px;
+  line-height: 1.35;
+  min-height: 300px;
+}
+.cvdb-name { font-size: 26px; color: #cc0000; font-weight: bold; }
+.cvdb-sub  { color: purple; font-size: 9px; }
+.cvdb-heading { font-size: 15px; font-weight: bold; color: #006600; margin-top: 6px; }
+.cvdb-body { font-size: 10px; line-height: 1.8; }
+.cvdb-highlight { background: #ffff00; }
+
+/* VOTE */
+.vote-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.vote-choice {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: white;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow);
+}
+.vote-choice:hover { transform: translateY(-2px); }
+.vote-choice.va:hover, .vote-choice.va.selected { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.vote-choice.vb:hover, .vote-choice.vb.selected { border-color: var(--l1); background: var(--l1-light); color: var(--l1); }
+
+.justify-wrap { display: none; animation: fadeUp 0.3s ease; }
+.justify-wrap.show { display: block; }
+.justify-wrap label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); display: block; margin-bottom: 8px; }
+.starter-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.s-chip {
+  background: #f3f4f6; border: 1px solid var(--border); color: #374151;
+  border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.s-chip:hover { border-color: var(--l1); color: var(--l1); background: var(--l1-light); }
+
+/* REVEAL BOXES */
+.reveal-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; display: none; }
+.reveal-boxes.show { display: grid; }
+@media(max-width:600px){ .reveal-boxes { grid-template-columns: 1fr; } }
+.reveal-box { border-radius: var(--radius); padding: 18px; }
+.reveal-box.good-box { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.reveal-box.bad-box  { background: var(--l1-light); border: 1px solid #fca5a5; }
+.reveal-box h4 { font-family: 'Baloo 2', sans-serif; font-size: 15px; font-weight: 800; margin-bottom: 10px; }
+.reveal-box.good-box h4 { color: #065f46; }
+.reveal-box.bad-box h4  { color: #991b1b; }
+.reveal-list-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; color: #374151; margin-bottom: 6px; }
+
+/* CATEGORY SORT GAME */
+.cat-game-header {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e7ff;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.cat-game-header h3 { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+.cat-game-header p { font-size: 14px; color: var(--muted); }
+
+.cat-pool-wrap {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.cat-pool-wrap h4 {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.cat-pool {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  min-height: 56px; padding: 8px;
+  border: 2px dashed var(--border); border-radius: 10px;
+  transition: border-color 0.2s;
+}
+.cat-pool.drag-over { border-color: var(--accent); background: #fff8f0; }
+
+.cat-chip {
+  padding: 9px 14px;
+  border-radius: 9px;
+  border: 1.5px solid var(--border);
+  background: #f9fafb;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: grab;
+  transition: all 0.18s;
+  user-select: none;
+  display: flex; align-items: center; gap: 7px;
+  position: relative;
+}
+.cat-chip:hover { border-color: var(--accent); color: #92400e; background: #fffbeb; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+.cat-chip.dragging { opacity: 0.4; cursor: grabbing; }
+.cat-chip.in-good { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.cat-chip.in-bad  { border-color: var(--l1); background: var(--l1-light); color: #991b1b; }
+.cat-chip.correct-chip { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.cat-chip.wrong-chip   { border-color: var(--l1); background: var(--l1-light); color: #991b1b; animation: shake 0.35s; }
+
+.cat-chip-tooltip {
+  position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+  background: #1a1a2e; color: white; border-radius: 8px; padding: 7px 11px;
+  font-size: 11px; font-weight: 400; white-space: normal; text-align: center;
+  max-width: 200px; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 20;
+}
+.cat-chip:hover .cat-chip-tooltip { opacity: 1; }
+
+.cat-zones { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+@media(max-width:580px){ .cat-zones { grid-template-columns: 1fr; } }
+
+.cat-zone {
+  border-radius: var(--radius); padding: 16px; min-height: 180px;
+  border: 2px dashed; transition: all 0.2s;
+}
+.cat-zone.zone-good { border-color: rgba(6,214,160,0.4); background: #f0fdf4; }
+.cat-zone.zone-bad  { border-color: rgba(230,57,70,0.3); background: var(--l1-light); }
+.cat-zone.dz-good { border-color: var(--success); background: #e0faf2; transform: scale(1.01); }
+.cat-zone.dz-bad  { border-color: var(--l1); background: #fce8e8; transform: scale(1.01); }
+
+.cat-zone-hdr { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.cat-zone-hdr .ztitle { font-family: 'Baloo 2', sans-serif; font-size: 16px; font-weight: 800; }
+.zone-good .ztitle { color: #065f46; }
+.zone-bad  .ztitle { color: var(--l1); }
+.zcount { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 12px; padding: 2px 9px; border-radius: 999px; font-weight: 700; }
+.zone-good .zcount { background: #bbf7d0; color: #065f46; }
+.zone-bad  .zcount { background: #fecaca; color: #991b1b; }
+
+.cat-zone-chips { display: flex; flex-wrap: wrap; gap: 7px; min-height: 60px; }
+.cat-empty-hint { width: 100%; text-align: center; font-size: 12px; color: #9ca3af; padding: 16px 0; font-style: italic; }
+
+.cat-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.cat-score { font-size: 13px; font-weight: 700; color: var(--muted); }
+.cat-score span { color: var(--l1); font-size: 16px; font-family: 'Baloo 2', sans-serif; }
+
+.cat-result {
+  border-radius: var(--radius); padding: 24px; text-align: center; display: none;
+  margin-bottom: 20px;
+}
+.cat-result.show { display: block; animation: fadeUp 0.4s ease; }
+.cat-result.perfect { background: #f0fdf4; border: 2px solid var(--success); }
+.cat-result.partial  { background: #fffbeb; border: 2px solid var(--gold); }
+.cat-result .result-num { font-family: 'Baloo 2', sans-serif; font-size: 44px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+.cat-result.perfect .result-num { color: #065f46; }
+.cat-result.partial  .result-num { color: #92400e; }
+.cat-result h4 { font-family: 'Baloo 2', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.cat-result p  { font-size: 13px; color: var(--muted); max-width: 380px; margin: 0 auto; line-height: 1.6; }
+
+/* step progress dots for compare panel */
+.compare-steps {
+  display: flex; justify-content: center; gap: 6px; margin-bottom: 22px;
+}
+.cstep {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border);
+  background: white;
+}
+.cstep.cs-active { color: var(--l1); border-color: var(--l1); background: var(--l1-light); }
+.cstep.cs-done   { color: #065f46; border-color: var(--success); background: #f0fdf4; }
+
+/* ══ FIX THE BAD CV ACTIVITY ══ */
+.fix-cv-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+@media(max-width:680px){ .fix-cv-wrap { grid-template-columns: 1fr; } }
+
+.fix-panel {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--border);
+}
+.fix-panel-header {
+  padding: 10px 16px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fix-panel.original .fix-panel-header { background: #fdecea; color: #991b1b; }
+.fix-panel.fixed .fix-panel-header    { background: #f0fdf4; color: #065f46; }
+
+.fix-issue {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.fix-issue-num {
+  width: 22px; height: 22px;
+  background: var(--l1);
+  color: white;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.fix-issue-text { color: #374151; }
+.fix-issue-text strong { display: block; color: var(--l1); font-size: 12px; margin-bottom: 2px; }
+
+/* Fix fields */
+.fix-field-group {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+.fix-field-header {
+  background: #f9fafb;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fix-field-header .fnum {
+  width: 24px; height: 24px;
+  background: var(--l1);
+  color: white;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.fix-field-header .ftitle {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+.fix-field-header .fbad {
+  margin-left: auto;
+  background: var(--l1-light);
+  color: var(--l1);
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: italic;
+}
+.fix-field-body { padding: 14px 16px; }
+.fix-field-body label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--muted); display: block; margin-bottom: 6px;
+}
+.fix-field-body .fix-hint {
+  font-size: 12px; color: #6b7280; margin-bottom: 8px; display: block; font-style: italic;
+}
+.fix-field-body input[type=text],
+.fix-field-body textarea {
+  width: 100%; padding: 10px 13px;
+  border: 2px solid var(--border); border-radius: 9px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
+  background: #fafafa; resize: vertical; transition: border-color 0.2s;
+}
+.fix-field-body input[type=text]:focus,
+.fix-field-body textarea:focus { outline: none; border-color: var(--success); background: white; }
+
+.fix-field-body .fix-options {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.fix-option {
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.18s;
+  background: white;
+  display: flex; align-items: center; gap: 10px;
+  user-select: none;
+}
+.fix-option:hover:not(.locked) { border-color: var(--ink); }
+.fix-option .fopt-badge {
+  width: 24px; height: 24px; border-radius: 6px; background: var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0; transition: all 0.18s;
+}
+.fix-option.opt-correct { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.fix-option.opt-correct .fopt-badge { background: var(--success); color: white; }
+.fix-option.opt-wrong   { border-color: var(--l1); background: var(--l1-light); color: var(--l1); }
+.fix-option.opt-wrong .fopt-badge   { background: var(--l1); color: white; }
+.fix-option-feedback { font-size: 12px; font-weight: 700; margin-top: 6px; min-height: 16px; }
+.fix-option-feedback.fgood { color: #065f46; }
+.fix-option-feedback.fbad  { color: var(--l1); }
+
+/* skills tag fix */
+.fix-skill-tags {
+  display: flex; flex-wrap: wrap; gap: 7px; align-items: center;
+  padding: 9px; border: 2px solid var(--border); border-radius: 9px;
+  background: #fafafa; min-height: 46px; cursor: text;
+  transition: border-color 0.2s;
+}
+.fix-skill-tags:focus-within { border-color: var(--success); background: white; }
+.fskill-tag {
+  background: #f0fdf4; color: #065f46; border: 1px solid #bbf7d0;
+  border-radius: 6px; padding: 4px 10px;
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; gap: 5px;
+}
+.fskill-tag button { background:none; border:none; cursor:pointer; color:#065f46; font-size:13px; font-weight:800; padding:0; line-height:1; }
+.fskill-tag.bad-skill { background: var(--l1-light); color: var(--l1); border-color: #fca5a5; }
+.fskill-tag.bad-skill button { color: var(--l1); }
+.fix-tag-input {
+  border:none !important; outline:none !important; padding:0 !important; background:transparent !important;
+  font-family:'DM Sans',sans-serif; font-size:13px; color:var(--ink); min-width:100px; flex:1;
+}
+
+/* fix preview CV */
+.fix-preview-cv {
+  background: white;
+  border-radius: var(--radius);
+  border: 2px solid #2b579a;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.fix-preview-bar {
+  background: #2b579a; padding: 10px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.fix-preview-bar span { color: white; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 14px; }
+.fix-preview-body { padding: 22px; }
+.fpcv-name { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 900; border-bottom: 2px solid #2b579a; padding-bottom: 7px; margin-bottom: 5px; }
+.fpcv-contact { font-size: 11px; color: #6b7280; margin-bottom: 14px; }
+.fpcv-section { margin-bottom: 14px; }
+.fpcv-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #2b579a; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+.fpcv-heading::after { content:''; flex:1; height:1px; background:#e5e7eb; }
+.fpcv-profile { font-size: 12px; line-height: 1.6; color: #374151; border-left: 3px solid #e5e7eb; padding-left: 10px; font-style: italic; }
+.fpcv-skills { display: flex; flex-wrap: wrap; gap: 5px; }
+.fpcv-skill-chip { background: #eff6ff; color: #1d4ed8; border-radius: 5px; padding: 2px 9px; font-size: 11px; font-weight: 700; }
+.fpcv-email { font-size: 12px; }
+
+/* completion banner */
+.fix-complete {
+  background: linear-gradient(135deg, #f0fdf4, #fff);
+  border: 2px solid var(--success);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+  display: none;
+  margin-bottom: 20px;
+}
+.fix-complete.show { display: block; animation: fadeUp 0.4s ease; }
+.fix-complete .fc-emoji { font-size: 48px; margin-bottom: 10px; }
+.fix-complete h3 { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; color: #065f46; margin-bottom: 8px; }
+.fix-complete p  { font-size: 14px; color: var(--muted); max-width: 400px; margin: 0 auto 18px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">Y9 Enrichment · Word Skills</div>
+  <h1>Build Your <span>CV</span> in Word</h1>
+  <p>Two hands-on lessons teaching real Microsoft Word skills — using your CV as the project.</p>
+  <div class="hero-pills">
+    <div class="pill">📋 2 Lessons</div>
+    <div class="pill">⏱️ 1 hour each</div>
+    <div class="pill">💼 Real CV output</div>
+    <div class="pill">🖥️ Microsoft Word</div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <button class="nav-tab active-l1" onclick="showPanel('compare', this)" data-panel="compare">
+    <div class="check" id="check-compare"></div> 🔍 Good vs Bad CV
+  </button>
+  <button class="nav-tab" onclick="showPanel('l1-intro', this)" data-panel="l1-intro">
+    <div class="check" id="check-l1-intro"></div> Lesson 1: What is a CV?
+  </button>
+  <button class="nav-tab" onclick="showPanel('l1-skill', this)" data-panel="l1-skill">
+    <div class="check" id="check-l1-skill"></div> L1: Word Basics
+  </button>
+  <button class="nav-tab" onclick="showPanel('l1-ws', this)" data-panel="l1-ws">
+    <div class="check" id="check-l1-ws"></div> L1: Your Worksheet
+  </button>
+  <button class="nav-tab" onclick="showPanel('l2-intro', this)" data-panel="l2-intro">
+    <div class="check" id="check-l2-intro"></div> Lesson 2: Skills & Layout
+  </button>
+  <button class="nav-tab" onclick="showPanel('l2-skill', this)" data-panel="l2-skill">
+    <div class="check" id="check-l2-skill"></div> L2: Word Skills
+  </button>
+  <button class="nav-tab" onclick="showPanel('l2-ws', this)" data-panel="l2-ws">
+    <div class="check" id="check-l2-ws"></div> L2: Your CV Preview
+  </button>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════
+     GOOD CV vs BAD CV — STARTER ACTIVITY
+══════════════════════════════════════════ -->
+<div class="panel active" id="panel-compare">
+
+  <div class="lesson-banner l1">
+    <div class="banner-icon">🔍</div>
+    <div class="banner-text">
+      <div class="lesson-label">Starter Activity</div>
+      <h2>Good CV vs Bad CV</h2>
+      <p>Before we build your own CV, let's figure out what makes one great — and what makes one terrible.</p>
+    </div>
+  </div>
+
+  <!-- STEP PROGRESS -->
+  <div class="compare-steps" id="compare-steps">
+    <div class="cstep cs-active" id="cstep-1">👁️ Look</div>
+    <div class="cstep" id="cstep-2">👆 Decide</div>
+    <div class="cstep" id="cstep-3">🗂️ Sort</div>
+    <div class="cstep" id="cstep-4">💭 Reflect</div>
+    <div class="cstep" id="cstep-5">🔧 Fix It</div>
+  </div>
+
+  <!-- ── SUB-PANEL 1: LOOK ── -->
+  <div id="cp-look">
+    <div class="compare-intro">
+      <h3>📋 Look carefully at both CVs below</h3>
+      <p>Both of these CVs were sent to the same café manager by students applying for a Saturday job. Read them carefully — notice everything. <strong>Don't click anything yet — just read!</strong></p>
+    </div>
+
+    <div class="cv-compare-grid">
+      <!-- CV A: GOOD -->
+      <div class="cv-compare-card cva" id="ccard-a" onclick="cPickCV('A')">
+        <div class="cv-compare-label">📄 CV — Candidate A &nbsp;<span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:11px;">Alex Carter</span></div>
+        <div class="cv-doc-good">
+          <div class="cvdg-photo">🧑</div>
+          <div class="cvdg-name">Alex Carter</div>
+          <div class="cvdg-contact">📧 alex.carter@schoolemail.com &nbsp;|&nbsp; 📍 Jersey</div>
+          <div class="cvdg-section">
+            <div class="cvdg-heading">Personal Profile</div>
+            <div class="cvdg-body">I am a hardworking and enthusiastic Year 11 student at Riverside Academy. I enjoy working with people and have experience helping at local community events. My teachers describe me as reliable, friendly and a good communicator. I am looking for a part-time role where I can develop my customer service skills.</div>
+          </div>
+          <div class="cvdg-section">
+            <div class="cvdg-heading">Key Skills</div>
+            <div class="cvdg-body"><ul>
+              <li>Strong communication and teamwork</li>
+              <li>Reliable and punctual</li>
+              <li>Good with computers and Microsoft Word</li>
+              <li>Works well under pressure</li>
+            </ul></div>
+          </div>
+          <div class="cvdg-section">
+            <div class="cvdg-heading">Education</div>
+            <div class="cvdg-body">
+              <table class="cvdg-table">
+                <tr><th>School</th><th>Subject</th><th>Predicted</th></tr>
+                <tr><td>Riverside Academy</td><td>English Language</td><td>Grade 6</td></tr>
+                <tr><td>Riverside Academy</td><td>Mathematics</td><td>Grade 5</td></tr>
+                <tr><td>Riverside Academy</td><td>Science</td><td>Grade 5</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="cvdg-section">
+            <div class="cvdg-heading">Hobbies &amp; Interests</div>
+            <div class="cvdg-body">I volunteer at my local food bank on weekends. I am also part of the school drama club and play tennis for a local team.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV B: BAD -->
+      <div class="cv-compare-card cvb" id="ccard-b" onclick="cPickCV('B')">
+        <div class="cv-compare-label">📄 CV — Candidate B &nbsp;<span style="background:#fee2e2;color:#b91c1c;padding:2px 8px;border-radius:4px;font-size:11px;">Jamie S.</span></div>
+        <div class="cv-doc-bad">
+          <div class="cvdb-name">JAMIE!!! 😎😎😎</div>
+          <div class="cvdb-sub">my email is: jams2009_coolio_gamer@hotmail.com</div>
+          <div style="font-size:8px;color:red;margin-top:4px;">CURRICULUM VITAE (its a cv lol)</div>
+          <div class="cvdb-heading">ABOUT ME</div>
+          <div class="cvdb-body">im jamie and im 15. i go to school. i want a job because i need money. i am a good worker i think. my mum says im good at stuff. i like gaming and watching youtube all day. i am funny and my mates like me.</div>
+          <div class="cvdb-heading" style="color:red;font-size:17px;">SKILLS!!!!</div>
+          <div class="cvdb-body">
+            - good<br>
+            - friendly maybe<br>
+            - i can use a phone<br>
+            - <span class="cvdb-highlight">I WONT STEAL ANYTHING</span><br>
+            - i am ok i guess
+          </div>
+          <div class="cvdb-heading" style="color:#000099;">school stuff</div>
+          <div class="cvdb-body">i go to a school near where i live. we do english and maths and stuff. i dont know my grades probably fine tho</div>
+          <div style="font-size:8px;color:gray;margin-top:6px;">references: my nan says im great</div>
+          <div style="font-size:18px;margin-top:6px;">⭐⭐⭐⭐⭐ best candidate (self rated)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-red" onclick="cGoStep(2)">I've read both — make my choice →</button>
+    </div>
+  </div>
+
+  <!-- ── SUB-PANEL 2: DECIDE ── -->
+  <div id="cp-decide" style="display:none;">
+    <div class="card">
+      <h3>👆 Which CV would YOU hire from?</h3>
+      <p style="font-size:14px;color:#374151;line-height:1.6;margin-bottom:16px;">You are the café manager. You've received both CVs this morning. Click the one you think is better — then explain <em>why</em> in your own words before you see the answer.</p>
+      <div class="vote-row">
+        <button class="vote-choice va" id="cvote-a" onclick="cCastVote('A')">✅ CV A — Alex</button>
+        <button class="vote-choice vb" id="cvote-b" onclick="cCastVote('B')">❌ CV B — Jamie</button>
+      </div>
+      <div class="justify-wrap" id="c-justify">
+        <label>✍️ Explain your choice — why is that CV better?</label>
+        <div class="starter-row">
+          <div class="s-chip" onclick="cAppend('CV A is better because it looks professional and ')">CV A is better because…</div>
+          <div class="s-chip" onclick="cAppend('The good CV has clear sections which makes it easy to ')">It has clear sections…</div>
+          <div class="s-chip" onclick="cAppend('CV B is bad because it uses informal language and ')">CV B is bad because…</div>
+          <div class="s-chip" onclick="cAppend('An employer would choose CV A because ')">An employer would…</div>
+        </div>
+        <textarea id="c-justify-box" rows="3" placeholder="Type your answer here… Use the starter chips above if you're stuck!" style="width:100%;background:#fafafa;border:2px solid var(--border);border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);resize:vertical;"></textarea>
+        <div class="btn-row">
+          <button class="btn btn-red" onclick="cSubmitJustify()">Submit my answer →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reveal boxes -->
+    <div class="reveal-boxes" id="c-reveal">
+      <div class="reveal-box good-box">
+        <h4>✅ CV A is the Good CV — here's why:</h4>
+        <div class="reveal-list-item"><span>📝</span> Clear personal profile in full sentences</div>
+        <div class="reveal-list-item"><span>• </span> Skills shown as a neat bullet point list</div>
+        <div class="reveal-list-item"><span>📊</span> Education in a clear, organised table</div>
+        <div class="reveal-list-item"><span>🧑</span> Professional photo included</div>
+        <div class="reveal-list-item"><span>✉️</span> Sensible, professional email address</div>
+        <div class="reveal-list-item"><span>📐</span> Consistent font — easy to read</div>
+        <div class="reveal-list-item"><span>🗂️</span> Proper headings throughout</div>
+        <div class="reveal-list-item"><span>🤝</span> Mentions volunteering — shows character</div>
+      </div>
+      <div class="reveal-box bad-box">
+        <h4>❌ CV B is the Bad CV — here's why:</h4>
+        <div class="reveal-list-item"><span>😬</span> Embarrassing email address</div>
+        <div class="reveal-list-item"><span>💬</span> Written in text message language</div>
+        <div class="reveal-list-item"><span>🎨</span> Random colours and fonts everywhere</div>
+        <div class="reveal-list-item"><span>🚫</span> No real skills — just "good" and "ok"</div>
+        <div class="reveal-list-item"><span>🏫</span> No school name, subjects or grades</div>
+        <div class="reveal-list-item"><span>😂</span> Emojis in the name section</div>
+        <div class="reveal-list-item"><span>📏</span> No structure or clear sections</div>
+        <div class="reveal-list-item"><span>⚠️</span> "I won't steal anything" — terrible!</div>
+      </div>
+    </div>
+
+    <div id="c-to-sort" style="display:none;">
+      <div class="btn-row">
+        <button class="btn btn-red" onclick="cGoStep(3)">Now let's sort the features! →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SUB-PANEL 3: SORT ── -->
+  <div id="cp-sort" style="display:none;">
+    <div class="cat-game-header">
+      <h3>🗂️ Category Sort</h3>
+      <p>Drag each feature card into the correct box — <strong style="color:#065f46;">Good CV</strong> or <strong style="color:var(--l1);">Bad CV</strong>. All 16 must be placed before you can check!</p>
+    </div>
+
+    <div class="cat-controls">
+      <div class="cat-score">Score: <span id="cat-score-val">0</span> / <span id="cat-score-tot">16</span></div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-outline btn-sm" onclick="catReset()">↺ Reset</button>
+        <button class="btn btn-red btn-sm" id="cat-check-btn" onclick="catCheck()" disabled>✓ Check Answers</button>
+      </div>
+    </div>
+
+    <div class="cat-pool-wrap">
+      <h4>📦 Features to sort &nbsp;<span id="cat-remaining" style="color:var(--accent);font-family:'DM Mono',monospace;font-weight:700;"></span></h4>
+      <div class="cat-pool" id="cat-pool"
+           ondragover="catPoolOver(event)"
+           ondrop="catPoolDrop(event)"
+           ondragleave="catPoolLeave(event)"></div>
+    </div>
+
+    <div class="cat-zones">
+      <div class="cat-zone zone-good"
+           ondragover="catZoneOver(event,'good')"
+           ondrop="catZoneDrop(event,'good')"
+           ondragleave="catZoneLeave(event)"
+           id="cat-zone-good">
+        <div class="cat-zone-hdr">
+          <span style="font-size:20px;">✅</span>
+          <div class="ztitle">Good CV</div>
+          <div class="zcount" id="cz-good-count">0</div>
+        </div>
+        <div class="cat-zone-chips" id="czchips-good">
+          <div class="cat-empty-hint">Drop features here…</div>
+        </div>
+      </div>
+      <div class="cat-zone zone-bad"
+           ondragover="catZoneOver(event,'bad')"
+           ondrop="catZoneDrop(event,'bad')"
+           ondragleave="catZoneLeave(event)"
+           id="cat-zone-bad">
+        <div class="cat-zone-hdr">
+          <span style="font-size:20px;">❌</span>
+          <div class="ztitle">Bad CV</div>
+          <div class="zcount" id="cz-bad-count">0</div>
+        </div>
+        <div class="cat-zone-chips" id="czchips-bad">
+          <div class="cat-empty-hint">Drop features here…</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-result" id="cat-result">
+      <div class="result-num" id="cat-result-num"></div>
+      <h4 id="cat-result-title"></h4>
+      <p id="cat-result-msg"></p>
+      <div class="btn-row" style="justify-content:center;margin-top:16px;">
+        <button class="btn btn-outline btn-sm" onclick="catReset()">↺ Try again</button>
+        <button class="btn btn-red" onclick="cGoStep(4)">Final step: Reflect →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SUB-PANEL 4: REFLECT ── -->
+  <div id="cp-reflect" style="display:none;">
+    <div class="card">
+      <h3>💭 Reflect on what you've learned</h3>
+      <p style="font-size:14px;color:#374151;line-height:1.6;margin-bottom:20px;">Answer these questions in your own words. Use the sentence starters to help.</p>
+
+      <div class="field" style="margin-bottom:18px;">
+        <label>Q1 — What is the most important thing a CV must have?</label>
+        <div class="starter-row">
+          <div class="s-chip" onclick="cReflectAppend('cr1','The most important thing is ')">The most important thing…</div>
+          <div class="s-chip" onclick="cReflectAppend('cr1','A CV must always include ')">A CV must include…</div>
+        </div>
+        <textarea id="cr1" rows="2" placeholder="Type your answer…" style="width:100%;background:#fafafa;border:2px solid var(--border);border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);resize:vertical;"></textarea>
+      </div>
+
+      <div class="field" style="margin-bottom:18px;">
+        <label>Q2 — Why does an email like "coolio_gamer@hotmail.com" give a bad impression?</label>
+        <div class="starter-row">
+          <div class="s-chip" onclick="cReflectAppend('cr2','This email gives a bad impression because ')">Bad impression because…</div>
+          <div class="s-chip" onclick="cReflectAppend('cr2','An employer would think ')">An employer would think…</div>
+        </div>
+        <textarea id="cr2" rows="2" placeholder="Type your answer…" style="width:100%;background:#fafafa;border:2px solid var(--border);border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);resize:vertical;"></textarea>
+      </div>
+
+      <div class="field" style="margin-bottom:18px;">
+        <label>Q3 — What will YOU make sure to include in your own CV?</label>
+        <div class="starter-row">
+          <div class="s-chip" onclick="cReflectAppend('cr3','In my own CV I will make sure to ')">In my CV I will…</div>
+          <div class="s-chip" onclick="cReflectAppend('cr3','I have learned that ')">I have learned that…</div>
+          <div class="s-chip" onclick="cReflectAppend('cr3','I will avoid ')">I will avoid…</div>
+        </div>
+        <textarea id="cr3" rows="2" placeholder="Type your answer…" style="width:100%;background:#fafafa;border:2px solid var(--border);border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);resize:vertical;"></textarea>
+      </div>
+    </div>
+
+    <!-- Summary cheatsheet -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius);padding:18px;">
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:#065f46;font-size:14px;margin-bottom:10px;">✅ Good CV Has…</div>
+        <div style="font-size:13px;color:#065f46;line-height:2.0;">
+          ✓ Professional email<br>✓ Full, clear sentences<br>✓ Bullet point skills<br>✓ Education table with grades<br>✓ Consistent font &amp; layout<br>✓ Clear section headings<br>✓ A professional photo<br>✓ No spelling mistakes
+        </div>
+      </div>
+      <div style="background:var(--l1-light);border:1px solid #fca5a5;border-radius:var(--radius);padding:18px;">
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:#991b1b;font-size:14px;margin-bottom:10px;">❌ Bad CV Has…</div>
+        <div style="font-size:13px;color:#991b1b;line-height:2.0;">
+          ✗ Embarrassing email<br>✗ Text message language<br>✗ Vague or missing skills<br>✗ No school or grade info<br>✗ Random fonts &amp; colours<br>✗ No structure or sections<br>✗ Emojis in wrong places<br>✗ Spelling &amp; grammar errors
+        </div>
+      </div>
+    </div>
+
+    <div class="end-card l1">
+      <div class="end-emoji">🚀</div>
+      <h3>Now you know what makes a great CV!</h3>
+      <p>Head to Lesson 1 to find out more about CV structure — then start building your own in Word.</p>
+      <button class="btn btn-red" onclick="cGoStep(5)">🔧 Fix the Bad CV →</button>
+    </div>
+  </div>
+
+
+  <!-- ── SUB-PANEL 5: FIX THE BAD CV ── -->
+  <div id="cp-fix" style="display:none;">
+
+    <div class="card">
+      <h3>🔧 Fix the Bad CV</h3>
+      <p style="font-size:14px;color:#374151;line-height:1.7;margin-bottom:0;">
+        Jamie's CV is a disaster — but it can be saved! Below are <strong>6 problems</strong> we found in CV B.
+        Your job is to fix each one. Type or choose the correct version, and watch the CV update live on the right.
+      </p>
+    </div>
+
+    <!-- side-by-side: problems list + fix fields -->
+    <div class="fix-cv-wrap">
+
+      <!-- LEFT: original problems -->
+      <div class="fix-panel original">
+        <div class="fix-panel-header">❌ Jamie's Original Mistakes</div>
+        <div class="fix-issue">
+          <div class="fix-issue-num">1</div>
+          <div class="fix-issue-text"><strong>Problem: Unprofessional email</strong>jams2009_coolio_gamer@hotmail.com</div>
+        </div>
+        <div class="fix-issue">
+          <div class="fix-issue-num">2</div>
+          <div class="fix-issue-text"><strong>Problem: Informal, chatty writing</strong>"im jamie and im 15. i want a job bc i need money."</div>
+        </div>
+        <div class="fix-issue">
+          <div class="fix-issue-num">3</div>
+          <div class="fix-issue-text"><strong>Problem: Vague, useless skills</strong>"good", "friendly maybe", "i am ok i guess"</div>
+        </div>
+        <div class="fix-issue">
+          <div class="fix-issue-num">4</div>
+          <div class="fix-issue-text"><strong>Problem: No school or grades</strong>"i go to a school near where i live"</div>
+        </div>
+        <div class="fix-issue">
+          <div class="fix-issue-num">5</div>
+          <div class="fix-issue-text"><strong>Problem: Terrible section heading</strong>"SKILLS!!!!" in red, size 18, exclamation marks</div>
+        </div>
+        <div class="fix-issue">
+          <div class="fix-issue-num">6</div>
+          <div class="fix-issue-text"><strong>Problem: Inappropriate comment</strong>"I WON'T STEAL ANYTHING" highlighted in yellow</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: live preview -->
+      <div>
+        <div class="fix-preview-cv">
+          <div class="fix-preview-bar">
+            <span>✨ Jamie's Fixed CV — Live Preview</span>
+            <span style="font-size:11px;opacity:0.7;">Updates as you fix</span>
+          </div>
+          <div class="fix-preview-body">
+            <div class="fpcv-name">Jamie Smith</div>
+            <div class="fpcv-contact fpcv-email" id="fp-email" style="color:#e63946;font-style:italic;">jams2009_coolio_gamer@hotmail.com ← needs fixing!</div>
+            <div class="fpcv-section">
+              <div class="fpcv-heading">Personal Profile</div>
+              <div class="fpcv-profile" id="fp-profile" style="color:#e63946;font-style:italic;">im jamie and im 15 i want a job bc i need money ← needs fixing!</div>
+            </div>
+            <div class="fpcv-section">
+              <div class="fpcv-heading">Key Skills</div>
+              <div class="fpcv-skills" id="fp-skills">
+                <span class="fpcv-skill-chip" style="background:#fdecea;color:#991b1b;">good</span>
+                <span class="fpcv-skill-chip" style="background:#fdecea;color:#991b1b;">friendly maybe</span>
+                <span class="fpcv-skill-chip" style="background:#fdecea;color:#991b1b;">i am ok i guess</span>
+              </div>
+            </div>
+            <div class="fpcv-section">
+              <div class="fpcv-heading">Education</div>
+              <div id="fp-edu" style="font-size:12px;color:#e63946;font-style:italic;">i go to a school near where i live ← needs fixing!</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:12px;color:#92400e;line-height:1.6;">
+          💡 <strong>Tip:</strong> Each fix you make will update the preview above. Try to make it look as close to CV A (the good one) as possible!
+        </div>
+      </div>
+    </div>
+
+    <!-- FIX FIELDS -->
+
+    <!-- Fix 1: Email -->
+    <div class="fix-field-group">
+      <div class="fix-field-header">
+        <div class="fnum">1</div>
+        <div class="ftitle">Fix the Email Address</div>
+        <div class="fbad">jams2009_coolio_gamer@hotmail.com</div>
+      </div>
+      <div class="fix-field-body">
+        <label>Write a professional email address for Jamie Smith</label>
+        <span class="fix-hint">Use their real name — something like firstname.lastname@gmail.com or their school email.</span>
+        <input type="text" id="fix-email" placeholder="e.g. jamie.smith@schoolemail.com" oninput="fixUpdatePreview()">
+      </div>
+    </div>
+
+    <!-- Fix 2: Profile -->
+    <div class="fix-field-group">
+      <div class="fix-field-header">
+        <div class="fnum">2</div>
+        <div class="ftitle">Rewrite the Personal Profile</div>
+        <div class="fbad">"im jamie and im 15..."</div>
+      </div>
+      <div class="fix-field-body">
+        <label>Write 2–3 proper sentences for Jamie's personal profile</label>
+        <span class="fix-hint">Use the sentence starters below to help, then add your own ideas.</span>
+        <div class="starter-row" style="margin-bottom:8px;">
+          <div class="s-chip" onclick="fixAppend('fix-profile','I am a hardworking Year 11 student at ')">I am a hardworking…</div>
+          <div class="s-chip" onclick="fixAppend('fix-profile','I enjoy working with people and ')">I enjoy working with…</div>
+          <div class="s-chip" onclick="fixAppend('fix-profile','My teachers describe me as ')">My teachers say…</div>
+          <div class="s-chip" onclick="fixAppend('fix-profile','I am looking for a part-time role where I can ')">I am looking for…</div>
+        </div>
+        <textarea id="fix-profile" rows="3" placeholder="Write Jamie's personal profile here…" oninput="fixUpdatePreview()"></textarea>
+      </div>
+    </div>
+
+    <!-- Fix 3: Skills -->
+    <div class="fix-field-group">
+      <div class="fix-field-header">
+        <div class="fnum">3</div>
+        <div class="ftitle">Replace the Vague Skills</div>
+        <div class="fbad">"good", "friendly maybe", "i am ok i guess"</div>
+      </div>
+      <div class="fix-field-body">
+        <label>Give Jamie 4–6 proper, specific skills</label>
+        <span class="fix-hint">Click suggestions or type your own and press Enter to add them.</span>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;">
+          <button class="btn btn-outline btn-sm" style="font-size:12px;" onclick="fixAddSkill('Teamwork')">+ Teamwork</button>
+          <button class="btn btn-outline btn-sm" style="font-size:12px;" onclick="fixAddSkill('Communication')">+ Communication</button>
+          <button class="btn btn-outline btn-sm" style="font-size:12px;" onclick="fixAddSkill('Hard-working')">+ Hard-working</button>
+          <button class="btn btn-outline btn-sm" style="font-size:12px;" onclick="fixAddSkill('Punctual')">+ Punctual</button>
+          <button class="btn btn-outline btn-sm" style="font-size:12px;" onclick="fixAddSkill('Customer service')">+ Customer service</button>
+          <button class="btn btn-outline btn-sm" style="font-size:12px;" onclick="fixAddSkill('Reliable')">+ Reliable</button>
+        </div>
+        <div class="fix-skill-tags" id="fix-tags-wrap" onclick="document.getElementById('fix-tag-input').focus()">
+          <input class="fix-tag-input" id="fix-tag-input" placeholder="Type a skill and press Enter…" onkeydown="fixTagKeydown(event)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Fix 4: Education (MCQ) -->
+    <div class="fix-field-group">
+      <div class="fix-field-header">
+        <div class="fnum">4</div>
+        <div class="ftitle">Fix the Education Section</div>
+        <div class="fbad">"i go to a school near where i live"</div>
+      </div>
+      <div class="fix-field-body">
+        <label>Which of these is the best way to write Jamie's education?</label>
+        <div class="fix-options" id="fix-edu-opts">
+          <div class="fix-option" onclick="fixEduAnswer(this, false)">
+            <div class="fopt-badge">A</div>
+            i go to riverside academy and do english and maths and stuff, grades are probably fine
+          </div>
+          <div class="fix-option" onclick="fixEduAnswer(this, true)">
+            <div class="fopt-badge">B</div>
+            Riverside Academy — English Language (Predicted: Grade 5), Mathematics (Predicted: Grade 5)
+          </div>
+          <div class="fix-option" onclick="fixEduAnswer(this, false)">
+            <div class="fopt-badge">C</div>
+            SCHOOL: YES. SUBJECTS: LOADS. GRADES: GOOD ONES PROBABLY
+          </div>
+        </div>
+        <div class="fix-option-feedback" id="fix-edu-fb"></div>
+      </div>
+    </div>
+
+    <!-- Fix 5: Section heading (MCQ) -->
+    <div class="fix-field-group">
+      <div class="fix-field-header">
+        <div class="fnum">5</div>
+        <div class="ftitle">Fix the Section Heading Style</div>
+        <div class="fbad">"SKILLS!!!!" in red, huge font</div>
+      </div>
+      <div class="fix-field-body">
+        <label>How should section headings look on a professional CV?</label>
+        <div class="fix-options" id="fix-head-opts">
+          <div class="fix-option" onclick="fixHeadAnswer(this, false)">
+            <div class="fopt-badge">A</div>
+            🌈 SKILLS!!!! 🌈 — big, colourful, with emojis so it stands out
+          </div>
+          <div class="fix-option" onclick="fixHeadAnswer(this, false)">
+            <div class="fopt-badge">B</div>
+            skills (lowercase, tiny, no formatting at all)
+          </div>
+          <div class="fix-option" onclick="fixHeadAnswer(this, true)">
+            <div class="fopt-badge">C</div>
+            KEY SKILLS — bold, consistent size, with a line underneath to separate sections
+          </div>
+        </div>
+        <div class="fix-option-feedback" id="fix-head-fb"></div>
+      </div>
+    </div>
+
+    <!-- Fix 6: Inappropriate comment (MCQ) -->
+    <div class="fix-field-group">
+      <div class="fix-field-header">
+        <div class="fnum">6</div>
+        <div class="ftitle">Remove the Inappropriate Comment</div>
+        <div class="fbad">"I WON'T STEAL ANYTHING" highlighted in yellow</div>
+      </div>
+      <div class="fix-field-body">
+        <label>Why should this never appear on a CV — and what should go there instead?</label>
+        <div class="fix-options" id="fix-comm-opts">
+          <div class="fix-option" onclick="fixCommAnswer(this, false)">
+            <div class="fopt-badge">A</div>
+            Keep it — it shows Jamie is honest and trustworthy
+          </div>
+          <div class="fix-option" onclick="fixCommAnswer(this, true)">
+            <div class="fopt-badge">B</div>
+            Remove it completely — it actually makes employers suspicious. Replace with a genuine hobby or interest.
+          </div>
+          <div class="fix-option" onclick="fixCommAnswer(this, false)">
+            <div class="fopt-badge">C</div>
+            Change the highlight colour to green instead
+          </div>
+        </div>
+        <div class="fix-option-feedback" id="fix-comm-fb"></div>
+      </div>
+    </div>
+
+    <!-- COMPLETION BANNER -->
+    <div class="fix-complete" id="fix-complete">
+      <div class="fc-emoji">🎉</div>
+      <h3>You've fixed Jamie's CV!</h3>
+      <p>Every mistake corrected — you know exactly what makes a CV professional. Now it's time to build your own!</p>
+      <button class="btn btn-red" onclick="goTo('l1-intro')">Start Lesson 1 — Build My Own CV →</button>
+    </div>
+
+  </div><!-- end cp-fix -->
+
+</div><!-- end panel-compare -->
+
+
+<!-- ══════════════════════════════════════════
+     LESSON 1 · INTRO
+══════════════════════════════════════════ -->
+<div class="panel active" id="panel-l1-intro">
+
+  <div class="lesson-banner l1">
+    <div class="banner-icon">📄</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1 of 2</div>
+      <h2>What is a CV — and why does it matter?</h2>
+      <p>Learn what a CV is, what goes in it, and plan your personal profile before opening Word.</p>
+    </div>
+  </div>
+
+  <div class="progress-strip">
+    <span class="label">Lesson 1 Progress</span>
+    <div class="progress-bar"><div class="progress-fill l1" id="l1-progress" style="width:5%"></div></div>
+    <span class="pct" id="l1-pct">5%</span>
+  </div>
+
+  <div class="objectives">
+    <h3>🎯 By the end of this lesson you will…</h3>
+    <div class="obj-list">
+      <div class="obj-item"><div class="obj-num">1</div> Know what a CV is and when you use one</div>
+      <div class="obj-item"><div class="obj-num">2</div> Identify the key sections of a CV</div>
+      <div class="obj-item"><div class="obj-num">3</div> Write a draft personal profile about yourself</div>
+      <div class="obj-item"><div class="obj-num">4</div> Start your CV document in Microsoft Word</div>
+    </div>
+  </div>
+
+  <!-- WHAT IS A CV -->
+  <div class="card">
+    <h3>📋 So… what even is a CV?</h3>
+    <p>A <strong>CV</strong> stands for <strong>Curriculum Vitae</strong> — a Latin phrase that means "the story of your life." Don't worry about the Latin! Think of it simply as a <strong>one or two page document about you</strong>.</p>
+    <p>When you apply for a job, work experience, or a college course, you send someone your CV. It's usually the <strong>first thing an employer reads</strong> about you — before they even meet you. So it needs to look good and say the right things!</p>
+    <div class="callout tip">
+      <div class="callout-body"><strong>Think of it like this…</strong> Your CV is like a trailer for a film. It needs to make people want to find out more about you. If the trailer is boring, they won't bother watching the film!</div>
+    </div>
+  </div>
+
+  <!-- MATCH ACTIVITY -->
+  <div class="activity">
+    <div class="activity-header">
+      <h3>🎯 Activity 1 — Match the CV Section</h3>
+      <div class="activity-tag">Interactive</div>
+    </div>
+    <p>Click a section name on the left, then click what it means on the right. Can you match them all?</p>
+    <div class="match-area">
+      <div class="match-col">
+        <h4>CV Section</h4>
+        <div class="match-card" data-id="a" data-group="left" onclick="matchClick(this)">Personal Profile</div>
+        <div class="match-card" data-id="b" data-group="left" onclick="matchClick(this)">Key Skills</div>
+        <div class="match-card" data-id="c" data-group="left" onclick="matchClick(this)">Education</div>
+        <div class="match-card" data-id="d" data-group="left" onclick="matchClick(this)">Hobbies &amp; Interests</div>
+      </div>
+      <div class="match-col">
+        <h4>What it means</h4>
+        <div class="match-card" data-id="c" data-group="right" onclick="matchClick(this)">Your school, subjects &amp; grades</div>
+        <div class="match-card" data-id="a" data-group="right" onclick="matchClick(this)">A short paragraph about who you are</div>
+        <div class="match-card" data-id="d" data-group="right" onclick="matchClick(this)">What you do in your free time</div>
+        <div class="match-card" data-id="b" data-group="right" onclick="matchClick(this)">Things you are good at</div>
+      </div>
+    </div>
+    <div id="match-status"></div>
+    <button class="btn btn-outline btn-sm" onclick="resetMatch()" style="margin-top:10px">↺ Reset</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card">
+    <h3>❓ Quick Check — Test Yourself</h3>
+    <div class="quiz-wrap">
+
+      <div class="q-block">
+        <div class="q-text">1. What does CV stand for?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><div class="opt-badge">A</div> Cover Vitae</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><div class="opt-badge">B</div> Curriculum Vitae</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><div class="opt-badge">C</div> Career Vision</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">2. When would you send someone your CV?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><div class="opt-badge">A</div> When you want to make a new friend</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><div class="opt-badge">B</div> When you are ordering food online</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><div class="opt-badge">C</div> When you are applying for a job or work experience</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">3. How long should a CV usually be?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><div class="opt-badge">A</div> As long as possible — more is better</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><div class="opt-badge">B</div> 1–2 pages, keeping it clear and short</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><div class="opt-badge">C</div> Exactly 5 pages</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CV SECTIONS EXPLAINER -->
+  <div class="card">
+    <h3>🗂️ The 5 Key Sections of a CV</h3>
+    <p>Most CVs have the same sections — like chapters in a book. Here they are:</p>
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Personal Details</strong>
+          <span>Your name, phone number and email. No photo needed yet — we'll add one in Word!</span>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Personal Profile</strong>
+          <span>3–4 sentences about who you are, what you enjoy and what you're like as a person. This is the most personal part of your CV.</span>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Key Skills</strong>
+          <span>A bullet point list of your top strengths — like teamwork, communication, or being good with computers.</span>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Education</strong>
+          <span>Your school name, the subjects you study, and any grades or predicted grades.</span>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Hobbies &amp; Interests</strong>
+          <span>Things you do outside school — sports, art, volunteering, gaming. This shows your personality!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SORTING ACTIVITY -->
+  <div class="activity">
+    <div class="activity-header">
+      <h3>🔀 Activity 2 — Sort the CV Sections</h3>
+      <div class="activity-tag">Drag &amp; Drop</div>
+    </div>
+    <p>Drag the sections below into the correct order for a CV. The <strong>Personal Details</strong> always go first!</p>
+    <div class="sort-list" id="sort-list">
+      <div class="sort-item" draggable="true" data-correct="3"><div class="sort-handle">⠿</div><div class="sort-pos">?</div> Key Skills</div>
+      <div class="sort-item" draggable="true" data-correct="1"><div class="sort-handle">⠿</div><div class="sort-pos">?</div> Personal Details</div>
+      <div class="sort-item" draggable="true" data-correct="5"><div class="sort-handle">⠿</div><div class="sort-pos">?</div> Hobbies &amp; Interests</div>
+      <div class="sort-item" draggable="true" data-correct="2"><div class="sort-handle">⠿</div><div class="sort-pos">?</div> Personal Profile</div>
+      <div class="sort-item" draggable="true" data-correct="4"><div class="sort-handle">⠿</div><div class="sort-pos">?</div> Education</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-dark btn-sm" id="sort-check-btn" onclick="checkSort()">✓ Check Order</button>
+      <button class="btn btn-outline btn-sm" onclick="shuffleSort()">↺ Shuffle</button>
+    </div>
+    <div id="sort-feedback"></div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-red" onclick="goTo('l1-skill')">Next: Word Basics →</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LESSON 1 · WORD SKILLS
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-l1-skill">
+
+  <div class="lesson-banner l1">
+    <div class="banner-icon">🖥️</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1 · Word Skills</div>
+      <h2>Setting Up Your CV in Word</h2>
+      <p>Open Word and follow these steps to create your CV document — we'll do it together.</p>
+    </div>
+  </div>
+
+  <div class="progress-strip">
+    <span class="label">Lesson 1 Progress</span>
+    <div class="progress-bar"><div class="progress-fill l1" id="l1-progress2" style="width:40%"></div></div>
+    <span class="pct">40%</span>
+  </div>
+
+  <div class="callout word">
+    <div class="callout-body">
+      <strong>📘 Word Skill: Page Layout</strong>
+      Before you type anything, set up your page correctly. A CV needs narrow margins so you have more space.
+    </div>
+  </div>
+
+  <!-- PAGE LAYOUT -->
+  <div class="card">
+    <h3>📐 Step 1 — Set Your Page Margins</h3>
+    <p>Margins are the empty space around the edge of your page. For a CV, we want them <strong>narrow</strong> so we have more room.</p>
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Open Microsoft Word</strong>
+          <p>Create a new <strong>Blank Document</strong>. Don't use a template — we're building ours from scratch.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Click the Layout tab</strong>
+          <p>Look at the tabs at the top of Word: Home, Insert, Draw, <strong>Layout</strong>… Click on <strong>Layout</strong>.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Click Margins → Narrow</strong>
+          <p>In the Layout tab, click the <strong>Margins</strong> button. Choose <strong>Narrow</strong> from the list. Your page edges will get smaller.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Save your file right away!</strong>
+          <p>Press <span class="kbd">Ctrl</span> + <span class="kbd">S</span>. Name it <strong>YourName_CV</strong> — for example: <em>Emma_Jones_CV</em>. Save it to your school folder.</p>
+        </div>
+      </div>
+    </div>
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📄 Emma_Jones_CV.docx — Microsoft Word</span></div>
+      <div class="word-mock-ribbon">
+        <div class="ribbon-btn">Home</div>
+        <div class="ribbon-btn">Insert</div>
+        <div class="ribbon-btn highlight">Layout ◀ click here</div>
+        <div class="ribbon-btn">References</div>
+      </div>
+      <div class="word-mock-body">
+        <div class="word-page" style="min-height:80px; color:#9ca3af; font-size:12px; text-align:center; padding-top:28px;">
+          ← Narrow margins set →<br>More space for your CV content
+        </div>
+      </div>
+    </div>
+    <div class="callout check">
+      <div class="callout-body">✅ <strong>Check!</strong> Your document name should now show in the top bar. If you can see <em>YourName_CV.docx</em> at the top — great job!</div>
+    </div>
+  </div>
+
+  <!-- FONT / HEADING -->
+  <div class="card">
+    <h3>🔤 Step 2 — Type Your Name as a Heading</h3>
+    <p>Your name goes at the very top of your CV, big and bold so it stands out.</p>
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Click on the page and type your full name</strong>
+          <p>Just your name — nothing else yet.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Select your name</strong>
+          <p>Click and drag over your name to highlight it — it will turn blue.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Make it bigger</strong>
+          <p>In the <strong>Home</strong> tab, find the font size box (it shows a number like 11). Change it to <strong>24</strong>. Press <span class="kbd">Enter</span>.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Make it bold</strong>
+          <p>Still with your name selected — press <span class="kbd">Ctrl</span> + <span class="kbd">B</span>. Your name should now be big and bold!</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Centre it on the page</strong>
+          <p>Press <span class="kbd">Ctrl</span> + <span class="kbd">E</span> to centre your name. It should now sit in the middle of the page.</p>
+        </div>
+      </div>
+    </div>
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📄 Emma_Jones_CV.docx</span></div>
+      <div class="word-mock-ribbon">
+        <div class="ribbon-btn highlight">Bold B</div>
+        <div class="ribbon-btn highlight">Size: 24</div>
+        <div class="ribbon-btn highlight">Centre ≡</div>
+      </div>
+      <div class="word-mock-body">
+        <div class="word-page" style="text-align:center;">
+          <div style="font-size:20px; font-weight:800; padding: 12px 0;">Emma Jones</div>
+          <div style="font-size:11px; color:#6b7280; border-top: 2px solid #1a1a2e; padding-top:6px;">Your name should look like this ↑ big, bold, centred</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BULLET POINTS -->
+  <div class="card">
+    <h3>• Step 3 — Add Section Headings with Bullet Points</h3>
+    <div class="callout word">
+      <div class="callout-body"><strong>📘 Word Skill: Bullet Points</strong> Bullet points make lists easy to read. They're perfect for CVs — especially for Key Skills.</div>
+    </div>
+    <p>After your name, we'll add the section headings. For now, just type these as bold text — we'll fill them in during the worksheet.</p>
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Press Enter twice after your name</strong>
+          <p>This gives some breathing room. Change the font size back to <strong>12</strong> first.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Type: PERSONAL PROFILE</strong>
+          <p>Make it <strong>bold</strong> (<span class="kbd">Ctrl</span>+<span class="kbd">B</span>), size <strong>14</strong>, and left-aligned (<span class="kbd">Ctrl</span>+<span class="kbd">L</span>). Press Enter.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Leave 3 blank lines, then type: KEY SKILLS</strong>
+          <p>Same formatting — bold, size 14. Press Enter.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Now turn on Bullet Points</strong>
+          <p>Click the bullet point button in the Home tab (it looks like ≡ with dots). Type 3 placeholder skills for now — we'll change them later.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout tip">
+      <div class="callout-body"><strong>Quick shortcut:</strong> To turn off bullet points, just press <span class="kbd">Enter</span> twice, or click the bullet point button again to switch it off.</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE CHECKLIST -->
+  <div class="activity">
+    <div class="activity-header">
+      <h3>✅ Activity 3 — Word Skills Checklist</h3>
+      <div class="activity-tag">Practical</div>
+    </div>
+    <p>Tick each task as you complete it in Word. Be honest — only tick it if you've actually done it!</p>
+    <div class="checklist" id="checklist-l1">
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've opened a new blank document in Word</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've set the margins to <strong>Narrow</strong></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've saved my file as <em>YourName_CV</em></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> My name is at the top — size 24, bold, centred</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I have a PERSONAL PROFILE heading (bold, size 14)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I have a KEY SKILLS heading with bullet points below it</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've saved again with <kbd>Ctrl</kbd>+<kbd>S</kbd></div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-outline btn-sm" onclick="goTo('l1-intro')">← Back</button>
+    <button class="btn btn-red" onclick="goTo('l1-ws')">Next: Your Worksheet →</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LESSON 1 · WORKSHEET
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-l1-ws">
+
+  <div class="lesson-banner l1">
+    <div class="banner-icon">✍️</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1 · Worksheet</div>
+      <h2>Plan Your Personal Profile</h2>
+      <p>Fill this in here first — then copy your answers into your Word document.</p>
+    </div>
+  </div>
+
+  <div class="progress-strip">
+    <span class="label">Lesson 1 Progress</span>
+    <div class="progress-bar"><div class="progress-fill l1" style="width:75%"></div></div>
+    <span class="pct">75%</span>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-body"><strong>How to use this worksheet:</strong> Fill in the boxes here to plan your ideas. Once you're happy with them, <strong>copy your answers into Word</strong> under the right headings. There are no wrong answers — this is about YOU!</div>
+  </div>
+
+  <!-- WORKSHEET PERSONAL DETAILS -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <div class="ws-icon">👤</div>
+      <div>
+        <h3>Section 1 — Personal Details</h3>
+        <p>This is the basic contact information at the top of your CV.</p>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" id="ws-firstname" placeholder="e.g. Emma" oninput="updatePreview()">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" id="ws-lastname" placeholder="e.g. Jones" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="field">
+      <label>School Name</label>
+      <input type="text" id="ws-school" placeholder="e.g. Riverside Academy" oninput="updatePreview()">
+    </div>
+    <div class="field">
+      <label>Email Address <span style="font-weight:400;text-transform:none;">(school email is fine)</span></label>
+      <input type="text" id="ws-email" placeholder="e.g. emma.jones@school.com" oninput="updatePreview()">
+    </div>
+  </div>
+
+  <!-- WORKSHEET PERSONAL PROFILE -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <div class="ws-icon">💬</div>
+      <div>
+        <h3>Section 2 — Personal Profile</h3>
+        <p>3–4 sentences about who you are. Use the sentence starters below to help!</p>
+      </div>
+    </div>
+
+    <div class="callout watch">
+      <div class="callout-body">
+        <strong>Use these sentence starters to help you:</strong><br>
+        • <em>"I am a Year 9 student at [school] who enjoys…"</em><br>
+        • <em>"I am a hardworking person who…"</em><br>
+        • <em>"In the future, I would like to…"</em><br>
+        • <em>"My friends and teachers would describe me as…"</em>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Sentence 1 — Who are you?</label>
+      <span class="hint">Tell them your name, year group, and school.</span>
+      <textarea id="ws-p1" placeholder="I am a Year 9 student at..." oninput="updatePreview()"></textarea>
+    </div>
+    <div class="field">
+      <label>Sentence 2 — What do you enjoy?</label>
+      <span class="hint">What subjects or activities do you like? What are you good at?</span>
+      <textarea id="ws-p2" placeholder="I enjoy..." oninput="updatePreview()"></textarea>
+    </div>
+    <div class="field">
+      <label>Sentence 3 — What are you like as a person?</label>
+      <span class="hint">Think about what your friends or teachers say about you.</span>
+      <textarea id="ws-p3" placeholder="My teachers describe me as..." oninput="updatePreview()"></textarea>
+    </div>
+    <div class="field">
+      <label>Sentence 4 — What do you want in the future? <span style="font-weight:400;">(optional)</span></label>
+      <textarea id="ws-p4" placeholder="In the future, I would like to..." oninput="updatePreview()"></textarea>
+    </div>
+  </div>
+
+  <!-- WORKSHEET SKILLS -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <div class="ws-icon">⭐</div>
+      <div>
+        <h3>Section 3 — Key Skills</h3>
+        <p>Pick 4–6 skills from the list, or add your own. These go as bullet points in Word.</p>
+      </div>
+    </div>
+    <div class="callout tip">
+      <div class="callout-body"><strong>Can't think of any?</strong> Everyone has skills! Click on any of the suggestions below to add them.</div>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+      <button class="btn btn-outline btn-sm" onclick="addSkill('Teamwork')">+ Teamwork</button>
+      <button class="btn btn-outline btn-sm" onclick="addSkill('Communication')">+ Communication</button>
+      <button class="btn btn-outline btn-sm" onclick="addSkill('Hard-working')">+ Hard-working</button>
+      <button class="btn btn-outline btn-sm" onclick="addSkill('Punctual')">+ Punctual</button>
+      <button class="btn btn-outline btn-sm" onclick="addSkill('Creative')">+ Creative</button>
+      <button class="btn btn-outline btn-sm" onclick="addSkill('IT skills')">+ IT skills</button>
+      <button class="btn btn-outline btn-sm" onclick="addSkill('Problem-solving')">+ Problem-solving</button>
+      <button class="btn btn-outline btn-sm" onclick="addSkill('Organised')">+ Organised</button>
+    </div>
+    <div class="field">
+      <label>Your Skills</label>
+      <span class="hint">Click suggestions above, or type your own and press Enter.</span>
+      <div class="tag-input-wrap" id="tag-wrap" onclick="document.getElementById('tag-in').focus()">
+        <input class="tag-input" id="tag-in" placeholder="Type a skill and press Enter…" onkeydown="tagKeydown(event)">
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="cv-preview">
+    <div class="cv-preview-bar">
+      <span>👀 Live CV Preview</span>
+      <span style="font-size:12px; opacity:0.7;">Updates as you type</span>
+    </div>
+    <div class="cv-preview-body">
+      <div class="cv-photo-box">📷<br>Photo<br>(Lesson 2)</div>
+      <div class="cv-name" id="preview-name">Your Name Here</div>
+      <div style="font-size:12px; color:#6b7280; margin-bottom:16px;" id="preview-contact">your.email@school.com · Your School</div>
+      <div class="cv-section">
+        <div class="cv-section-title">Personal Profile</div>
+        <div class="cv-profile-text" id="preview-profile">Your personal profile will appear here as you type above…</div>
+      </div>
+      <div class="cv-section">
+        <div class="cv-section-title">Key Skills</div>
+        <div id="preview-skills-wrap" class="cv-skills-grid">
+          <span class="cv-skill-chip empty">Skill 1</span>
+          <span class="cv-skill-chip empty">Skill 2</span>
+          <span class="cv-skill-chip empty">Skill 3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout check">
+    <div class="callout-body"><strong>✅ Now copy into Word!</strong> Take what you've written above and type it into your Word CV document — under the right headings. Remember: bullet points for Key Skills!</div>
+  </div>
+
+  <div class="end-card l1">
+    <div class="end-emoji">🎉</div>
+    <h3>Lesson 1 Complete!</h3>
+    <p>You now know what a CV is, have planned your Personal Profile and Key Skills, and have started your Word document. See you next lesson!</p>
+    <button class="btn btn-red" onclick="goTo('l2-intro')">Start Lesson 2 →</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LESSON 2 · INTRO
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-l2-intro">
+
+  <div class="lesson-banner l2">
+    <div class="banner-icon">🏗️</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2 of 2</div>
+      <h2>Tables, Images &amp; Finishing Your CV</h2>
+      <p>Add your Education table, insert a photo, and give your CV a professional layout.</p>
+    </div>
+  </div>
+
+  <div class="progress-strip">
+    <span class="label">Lesson 2 Progress</span>
+    <div class="progress-bar"><div class="progress-fill l2" style="width:5%"></div></div>
+    <span class="pct">5%</span>
+  </div>
+
+  <div class="objectives">
+    <h3>🎯 By the end of this lesson you will…</h3>
+    <div class="obj-list">
+      <div class="obj-item"><div class="obj-num">1</div> Insert and format a table in Word for your Education section</div>
+      <div class="obj-item"><div class="obj-num">2</div> Add and resize an image (your photo or an avatar)</div>
+      <div class="obj-item"><div class="obj-num">3</div> Use alignment and spacing to make your CV look clean</div>
+      <div class="obj-item"><div class="obj-num">4</div> Complete a partially filled CV ready to take home</div>
+    </div>
+  </div>
+
+  <!-- WORD SKILLS THIS LESSON -->
+  <div class="card">
+    <h3>🖥️ Word Skills We're Learning Today</h3>
+    <p>Today is all about making your CV look <em>professional</em>. Here are the three Word skills you'll learn:</p>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+      <div class="skill-badge"><div class="badge-icon">📊</div> Tables</div>
+      <div class="skill-badge"><div class="badge-icon">🖼️</div> Inserting Images</div>
+      <div class="skill-badge"><div class="badge-icon">📐</div> Page Alignment &amp; Spacing</div>
+    </div>
+    <div class="callout tip" style="margin-top:16px;">
+      <div class="callout-body"><strong>Why use a table for Education?</strong> A table lets you line up your school name, subject, and grade in neat columns — much neater than just typing it out!</div>
+    </div>
+  </div>
+
+  <!-- QUIZ RECAP -->
+  <div class="card">
+    <h3>🔁 Quick Recap from Lesson 1</h3>
+    <div class="quiz-wrap">
+      <div class="q-block">
+        <div class="q-text">1. What keyboard shortcut makes text bold in Word?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">A</div> Ctrl + I</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><div class="opt-badge">B</div> Ctrl + B</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">C</div> Ctrl + U</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+      <div class="q-block">
+        <div class="q-text">2. What should you set the margins to for a CV?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">A</div> Wide</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">B</div> Normal</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><div class="opt-badge">C</div> Narrow</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+      <div class="q-block">
+        <div class="q-text">3. Which section uses bullet points?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">A</div> Personal Details</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><div class="opt-badge">B</div> Key Skills</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">C</div> Education</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-teal" onclick="goTo('l2-skill')">Next: Word Skills →</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LESSON 2 · WORD SKILLS
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-l2-skill">
+
+  <div class="lesson-banner l2">
+    <div class="banner-icon">📊</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2 · Word Skills</div>
+      <h2>Tables, Images &amp; Alignment</h2>
+      <p>Follow each step carefully in your Word document.</p>
+    </div>
+  </div>
+
+  <div class="progress-strip">
+    <span class="label">Lesson 2 Progress</span>
+    <div class="progress-bar"><div class="progress-fill l2" style="width:40%"></div></div>
+    <span class="pct">40%</span>
+  </div>
+
+  <!-- TABLES -->
+  <div class="callout word">
+    <div class="callout-body"><strong>📘 Word Skill: Tables</strong> A table is a grid of rows and columns. We'll use one to display your Education section neatly.</div>
+  </div>
+
+  <div class="card">
+    <h3>📊 Skill 1 — Insert a Table for Education</h3>
+    <p>We'll create a 3-column table: one column for the school name, one for the subject, and one for the grade.</p>
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Open your CV Word document</strong>
+          <p>Find the file you saved last lesson: <em>YourName_CV.docx</em>. Double-click to open it.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Click below your KEY SKILLS section</strong>
+          <p>Press <span class="kbd">Enter</span> a couple of times, then type <strong>EDUCATION</strong> in bold, size 14. Press <span class="kbd">Enter</span> once.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Insert a Table</strong>
+          <p>Click the <strong>Insert</strong> tab → click <strong>Table</strong> → move your mouse to select <strong>3 columns, 3 rows</strong> → click to insert.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Add your headings in Row 1</strong>
+          <p>Click in the first box and type <strong>School / College</strong>. Tab to the next box: <strong>Subject</strong>. Tab again: <strong>Grade / Predicted</strong>. Make all three <strong>bold</strong>.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Fill in your details in Rows 2 and 3</strong>
+          <p>Row 2: your current school name, a subject you study, your predicted grade. Row 3: another subject. Use <span class="kbd">Tab</span> to move between cells.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Format the table borders</strong>
+          <p>Select all cells (click and drag). Right-click → <strong>Borders and Shading</strong> → choose <strong>All Borders</strong>. This makes the table look neat.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📄 YourName_CV.docx — Education Section</span></div>
+      <div class="word-mock-body">
+        <div class="word-page">
+          <div style="font-size:13px; font-weight:800; margin-bottom:10px; border-bottom:2px solid #1a1a2e; padding-bottom:4px; color:#2a9d8f;">EDUCATION</div>
+          <table class="cv-table">
+            <tr><th>School / College</th><th>Subject</th><th>Grade / Predicted</th></tr>
+            <tr><td>Riverside Academy</td><td>Mathematics</td><td>Grade 6</td></tr>
+            <tr><td>Riverside Academy</td><td>English Language</td><td>Grade 5</td></tr>
+          </table>
+          <div style="font-size:11px; color:#9ca3af; margin-top:8px; font-style:italic;">↑ Your table should look something like this</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE QUIZ -->
+  <div class="activity">
+    <div class="activity-header">
+      <h3>🧠 Activity 4 — Table Knowledge Check</h3>
+      <div class="activity-tag">Quiz</div>
+    </div>
+    <div class="quiz-wrap">
+      <div class="q-block">
+        <div class="q-text">How many columns should your Education table have?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">A</div> 2 columns</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><div class="opt-badge">B</div> 3 columns</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">C</div> 5 columns</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+      <div class="q-block">
+        <div class="q-text">Which tab do you click to insert a table?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">A</div> Home</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><div class="opt-badge">B</div> Insert</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><div class="opt-badge">C</div> Layout</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGES -->
+  <div class="callout word">
+    <div class="callout-body"><strong>📘 Word Skill: Inserting Images</strong> You can add a photo to the top of your CV. It makes it personal. We'll insert it and then resize it so it fits neatly.</div>
+  </div>
+
+  <div class="card">
+    <h3>🖼️ Skill 2 — Insert &amp; Resize a Photo</h3>
+    <p>Some CVs include a small photo in the top corner. We'll add one using a free avatar if you don't have a photo ready.</p>
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Click at the very top of your document</strong>
+          <p>Click just before your name at the top. We want to insert the image here.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Insert → Pictures → This Device</strong>
+          <p>Click the <strong>Insert</strong> tab → <strong>Pictures</strong> → <strong>This Device</strong>. Find your photo or a downloaded avatar image.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Resize the image</strong>
+          <p>Click the image once to select it. You'll see small squares at the corners — these are <strong>handles</strong>. Drag a <em>corner handle</em> (not a side one) to make it smaller. Aim for about <strong>3cm × 3cm</strong>.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Set Text Wrapping to "Square"</strong>
+          <p>Right-click the image → <strong>Wrap Text</strong> → <strong>Square</strong>. Now you can drag it to sit in the top-right corner of your name.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout tip">
+      <div class="callout-body"><strong>No photo?</strong> No problem! Go to <strong>Insert → Online Pictures</strong> and search for <em>avatar silhouette</em> — pick a simple professional one.</div>
+    </div>
+    <div class="callout watch">
+      <div class="callout-body"><strong>Important!</strong> Always drag a <em>corner</em> handle to resize — never a side handle. Side handles stretch the image and make it look squashed!</div>
+    </div>
+  </div>
+
+  <!-- ALIGNMENT & SPACING -->
+  <div class="callout word">
+    <div class="callout-body"><strong>📘 Word Skill: Alignment &amp; Spacing</strong> Spacing between sections makes a CV easier to read. Alignment means making sure things line up properly.</div>
+  </div>
+
+  <div class="card">
+    <h3>📐 Skill 3 — Spacing &amp; Final Alignment</h3>
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Add space between sections</strong>
+          <p>Click at the end of each section. Press <span class="kbd">Enter</span> once between sections. Don't press it lots of times — we'll use paragraph spacing instead.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Use Paragraph Spacing</strong>
+          <p>Select a section heading. Go to <strong>Home</strong> → <strong>Line Spacing</strong> (the icon with lines and arrows) → <strong>Add Space After Paragraph</strong>. Do this for each heading.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Check your alignment</strong>
+          <p>Your name: <strong>centred</strong>. Your section headings: <strong>left-aligned</strong>. Your body text and bullet points: <strong>left-aligned</strong>. Use <span class="kbd">Ctrl</span>+<span class="kbd">E</span> for centre, <span class="kbd">Ctrl</span>+<span class="kbd">L</span> for left.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Save one more time!</strong>
+          <p>Press <span class="kbd">Ctrl</span>+<span class="kbd">S</span>. Your CV is nearly done!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST L2 -->
+  <div class="activity">
+    <div class="activity-header">
+      <h3>✅ Activity 5 — Lesson 2 Word Skills Checklist</h3>
+      <div class="activity-tag">Practical</div>
+    </div>
+    <p>Tick each task as you complete it in Word.</p>
+    <div class="checklist" id="checklist-l2">
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've added an EDUCATION heading (bold, size 14)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've inserted a 3-column, 3-row table</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> My table has headings: School, Subject, Grade</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've filled in at least 2 rows of education details</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've inserted a photo or avatar image</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> My image is resized and positioned in the top corner</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've checked alignment — name centred, rest left-aligned</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> I've saved my file with Ctrl+S</div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-outline btn-sm" onclick="goTo('l2-intro')">← Back</button>
+    <button class="btn btn-teal" onclick="goTo('l2-ws')">Next: Complete Your CV →</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LESSON 2 · WORKSHEET / CV PREVIEW
+══════════════════════════════════════════ -->
+<div class="panel" id="panel-l2-ws">
+
+  <div class="lesson-banner l2">
+    <div class="banner-icon">🏆</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2 · Final Worksheet</div>
+      <h2>Complete Your CV — Take It Home!</h2>
+      <p>Fill in your Education and Hobbies sections, then your CV is ready to finish in Word.</p>
+    </div>
+  </div>
+
+  <div class="progress-strip">
+    <span class="label">Lesson 2 Progress</span>
+    <div class="progress-bar"><div class="progress-fill l2" style="width:80%"></div></div>
+    <span class="pct">80%</span>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <div class="ws-icon">🏫</div>
+      <div>
+        <h3>Section 4 — Education</h3>
+        <p>This goes in your table in Word. Fill it in here first to plan your answers.</p>
+      </div>
+    </div>
+    <div class="field">
+      <label>School Name</label>
+      <input type="text" id="ws-schoolname" placeholder="e.g. Riverside Academy" oninput="updatePreview2()">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Subject 1</label>
+        <input type="text" id="ws-sub1" placeholder="e.g. Mathematics" oninput="updatePreview2()">
+      </div>
+      <div class="field">
+        <label>Predicted Grade 1</label>
+        <input type="text" id="ws-grade1" placeholder="e.g. Grade 5" oninput="updatePreview2()">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Subject 2</label>
+        <input type="text" id="ws-sub2" placeholder="e.g. English Language" oninput="updatePreview2()">
+      </div>
+      <div class="field">
+        <label>Predicted Grade 2</label>
+        <input type="text" id="ws-grade2" placeholder="e.g. Grade 4" oninput="updatePreview2()">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Subject 3 <span style="font-weight:400;">(optional)</span></label>
+        <input type="text" id="ws-sub3" placeholder="e.g. Science" oninput="updatePreview2()">
+      </div>
+      <div class="field">
+        <label>Predicted Grade 3</label>
+        <input type="text" id="ws-grade3" placeholder="e.g. Grade 5" oninput="updatePreview2()">
+      </div>
+    </div>
+  </div>
+
+  <!-- HOBBIES -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <div class="ws-icon">🎨</div>
+      <div>
+        <h3>Section 5 — Hobbies &amp; Interests</h3>
+        <p>Write 2–4 things you enjoy outside of school. These go as bullet points in Word.</p>
+      </div>
+    </div>
+    <div class="callout tip">
+      <div class="callout-body"><strong>Stuck?</strong> Think about: sports, music, gaming, art, cooking, animals, volunteering, YouTube, fashion, coding, reading…</div>
+    </div>
+    <div class="field">
+      <label>Hobby / Interest 1</label>
+      <input type="text" id="ws-h1" placeholder="e.g. I enjoy playing football for my local team..." oninput="updatePreview2()">
+    </div>
+    <div class="field">
+      <label>Hobby / Interest 2</label>
+      <input type="text" id="ws-h2" placeholder="e.g. I like drawing and digital art..." oninput="updatePreview2()">
+    </div>
+    <div class="field">
+      <label>Hobby / Interest 3 <span style="font-weight:400;">(optional)</span></label>
+      <input type="text" id="ws-h3" placeholder="e.g. I volunteer at..." oninput="updatePreview2()">
+    </div>
+  </div>
+
+  <!-- FULL CV PREVIEW -->
+  <div class="cv-preview">
+    <div class="cv-preview-bar">
+      <span>👀 Your Full CV Preview</span>
+      <span style="font-size:12px;opacity:0.7;">Updates as you type</span>
+    </div>
+    <div class="cv-preview-body">
+      <div class="cv-photo-box">📷<br>Your Photo</div>
+      <div class="cv-name" id="preview2-name">Your Name</div>
+      <div style="font-size:12px;color:#6b7280;margin-bottom:16px;" id="preview2-contact">—</div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Personal Profile</div>
+        <div class="cv-profile-text" id="preview2-profile">Complete in Lesson 1 worksheet</div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Key Skills</div>
+        <div id="preview2-skills" class="cv-skills-grid"><span class="cv-skill-chip empty">Add skills in Lesson 1</span></div>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Education</div>
+        <table class="cv-table">
+          <tr><th>School</th><th>Subject</th><th>Grade</th></tr>
+          <tr><td id="p2-school1">—</td><td id="p2-sub1">—</td><td id="p2-g1">—</td></tr>
+          <tr><td id="p2-school2">—</td><td id="p2-sub2">—</td><td id="p2-g2">—</td></tr>
+          <tr><td id="p2-school3"></td><td id="p2-sub3"></td><td id="p2-g3"></td></tr>
+        </table>
+      </div>
+
+      <div class="cv-section">
+        <div class="cv-section-title">Hobbies &amp; Interests</div>
+        <ul class="cv-bullet" id="preview2-hobbies">
+          <li style="color:#d1d5db;">Add your hobbies above…</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL WORD INSTRUCTIONS -->
+  <div class="card">
+    <h3>📋 Final Steps in Word</h3>
+    <p>Use this checklist to finish your CV in Word before saving the final version to take home:</p>
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Copy your Education details into your table</strong><p>Use your worksheet answers above.</p></div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Add a HOBBIES &amp; INTERESTS heading</strong><p>Bold, size 14. Then add your hobbies as bullet points below it.</p></div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Read through your whole CV</strong><p>Check for spelling mistakes. Right-click red underlined words to see suggestions.</p></div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Save your final version</strong><p>Press <span class="kbd">Ctrl</span>+<span class="kbd">S</span>. You're done! 🎉</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEER REVIEW -->
+  <div class="activity">
+    <div class="activity-header">
+      <h3>👥 Activity 6 — Peer Review</h3>
+      <div class="activity-tag">Pair Work</div>
+    </div>
+    <p>Swap screens with the person next to you. Use this checklist to give them feedback on their CV in Word:</p>
+    <div class="checklist" id="checklist-peer">
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Their name is at the top — big, bold, centred ✓</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> They have a Personal Profile (at least 2 sentences) ✓</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> They have Key Skills as bullet points ✓</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Their Education table has 3 columns ✓</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> They have a photo or avatar in the top corner ✓</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> The CV looks neat — good spacing, no giant gaps ✓</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> You can't spot any obvious spelling mistakes ✓</div>
+    </div>
+  </div>
+
+  <!-- WORD SKILLS RECAP -->
+  <div class="card">
+    <h3>🏅 Word Skills You've Learned</h3>
+    <p>Look how much you've picked up over these two lessons:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+      <div class="skill-badge">📐 Page Layout &amp; Margins</div>
+      <div class="skill-badge">🔤 Font Formatting</div>
+      <div class="skill-badge">≡ Bullet Points</div>
+      <div class="skill-badge">📊 Tables</div>
+      <div class="skill-badge">🖼️ Inserting Images</div>
+      <div class="skill-badge">↔️ Text Alignment</div>
+      <div class="skill-badge">↕️ Paragraph Spacing</div>
+      <div class="skill-badge">💾 Saving Files</div>
+    </div>
+  </div>
+
+  <div class="end-card l2">
+    <div class="end-emoji">🌟</div>
+    <h3>You've built your CV!</h3>
+    <p>You've learned real Word skills and created a professional CV from scratch. Save your file and take it home — you can keep adding to it as you get more experience.</p>
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-teal" onclick="goTo('l1-intro')">← Back to Start</button>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script>
+// ── NAVIGATION ──
+const panels = ['compare','l1-intro','l1-skill','l1-ws','l2-intro','l2-skill','l2-ws'];
+const done = new Set();
+
+function showPanel(id, btn) {
+  panels.forEach(p => {
+    document.getElementById('panel-'+p).classList.remove('active');
+  });
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    t.classList.remove('active-l1','active-l2');
+  });
+  document.getElementById('panel-'+id).classList.add('active');
+  const isL2 = id.startsWith('l2');
+  if (btn) btn.classList.add(isL2 ? 'active-l2' : 'active-l1');
+  done.add(id);
+  updateNavDone();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function goTo(id) {
+  const btn = document.querySelector(`[data-panel="${id}"]`);
+  showPanel(id, btn);
+}
+
+function updateNavDone() {
+  panels.forEach(p => {
+    if (done.has(p)) {
+      const tab = document.querySelector(`[data-panel="${p}"]`);
+      if (tab) { tab.classList.add('done'); tab.querySelector('.check').textContent = '✓'; }
+    }
+  });
+}
+
+// ── COMPARE ACTIVITY ──
+let cVoteChoice = null;
+let cDragSrc = null;
+let cTouchSel = null;
+const cPlacements = {};
+
+const CAT_FEATURES = [
+  { id:'cf1',  text:'Professional email address',       correct:'good', icon:'✉️',  tip:'Like alex.carter@school.com — looks trustworthy' },
+  { id:'cf2',  text:'Written in text message language', correct:'bad',  icon:'💬',  tip:'"im good i think lol" — far too informal' },
+  { id:'cf3',  text:'Clear bullet point skill list',    correct:'good', icon:'•',   tip:'Easy to scan — employers love this' },
+  { id:'cf4',  text:'Emojis used in the name section',  correct:'bad',  icon:'😬',  tip:'Emojis are never appropriate on a CV' },
+  { id:'cf5',  text:'Education shown in a table',       correct:'good', icon:'📊',  tip:'Neat columns for school, subject and grade' },
+  { id:'cf6',  text:'No school or grades listed',       correct:'bad',  icon:'🚫',  tip:'Employers need to see your education history' },
+  { id:'cf7',  text:'Consistent font throughout',       correct:'good', icon:'🔤',  tip:'One font, one size — looks polished' },
+  { id:'cf8',  text:'Random colours on every line',     correct:'bad',  icon:'🎨',  tip:'Looks chaotic and hard to read' },
+  { id:'cf9',  text:'Personal profile in full sentences',correct:'good',icon:'💼',  tip:'Shows you can communicate professionally' },
+  { id:'cf10', text:'Vague skills like "good" or "ok"', correct:'bad',  icon:'🤷',  tip:'"good" tells an employer nothing specific' },
+  { id:'cf11', text:'Contact details at the top',       correct:'good', icon:'📍',  tip:'Makes it easy for the employer to get in touch' },
+  { id:'cf12', text:'Self-rated 5 stars in the CV',     correct:'bad',  icon:'⭐',  tip:'Never rate yourself — it looks arrogant' },
+  { id:'cf13', text:'Mentions volunteering',            correct:'good', icon:'🤝',  tip:'Shows character and initiative' },
+  { id:'cf14', text:'Says "I won\'t steal anything"',   correct:'bad',  icon:'⚠️',  tip:'Raises alarm bells — never include this!' },
+  { id:'cf15', text:'Clear section headings',           correct:'good', icon:'📋',  tip:'Makes the CV easy to navigate' },
+  { id:'cf16', text:'Spelling &amp; grammar errors',    correct:'bad',  icon:'❗',  tip:'Shows carelessness — always proofread!' },
+];
+
+// Step navigation inside compare panel
+function cGoStep(n) {
+  ['cp-look','cp-decide','cp-sort','cp-reflect','cp-fix'].forEach((id,i) => {
+    document.getElementById(id).style.display = (i === n-1) ? 'block' : 'none';
+  });
+  ['cstep-1','cstep-2','cstep-3','cstep-4','cstep-5'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.className = 'cstep' + (i < n-1 ? ' cs-done' : i === n-1 ? ' cs-active' : '');
+  });
+  if (n === 3) catBuild();
+  window.scrollTo({top: document.getElementById('panel-compare').offsetTop - 60, behavior:'smooth'});
+}
+
+function cPickCV(which) {
+  document.getElementById('ccard-a').classList.remove('picked-good','picked-bad');
+  document.getElementById('ccard-b').classList.remove('picked-good','picked-bad');
+  if (which === 'A') document.getElementById('ccard-a').classList.add('picked-good');
+  else document.getElementById('ccard-b').classList.add('picked-bad');
+}
+
+function cCastVote(which) {
+  if (cVoteChoice) return;
+  cVoteChoice = which;
+  document.getElementById('cvote-a').classList.remove('selected');
+  document.getElementById('cvote-b').classList.remove('selected');
+  document.getElementById('cvote-'+which.toLowerCase()).classList.add('selected');
+  document.getElementById('c-justify').classList.add('show');
+}
+
+function cAppend(text) {
+  const el = document.getElementById('c-justify-box');
+  el.value += (el.value && !el.value.endsWith(' ') ? ' ' : '') + text;
+  el.focus();
+}
+function cReflectAppend(id, text) {
+  const el = document.getElementById(id);
+  el.value += (el.value && !el.value.endsWith(' ') ? ' ' : '') + text;
+  el.focus();
+}
+
+function cSubmitJustify() {
+  const val = document.getElementById('c-justify-box').value.trim();
+  if (val.length < 10) {
+    document.getElementById('c-justify-box').style.borderColor = 'var(--l1)';
+    document.getElementById('c-justify-box').placeholder = 'Please write at least one sentence first!';
+    return;
+  }
+  document.getElementById('c-justify').style.display = 'none';
+  document.getElementById('c-reveal').classList.add('show');
+  document.getElementById('c-to-sort').style.display = 'block';
+}
+
+// ── CATEGORY DRAG & DROP ──
+function catBuild() {
+  const pool = document.getElementById('cat-pool');
+  pool.innerHTML = '';
+  Object.keys(cPlacements).forEach(k => delete cPlacements[k]);
+  const shuffled = [...CAT_FEATURES].sort(() => Math.random() - 0.5);
+  shuffled.forEach(f => pool.appendChild(catMakeChip(f)));
+  catUpdateUI();
+  document.getElementById('cat-check-btn').disabled = true;
+  document.getElementById('cat-result').classList.remove('show','perfect','partial');
+  ['czchips-good','czchips-bad'].forEach(id => {
+    document.getElementById(id).innerHTML = '<div class="cat-empty-hint">Drop features here…</div>';
+  });
+}
+
+function catMakeChip(f) {
+  const chip = document.createElement('div');
+  chip.className = 'cat-chip';
+  chip.id = 'cat-chip-'+f.id;
+  chip.draggable = true;
+  chip.dataset.id = f.id;
+  chip.dataset.correct = f.correct;
+  chip.innerHTML = `<span>${f.icon}</span>${f.text}<div class="cat-chip-tooltip">${f.tip}</div>`;
+  chip.addEventListener('dragstart', e => { cDragSrc = chip; chip.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
+  chip.addEventListener('dragend', () => chip.classList.remove('dragging'));
+  chip.addEventListener('click', () => catTouchTap(chip));
+  return chip;
+}
+
+function catTouchTap(chip) {
+  if (window.innerWidth > 700) return;
+  if (cTouchSel === chip) { chip.style.outline=''; cTouchSel=null; return; }
+  if (cTouchSel) cTouchSel.style.outline='';
+  cTouchSel = chip;
+  chip.style.outline = '2px solid var(--accent)';
+}
+
+
+
+function catPlace(chip, zone) {
+  const fid = chip.dataset.id;
+  cPlacements[fid] = zone;
+  ['cat-pool','czchips-good','czchips-bad'].forEach(id => {
+    const c = document.getElementById(id);
+    if (c && c.contains(chip)) c.removeChild(chip);
+  });
+  chip.classList.remove('in-good','in-bad');
+  chip.classList.add('in-'+zone);
+  const target = document.getElementById('czchips-'+zone);
+  const hint = target.querySelector('.cat-empty-hint');
+  if (hint) hint.remove();
+  target.appendChild(chip);
+  catUpdateUI();
+}
+
+function catZoneOver(e, zone) {
+  e.preventDefault();
+  document.getElementById('cat-zone-'+zone).classList.add('dz-'+zone);
+}
+function catZoneLeave(e) {
+  document.getElementById('cat-zone-good').classList.remove('dz-good');
+  document.getElementById('cat-zone-bad').classList.remove('dz-bad');
+}
+function catZoneDrop(e, zone) {
+  e.preventDefault();
+  catZoneLeave();
+  if (cDragSrc) catPlace(cDragSrc, zone);
+}
+function catPoolOver(e) { e.preventDefault(); document.getElementById('cat-pool').classList.add('drag-over'); }
+function catPoolLeave(e) { document.getElementById('cat-pool').classList.remove('drag-over'); }
+function catPoolDrop(e) {
+  e.preventDefault();
+  document.getElementById('cat-pool').classList.remove('drag-over');
+  if (!cDragSrc) return;
+  const fid = cDragSrc.dataset.id;
+  delete cPlacements[fid];
+  ['czchips-good','czchips-bad'].forEach(id => {
+    const c = document.getElementById(id);
+    if (c && c.contains(cDragSrc)) c.removeChild(cDragSrc);
+  });
+  cDragSrc.classList.remove('in-good','in-bad');
+  document.getElementById('cat-pool').appendChild(cDragSrc);
+  catUpdateUI();
+}
+
+function catUpdateUI() {
+  const gc = document.querySelectorAll('#czchips-good .cat-chip').length;
+  const bc = document.querySelectorAll('#czchips-bad .cat-chip').length;
+  const rem = CAT_FEATURES.length - gc - bc;
+  document.getElementById('cz-good-count').textContent = gc;
+  document.getElementById('cz-bad-count').textContent = bc;
+  document.getElementById('cat-remaining').textContent = rem > 0 ? `(${rem} remaining)` : '(all placed!)';
+  ['czchips-good','czchips-bad'].forEach(id => {
+    const c = document.getElementById(id);
+    if (!c.querySelector('.cat-chip') && !c.querySelector('.cat-empty-hint')) {
+      c.innerHTML = '<div class="cat-empty-hint">Drop features here…</div>';
+    }
+  });
+  document.getElementById('cat-check-btn').disabled = Object.keys(cPlacements).length < CAT_FEATURES.length;
+}
+
+function catCheck() {
+  let correct = 0;
+  CAT_FEATURES.forEach(f => {
+    const chip = document.getElementById('cat-chip-'+f.id);
+    if (!chip) return;
+    chip.classList.remove('correct-chip','wrong-chip','in-good','in-bad');
+    if (cPlacements[f.id] === f.correct) { correct++; chip.classList.add('correct-chip'); }
+    else chip.classList.add('wrong-chip');
+  });
+  document.getElementById('cat-score-val').textContent = correct;
+  const res = document.getElementById('cat-result');
+  const total = CAT_FEATURES.length;
+  res.className = 'cat-result show ' + (correct === total ? 'perfect' : 'partial');
+  document.getElementById('cat-result-num').textContent = `${correct}/${total}`;
+  document.getElementById('cat-result-title').textContent = correct === total
+    ? '🎉 Perfect! Every single one correct!'
+    : correct >= 12 ? '👏 Really good — almost there!' : '🤔 Good try — check the red ones!';
+  document.getElementById('cat-result-msg').textContent = correct === total
+    ? 'You clearly know what makes a great CV. Now let\'s build yours!'
+    : `You got ${correct} out of ${total}. Look at the red chips — they\'re in the wrong box. Think about what you saw in the two CVs!`;
+  res.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function catReset() {
+  document.getElementById('cat-result').classList.remove('show','perfect','partial');
+  CAT_FEATURES.forEach(f => { const c = document.getElementById('cat-chip-'+f.id); if(c) c.remove(); });
+  Object.keys(cPlacements).forEach(k => delete cPlacements[k]);
+  catBuild();
+}
+
+// ── MATCHING GAME ──
+let matchSel = null;
+let matchDone = new Set();
+
+function matchClick(el) {
+  if (el.classList.contains('matched') || el.classList.contains('locked')) return;
+  if (matchSel === null) {
+    if (matchDone.has(el.dataset.id + el.dataset.group)) return;
+    document.querySelectorAll('.match-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSel = el;
+  } else {
+    if (el === matchSel) { el.classList.remove('selected'); matchSel = null; return; }
+    if (el.dataset.group === matchSel.dataset.group) {
+      document.querySelectorAll('.match-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      matchSel = el;
+      return;
+    }
+    if (el.dataset.id === matchSel.dataset.id) {
+      el.classList.add('matched'); matchSel.classList.add('matched');
+      matchDone.add(el.dataset.id + 'left'); matchDone.add(el.dataset.id + 'right');
+      matchSel = null;
+      const total = document.querySelectorAll('.match-card[data-group="left"]').length;
+      const matched = document.querySelectorAll('.match-card.matched[data-group="left"]').length;
+      document.getElementById('match-status').textContent = matched === total
+        ? '🎉 Perfect! All matched correctly!' : `✓ ${matched} of ${total} matched — keep going!`;
+      document.getElementById('match-status').style.color = matched === total ? '#065f46' : '#1d4ed8';
+    } else {
+      el.classList.add('wrong'); matchSel.classList.add('wrong');
+      setTimeout(() => { el.classList.remove('wrong','selected'); matchSel.classList.remove('wrong','selected'); matchSel = null; }, 700);
+      document.getElementById('match-status').textContent = '✗ Not quite — try again!';
+      document.getElementById('match-status').style.color = '#e63946';
+    }
+  }
+}
+
+function resetMatch() {
+  document.querySelectorAll('.match-card').forEach(c => c.classList.remove('matched','selected','wrong'));
+  matchSel = null; matchDone.clear();
+  document.getElementById('match-status').textContent = '';
+}
+
+// ── DRAG & DROP SORT ──
+let dragSrc = null;
+
+function initSort() {
+  const list = document.getElementById('sort-list');
+  list.querySelectorAll('.sort-item').forEach((item, i) => {
+    item.querySelector('.sort-pos').textContent = i + 1;
+    item.addEventListener('dragstart', e => { dragSrc = item; item.classList.add('dragging'); });
+    item.addEventListener('dragend', () => { item.classList.remove('dragging'); updatePositions(); });
+    item.addEventListener('dragover', e => { e.preventDefault(); item.classList.add('over'); });
+    item.addEventListener('dragleave', () => item.classList.remove('over'));
+    item.addEventListener('drop', e => {
+      e.preventDefault(); item.classList.remove('over');
+      if (dragSrc !== item) list.insertBefore(dragSrc, item);
+      updatePositions();
+    });
+  });
+}
+
+function updatePositions() {
+  document.querySelectorAll('#sort-list .sort-item').forEach((item, i) => {
+    item.querySelector('.sort-pos').textContent = i + 1;
+  });
+}
+
+function checkSort() {
+  const items = document.querySelectorAll('#sort-list .sort-item');
+  let allCorrect = true;
+  items.forEach((item, i) => {
+    if (parseInt(item.dataset.correct) !== i + 1) allCorrect = false;
+  });
+  const fb = document.getElementById('sort-feedback');
+  fb.textContent = allCorrect
+    ? '🎉 Perfect order! That\'s exactly how a CV is structured.'
+    : '✗ Not quite — try moving the sections around and check again!';
+  fb.style.color = allCorrect ? '#065f46' : '#e63946';
+}
+
+function shuffleSort() {
+  const list = document.getElementById('sort-list');
+  const items = [...list.children];
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    list.insertBefore(items[j], items[i]);
+  }
+  updatePositions();
+  document.getElementById('sort-feedback').textContent = '';
+}
+
+// ── QUIZ ──
+function answerQ(el, correct) {
+  const block = el.closest('.q-block');
+  if (block.querySelector('.correct, .wrong')) return;
+  const fb = block.querySelector('.q-feedback');
+  if (correct) {
+    el.classList.add('correct');
+    fb.textContent = '✓ Correct! Well done.';
+    fb.className = 'q-feedback good';
+  } else {
+    el.classList.add('wrong');
+    fb.textContent = '✗ Not quite — look back at the information above and try again.';
+    fb.className = 'q-feedback bad';
+    block.querySelectorAll('.q-opt').forEach(o => o.classList.add('locked'));
+    setTimeout(() => {
+      el.classList.remove('wrong');
+      block.querySelectorAll('.q-opt').forEach(o => o.classList.remove('locked'));
+      fb.textContent = '';
+    }, 1400);
+  }
+}
+
+// ── CHECKLIST ──
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  el.querySelector('.check-box').textContent = el.classList.contains('checked') ? '✓' : '';
+}
+
+// ── SKILL TAGS ──
+const skills = [];
+function addSkill(name) {
+  if (skills.includes(name)) return;
+  skills.push(name);
+  renderTags();
+  updatePreview();
+}
+function removeSkill(name) {
+  const i = skills.indexOf(name);
+  if (i > -1) skills.splice(i, 1);
+  renderTags();
+  updatePreview();
+}
+function renderTags() {
+  const wrap = document.getElementById('tag-wrap');
+  wrap.querySelectorAll('.skill-tag').forEach(t => t.remove());
+  const inp = document.getElementById('tag-in');
+  skills.forEach(s => {
+    const tag = document.createElement('div');
+    tag.className = 'skill-tag';
+    tag.innerHTML = `${s} <button onclick="removeSkill('${s}')">×</button>`;
+    wrap.insertBefore(tag, inp);
+  });
+}
+function tagKeydown(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const val = e.target.value.trim();
+    if (val) { addSkill(val); e.target.value = ''; }
+  }
+}
+
+// ── LIVE CV PREVIEW (Lesson 1) ──
+function updatePreview() {
+  const fn = document.getElementById('ws-firstname').value.trim();
+  const ln = document.getElementById('ws-lastname').value.trim();
+  document.getElementById('preview-name').textContent = (fn || ln) ? `${fn} ${ln}`.trim() : 'Your Name Here';
+  const email = document.getElementById('ws-email').value.trim();
+  const school = document.getElementById('ws-school').value.trim();
+  document.getElementById('preview-contact').textContent = [email, school].filter(Boolean).join(' · ') || '—';
+  const p1 = document.getElementById('ws-p1').value.trim();
+  const p2 = document.getElementById('ws-p2').value.trim();
+  const p3 = document.getElementById('ws-p3').value.trim();
+  const p4 = document.getElementById('ws-p4').value.trim();
+  const profile = [p1,p2,p3,p4].filter(Boolean).join(' ');
+  document.getElementById('preview-profile').textContent = profile || 'Your personal profile will appear here as you type above…';
+  const sw = document.getElementById('preview-skills-wrap');
+  sw.innerHTML = skills.length
+    ? skills.map(s => `<span class="cv-skill-chip">${s}</span>`).join('')
+    : '<span class="cv-skill-chip empty">Skill 1</span><span class="cv-skill-chip empty">Skill 2</span><span class="cv-skill-chip empty">Skill 3</span>';
+}
+
+// ── LIVE CV PREVIEW (Lesson 2) ──
+function updatePreview2() {
+  const fn = document.getElementById('ws-firstname') ? document.getElementById('ws-firstname').value.trim() : '';
+  const ln = document.getElementById('ws-lastname') ? document.getElementById('ws-lastname').value.trim() : '';
+  document.getElementById('preview2-name').textContent = (fn||ln) ? `${fn} ${ln}`.trim() : 'Your Name';
+  const email = document.getElementById('ws-email') ? document.getElementById('ws-email').value.trim() : '';
+  const sch = document.getElementById('ws-school') ? document.getElementById('ws-school').value.trim() : '';
+  document.getElementById('preview2-contact').textContent = [email,sch].filter(Boolean).join(' · ') || '—';
+  const p1 = document.getElementById('ws-p1') ? document.getElementById('ws-p1').value.trim() : '';
+  const p2 = document.getElementById('ws-p2') ? document.getElementById('ws-p2').value.trim() : '';
+  const p3 = document.getElementById('ws-p3') ? document.getElementById('ws-p3').value.trim() : '';
+  const profile = [p1,p2,p3].filter(Boolean).join(' ');
+  document.getElementById('preview2-profile').textContent = profile || 'Complete in Lesson 1 worksheet';
+  const skillsWrap = document.getElementById('preview2-skills');
+  skillsWrap.innerHTML = skills.length
+    ? skills.map(s => `<span class="cv-skill-chip">${s}</span>`).join('')
+    : '<span class="cv-skill-chip empty">Add skills in Lesson 1</span>';
+  const sn = document.getElementById('ws-schoolname').value.trim() || '—';
+  ['p2-school1','p2-school2','p2-school3'].forEach(id => {
+    document.getElementById(id).textContent = document.getElementById('ws-sub'+id.slice(-1)) && document.getElementById('ws-sub'+id.slice(-1)).value.trim() ? sn : (id==='p2-school1'?sn:'');
+  });
+  document.getElementById('p2-sub1').textContent = document.getElementById('ws-sub1').value.trim() || '—';
+  document.getElementById('p2-sub2').textContent = document.getElementById('ws-sub2').value.trim() || '—';
+  document.getElementById('p2-sub3').textContent = document.getElementById('ws-sub3').value.trim() || '';
+  document.getElementById('p2-g1').textContent = document.getElementById('ws-grade1').value.trim() || '—';
+  document.getElementById('p2-g2').textContent = document.getElementById('ws-grade2').value.trim() || '—';
+  document.getElementById('p2-g3').textContent = document.getElementById('ws-grade3').value.trim() || '';
+  const hobbies = [
+    document.getElementById('ws-h1').value.trim(),
+    document.getElementById('ws-h2').value.trim(),
+    document.getElementById('ws-h3').value.trim()
+  ].filter(Boolean);
+  const hw = document.getElementById('preview2-hobbies');
+  hw.innerHTML = hobbies.length
+    ? hobbies.map(h => `<li>${h}</li>`).join('')
+    : '<li style="color:#d1d5db;">Add your hobbies above…</li>';
+}
+
+
+// ── FIX THE BAD CV ACTIVITY ──
+const fixSkills = [];
+let fixEduDone = false, fixHeadDone = false, fixCommDone = false;
+
+function fixAppend(id, text) {
+  const el = document.getElementById(id);
+  el.value += (el.value && !el.value.endsWith(' ') ? ' ' : '') + text;
+  el.focus();
+  fixUpdatePreview();
+}
+
+function fixAddSkill(name) {
+  if (fixSkills.includes(name)) return;
+  fixSkills.push(name);
+  fixRenderSkills();
+  fixUpdatePreview();
+}
+
+function fixRemoveSkill(name) {
+  const i = fixSkills.indexOf(name);
+  if (i > -1) fixSkills.splice(i, 1);
+  fixRenderSkills();
+  fixUpdatePreview();
+}
+
+function fixRenderSkills() {
+  const wrap = document.getElementById('fix-tags-wrap');
+  wrap.querySelectorAll('.fskill-tag').forEach(t => t.remove());
+  const inp = document.getElementById('fix-tag-input');
+  fixSkills.forEach(s => {
+    const tag = document.createElement('div');
+    tag.className = 'fskill-tag';
+    tag.innerHTML = `${s} <button onclick="fixRemoveSkill('${s}')">×</button>`;
+    wrap.insertBefore(tag, inp);
+  });
+}
+
+function fixTagKeydown(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const val = e.target.value.trim();
+    if (val && !fixSkills.includes(val)) { fixAddSkill(val); e.target.value = ''; }
+  }
+}
+
+function fixUpdatePreview() {
+  const email = document.getElementById('fix-email').value.trim();
+  const emailEl = document.getElementById('fp-email');
+  if (email) {
+    emailEl.textContent = '📧 ' + email + ' | 📍 Jersey';
+    emailEl.style.color = '#374151';
+    emailEl.style.fontStyle = 'normal';
+  } else {
+    emailEl.innerHTML = 'jams2009_coolio_gamer@hotmail.com <span style="color:var(--l1)">← needs fixing!</span>';
+    emailEl.style.color = '';
+  }
+
+  const profile = document.getElementById('fix-profile').value.trim();
+  const profileEl = document.getElementById('fp-profile');
+  if (profile) {
+    profileEl.textContent = profile;
+    profileEl.style.color = '#374151';
+    profileEl.style.fontStyle = 'italic';
+  } else {
+    profileEl.innerHTML = 'im jamie and im 15 i want a job bc i need money <span style="color:var(--l1)">← needs fixing!</span>';
+    profileEl.style.color = '';
+  }
+
+  const skillsEl = document.getElementById('fp-skills');
+  if (fixSkills.length > 0) {
+    skillsEl.innerHTML = fixSkills.map(s => `<span class="fpcv-skill-chip">${s}</span>`).join('');
+  } else {
+    skillsEl.innerHTML = '<span class="fpcv-skill-chip" style="background:#fdecea;color:#991b1b;">good</span><span class="fpcv-skill-chip" style="background:#fdecea;color:#991b1b;">friendly maybe</span><span class="fpcv-skill-chip" style="background:#fdecea;color:#991b1b;">i am ok i guess</span>';
+  }
+
+  fixCheckComplete();
+}
+
+function fixEduAnswer(el, correct) {
+  const opts = document.getElementById('fix-edu-opts');
+  if (opts.querySelector('.opt-correct, .opt-wrong')) return;
+  const fb = document.getElementById('fix-edu-fb');
+  el.classList.add(correct ? 'opt-correct' : 'opt-wrong');
+  opts.querySelectorAll('.fix-option').forEach(o => o.classList.add('locked'));
+  if (correct) {
+    fb.textContent = '✓ Correct! School name, subjects and predicted grades — clear and specific.';
+    fb.className = 'fix-option-feedback fgood';
+    fixEduDone = true;
+    document.getElementById('fp-edu').innerHTML = '<table style="width:100%;border-collapse:collapse;font-size:11px;"><tr style="background:#f9fafb;"><th style="border:1px solid #e5e7eb;padding:3px 7px;font-size:10px;">School</th><th style="border:1px solid #e5e7eb;padding:3px 7px;font-size:10px;">Subject</th><th style="border:1px solid #e5e7eb;padding:3px 7px;font-size:10px;">Predicted</th></tr><tr><td style="border:1px solid #e5e7eb;padding:3px 7px;">Riverside Academy</td><td style="border:1px solid #e5e7eb;padding:3px 7px;">English Language</td><td style="border:1px solid #e5e7eb;padding:3px 7px;">Grade 5</td></tr><tr><td style="border:1px solid #e5e7eb;padding:3px 7px;">Riverside Academy</td><td style="border:1px solid #e5e7eb;padding:3px 7px;">Mathematics</td><td style="border:1px solid #e5e7eb;padding:3px 7px;">Grade 5</td></tr></table>';
+    fixCheckComplete();
+  } else {
+    fb.textContent = '✗ Not quite — think about what an employer actually needs to know!';
+    fb.className = 'fix-option-feedback fbad';
+    setTimeout(() => {
+      el.classList.remove('opt-wrong');
+      opts.querySelectorAll('.fix-option').forEach(o => o.classList.remove('locked'));
+      fb.textContent = '';
+    }, 1400);
+  }
+}
+
+function fixHeadAnswer(el, correct) {
+  const opts = document.getElementById('fix-head-opts');
+  if (opts.querySelector('.opt-correct, .opt-wrong')) return;
+  const fb = document.getElementById('fix-head-fb');
+  el.classList.add(correct ? 'opt-correct' : 'opt-wrong');
+  opts.querySelectorAll('.fix-option').forEach(o => o.classList.add('locked'));
+  if (correct) {
+    fb.textContent = '✓ Correct! Bold, consistent, with an underline — professional and easy to scan.';
+    fb.className = 'fix-option-feedback fgood';
+    fixHeadDone = true;
+    fixCheckComplete();
+  } else {
+    fb.textContent = '✗ Not quite — CVs need to look clean and professional, not flashy!';
+    fb.className = 'fix-option-feedback fbad';
+    setTimeout(() => {
+      el.classList.remove('opt-wrong');
+      opts.querySelectorAll('.fix-option').forEach(o => o.classList.remove('locked'));
+      fb.textContent = '';
+    }, 1400);
+  }
+}
+
+function fixCommAnswer(el, correct) {
+  const opts = document.getElementById('fix-comm-opts');
+  if (opts.querySelector('.opt-correct, .opt-wrong')) return;
+  const fb = document.getElementById('fix-comm-fb');
+  el.classList.add(correct ? 'opt-correct' : 'opt-wrong');
+  opts.querySelectorAll('.fix-option').forEach(o => o.classList.add('locked'));
+  if (correct) {
+    fb.textContent = '✓ Correct! Saying this actually makes employers suspicious — always remove it and use the space for something positive.';
+    fb.className = 'fix-option-feedback fgood';
+    fixCommDone = true;
+    fixCheckComplete();
+  } else {
+    fb.textContent = '✗ Think again — would this make a good first impression on a stranger?';
+    fb.className = 'fix-option-feedback fbad';
+    setTimeout(() => {
+      el.classList.remove('opt-wrong');
+      opts.querySelectorAll('.fix-option').forEach(o => o.classList.remove('locked'));
+      fb.textContent = '';
+    }, 1400);
+  }
+}
+
+function fixCheckComplete() {
+  const email = document.getElementById('fix-email').value.trim().length > 5;
+  const profile = document.getElementById('fix-profile').value.trim().length > 20;
+  const skills = fixSkills.length >= 3;
+  if (email && profile && skills && fixEduDone && fixHeadDone && fixCommDone) {
+    document.getElementById('fix-complete').classList.add('show');
+    document.getElementById('fix-complete').scrollIntoView({behavior:'smooth', block:'center'});
+  }
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  initSort();
+  shuffleSort();
+  done.add('compare');
+  updateNavDone();
+  document.querySelector('[data-panel="compare"]').classList.add('active-l1');
+});
+</script>
+</body>
+</html>

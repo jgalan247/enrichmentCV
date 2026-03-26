@@ -1,0 +1,3081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Favourite Pet Leaflet – Word Skills for Y9</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #faf9f6;
+  --card: #ffffff;
+  --l1: #7b2cbf;
+  --l1-light: #f3e8ff;
+  --l2: #c77dff;
+  --l2-light: #f5edff;
+  --accent: #ff6d00;
+  --gold: #e9c46a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --success: #06d6a0;
+  --radius: 14px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: white;
+  padding: 52px 24px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.02) 40px,
+    rgba(255,255,255,0.02) 80px
+  );
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(26px, 5vw, 46px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.hero h1 span { color: var(--accent); }
+.hero p {
+  font-size: 16px;
+  opacity: 0.75;
+  max-width: 480px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+.hero-pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── NAV ── */
+nav {
+  background: white;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-tab {
+  flex-shrink: 0;
+  padding: 16px 22px;
+  border: none;
+  background: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-tab:hover { color: var(--ink); }
+.nav-tab.active-l1 { color: var(--l1); border-bottom-color: var(--l1); }
+.nav-tab.active-l2 { color: var(--l2); border-bottom-color: var(--l2); }
+.nav-tab .check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  transition: all 0.2s;
+}
+.nav-tab.done .check { background: var(--success); border-color: var(--success); color: white; }
+
+/* ── MAIN ── */
+main { max-width: 860px; margin: 0 auto; padding: 36px 16px 80px; }
+
+.panel { display: none; animation: fadeUp 0.35s ease; }
+.panel.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── LESSON BANNER ── */
+.lesson-banner {
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  color: white;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.lesson-banner.l1 { background: linear-gradient(130deg, #7b2cbf 0%, #5a189a 100%); }
+.lesson-banner.l2 { background: linear-gradient(130deg, #c77dff 0%, #9d4edd 100%); }
+.banner-icon {
+  font-size: 52px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+.banner-text .lesson-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+.banner-text h2 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.banner-text p { font-size: 14px; opacity: 0.85; line-height: 1.5; }
+
+/* ── OBJECTIVES ── */
+.objectives {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);
+}
+.objectives h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.obj-list { display: flex; flex-direction: column; gap: 8px; }
+.obj-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.obj-num {
+  width: 22px; height: 22px;
+  background: var(--ink);
+  color: white;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── SECTION CARD ── */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.card h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card p { font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 10px; }
+.card p:last-child { margin-bottom: 0; }
+
+/* ── CALLOUTS ── */
+.callout {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-body strong { display: block; font-weight: 700; margin-bottom: 3px; }
+.callout.tip { background: #fffbeb; border: 1px solid #fde68a; }
+.callout.tip::before { content: '🐾'; font-size: 18px; }
+.callout.word { background: #eff6ff; border: 1px solid #bfdbfe; }
+.callout.word::before { content: '📘'; font-size: 18px; }
+.callout.watch { background: #fdf4ff; border: 1px solid #e9d5ff; }
+.callout.watch::before { content: '👀'; font-size: 18px; }
+.callout.check { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.callout.check::before { content: '✅'; font-size: 18px; }
+
+/* ── STEP-BY-STEP ── */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.step.l1 .step-num { background: var(--l1); }
+.step.l2 .step-num { background: var(--l2); }
+.step-body { flex: 1; }
+.step-body strong { display: block; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.step-body p, .step-body span { font-size: 14px; color: #4b5563; line-height: 1.6; }
+.step-body .kbd {
+  display: inline-block;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-bottom: 3px solid #9ca3af;
+  border-radius: 5px;
+  padding: 1px 8px;
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--ink);
+  margin: 0 2px;
+}
+
+/* ── ACTIVITY ── */
+.activity {
+  background: linear-gradient(135deg, #fef3e2, #fff7ed);
+  border: 2px dashed var(--accent);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.activity-header h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #92400e;
+}
+.activity-tag {
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.activity p { font-size: 14px; line-height: 1.7; color: #78350f; margin-bottom: 8px; }
+
+/* ── QUIZ ── */
+.quiz-wrap { display: flex; flex-direction: column; gap: 20px; }
+.q-block {}
+.q-block .q-text { font-size: 15px; font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
+.q-options { display: flex; flex-direction: column; gap: 6px; }
+.q-opt {
+  padding: 11px 16px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.18s;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+.q-opt:hover:not(.locked) { border-color: var(--ink); }
+.q-opt .opt-badge {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  background: var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.18s;
+}
+.q-opt.correct { border-color: var(--success); background: #f0fdf4; }
+.q-opt.correct .opt-badge { background: var(--success); color: white; }
+.q-opt.wrong { border-color: var(--l1); background: var(--l1-light); }
+.q-opt.wrong .opt-badge { background: var(--l1); color: white; }
+.q-feedback { font-size: 13px; font-weight: 600; margin-top: 8px; min-height: 18px; }
+.q-feedback.good { color: #065f46; }
+.q-feedback.bad { color: #991b1b; }
+
+/* ── MATCH GAME ── */
+.match-area { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.match-col { display: flex; flex-direction: column; gap: 8px; }
+.match-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.match-card {
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: white;
+  user-select: none;
+}
+.match-card:hover:not(.matched):not(.locked) { border-color: var(--ink); }
+.match-card.selected { border-color: var(--l1); background: var(--l1-light); color: var(--l1); }
+.match-card.matched { border-color: var(--success); background: #f0fdf4; color: #065f46; cursor: default; }
+.match-card.wrong { border-color: #e63946; background: #fdecea; animation: shake 0.3s; }
+@keyframes shake { 0%,100%{transform:none} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+#match-status { font-size: 14px; font-weight: 700; min-height: 20px; text-align: center; margin-top: 8px; }
+
+/* ── SORTING ── */
+.sort-list { display: flex; flex-direction: column; gap: 8px; }
+.sort-item {
+  padding: 12px 16px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  user-select: none;
+}
+.sort-item:hover { border-color: var(--l1); box-shadow: 0 2px 10px rgba(123,44,191,0.1); }
+.sort-item.dragging { opacity: 0.45; cursor: grabbing; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.sort-item.over { border-color: var(--l1); background: var(--l1-light); }
+.sort-handle { color: #d1d5db; font-size: 18px; }
+.sort-pos {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--border);
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+/* ── WORKSHEET ── */
+.worksheet {
+  background: white;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.worksheet-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+}
+.ws-icon { font-size: 28px; }
+.worksheet-header h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+}
+.worksheet-header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.field { margin-bottom: 18px; }
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field .hint { font-size: 12px; color: #9ca3af; font-weight: 400; text-transform: none; letter-spacing: 0; margin-bottom: 6px; display: block; font-style: italic; }
+input[type=text], textarea, select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fafafa;
+  transition: border-color 0.2s, background 0.2s;
+  resize: vertical;
+}
+input[type=text]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--l1);
+  background: white;
+}
+textarea { min-height: 80px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:540px){ .field-row { grid-template-columns: 1fr; } }
+
+/* ── WORD VISUAL MOCK ── */
+.word-mock {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+}
+.word-mock-bar {
+  background: #2b579a;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.word-mock-bar span { color: white; font-size: 13px; font-weight: 600; opacity: 0.9; }
+.word-mock-ribbon {
+  background: #f3f3f3;
+  border-bottom: 1px solid #d1d5db;
+  padding: 6px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.ribbon-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ribbon-btn.highlight { background: #fff3cd; border-color: var(--gold); }
+.word-mock-body {
+  background: #e5e7eb;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+.word-page {
+  background: white;
+  width: 100%;
+  max-width: 460px;
+  min-height: 120px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.word-page table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.word-page td, .word-page th { border: 1px solid #d1d5db; padding: 6px 8px; text-align: left; }
+.word-page th { background: #f9fafb; font-weight: 700; }
+
+/* ── CHECKLIST ── */
+.checklist { display: flex; flex-direction: column; gap: 10px; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+}
+.check-item:hover { border-color: var(--l1); }
+.check-item.checked { border-color: var(--success); background: #f0fdf4; }
+.check-box {
+  width: 22px; height: 22px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: all 0.18s;
+}
+.check-item.checked .check-box { background: var(--success); border-color: var(--success); color: white; }
+
+/* ── LEAFLET PREVIEW ── */
+.leaflet-preview {
+  background: white;
+  border: 2px solid var(--l1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.leaflet-preview-bar {
+  background: var(--l1);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.leaflet-preview-bar span { color: white; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 14px; }
+.leaflet-preview-body { padding: 24px; }
+.leaflet-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--l1);
+  border-bottom: 3px solid var(--l1);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.leaflet-section { margin-bottom: 14px; }
+.leaflet-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--l1);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.leaflet-body { font-size: 13px; line-height: 1.6; color: #374151; }
+.leaflet-fact-box {
+  background: var(--l1-light);
+  border: 1px solid #d8b4fe;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  font-size: 12px;
+}
+.leaflet-pet-img {
+  width: 60px; height: 60px;
+  background: #f3e8ff;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  float: right;
+  margin-left: 12px;
+  margin-bottom: 8px;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-dark { background: var(--ink); color: white; }
+.btn-dark:hover { background: #2d2d44; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+.btn-purple { background: var(--l1); color: white; }
+.btn-purple:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(123,44,191,0.3); }
+.btn-lav { background: var(--l2); color: white; }
+.btn-lav:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(199,125,255,0.3); }
+.btn-orange { background: var(--accent); color: white; }
+.btn-orange:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(255,109,0,0.3); }
+.btn-outline { background: transparent; border: 2px solid var(--ink); color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ── PROGRESS ── */
+.progress-strip {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow);
+}
+.progress-strip .label { font-size: 13px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.progress-bar { flex: 1; height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.l1 { background: var(--l1); }
+.progress-fill.l2 { background: var(--l2); }
+.progress-strip .pct { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 15px; }
+
+/* ── COMPARE ── */
+.compare-intro {
+  background: white;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--l1);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.compare-intro h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.compare-intro p { font-size: 14px; line-height: 1.7; color: #374151; }
+
+.compare-steps {
+  display: flex; justify-content: center; gap: 6px; margin-bottom: 22px;
+}
+.cstep {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border);
+  background: white;
+}
+.cstep.cs-active { color: var(--l1); border-color: var(--l1); background: var(--l1-light); }
+.cstep.cs-done   { color: #065f46; border-color: var(--success); background: #f0fdf4; }
+
+.leaflet-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media(max-width: 680px) { .leaflet-compare-grid { grid-template-columns: 1fr; } }
+
+.leaflet-compare-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.22s;
+  box-shadow: var(--shadow);
+}
+.leaflet-compare-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+.leaflet-compare-card.picked-good { border-color: var(--success); box-shadow: 0 0 0 3px rgba(6,214,160,0.25); }
+.leaflet-compare-card.picked-bad  { border-color: #e63946; box-shadow: 0 0 0 3px rgba(230,57,70,0.2); }
+
+.leaflet-compare-label {
+  padding: 10px 16px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.leaflet-compare-card.lfa .leaflet-compare-label { background: #e8f0fe; color: #1a56db; }
+.leaflet-compare-card.lfb .leaflet-compare-label { background: #fce8e8; color: #c0392b; }
+
+/* Good leaflet doc */
+.leaflet-doc-good {
+  background: white;
+  padding: 16px;
+  font-family: 'Calibri', 'Segoe UI', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #1a1a2e;
+  min-height: 340px;
+}
+.ldg-title { font-size: 18px; font-weight: bold; text-align: center; color: #7b2cbf; border-bottom: 2px solid #7b2cbf; padding-bottom: 4px; margin-bottom: 8px; }
+.ldg-subtitle { font-size: 12px; font-weight: bold; color: #5a189a; text-decoration: underline; margin-top: 8px; margin-bottom: 4px; }
+.ldg-img { width: 50px; height: 50px; background: #f3e8ff; border-radius: 6px; float: right; margin-left: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #d8b4fe; }
+.ldg-tipbox { background: #f3e8ff; border: 1px solid #d8b4fe; border-radius: 4px; padding: 6px 8px; margin: 6px 0; font-size: 10px; }
+.ldg-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 6px; }
+.ldg-table th { background: #f3e8ff; font-weight: bold; padding: 3px 5px; border: 1px solid #d8b4fe; font-size: 9px; }
+.ldg-table td { padding: 3px 5px; border: 1px solid #d8b4fe; }
+
+/* Bad leaflet doc */
+.leaflet-doc-bad {
+  background: #fffef0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #111;
+  padding: 14px;
+  font-size: 11px;
+  line-height: 1.35;
+  min-height: 340px;
+}
+.ldb-title { font-size: 24px; color: #cc0000; font-weight: bold; }
+.ldb-random { color: #006600; font-size: 14px; font-style: italic; }
+.ldb-tiny { font-size: 8px; color: #999; }
+.ldb-highlight { background: #ffff00; }
+
+/* VOTE */
+.vote-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.vote-choice {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: white;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow);
+}
+.vote-choice:hover { transform: translateY(-2px); }
+.vote-choice.va:hover, .vote-choice.va.selected { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.vote-choice.vb:hover, .vote-choice.vb.selected { border-color: #e63946; background: #fdecea; color: #e63946; }
+.justify-wrap { display: none; animation: fadeUp 0.3s ease; }
+.justify-wrap.show { display: block; }
+.justify-wrap label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); display: block; margin-bottom: 8px; }
+.starter-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.s-chip {
+  background: #f3f4f6; border: 1px solid var(--border); color: #374151;
+  border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.s-chip:hover { border-color: var(--l1); color: var(--l1); background: var(--l1-light); }
+
+/* REVEAL BOXES */
+.reveal-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; display: none; }
+.reveal-boxes.show { display: grid; }
+@media(max-width:600px){ .reveal-boxes { grid-template-columns: 1fr; } }
+.reveal-box { border-radius: var(--radius); padding: 18px; }
+.reveal-box.good-box { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.reveal-box.bad-box  { background: #fdecea; border: 1px solid #fca5a5; }
+.reveal-box h4 { font-family: 'Baloo 2', sans-serif; font-size: 15px; font-weight: 800; margin-bottom: 10px; }
+.reveal-box.good-box h4 { color: #065f46; }
+.reveal-box.bad-box h4  { color: #991b1b; }
+.reveal-list-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; color: #374151; margin-bottom: 6px; }
+
+/* CATEGORY SORT GAME */
+.cat-game-header {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e7ff;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.cat-game-header h3 { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+.cat-game-header p { font-size: 14px; color: var(--muted); }
+
+.cat-pool-wrap {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.cat-pool-wrap h4 {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.cat-pool {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  min-height: 56px; padding: 8px;
+  border: 2px dashed var(--border); border-radius: 10px;
+  transition: border-color 0.2s;
+}
+.cat-pool.drag-over { border-color: var(--accent); background: #fff8f0; }
+
+.cat-chip {
+  padding: 9px 14px;
+  border-radius: 9px;
+  border: 1.5px solid var(--border);
+  background: #f9fafb;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: grab;
+  transition: all 0.18s;
+  user-select: none;
+  display: flex; align-items: center; gap: 7px;
+  position: relative;
+}
+.cat-chip:hover { border-color: var(--accent); color: #92400e; background: #fffbeb; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+.cat-chip.dragging { opacity: 0.4; cursor: grabbing; }
+.cat-chip.in-good { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.cat-chip.in-bad  { border-color: #e63946; background: #fdecea; color: #991b1b; }
+.cat-chip.correct-chip { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.cat-chip.wrong-chip   { border-color: #e63946; background: #fdecea; color: #991b1b; animation: shake 0.35s; }
+
+.cat-zones { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+@media(max-width:580px){ .cat-zones { grid-template-columns: 1fr; } }
+
+.cat-zone {
+  border-radius: var(--radius); padding: 16px; min-height: 180px;
+  border: 2px dashed; transition: all 0.2s;
+}
+.cat-zone.zone-good { border-color: rgba(6,214,160,0.4); background: #f0fdf4; }
+.cat-zone.zone-bad  { border-color: rgba(230,57,70,0.3); background: #fdecea; }
+.cat-zone.dz-good { border-color: var(--success); background: #e0faf2; transform: scale(1.01); }
+.cat-zone.dz-bad  { border-color: #e63946; background: #fce8e8; transform: scale(1.01); }
+
+.cat-zone-hdr { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.cat-zone-hdr .ztitle { font-family: 'Baloo 2', sans-serif; font-size: 16px; font-weight: 800; }
+.zone-good .ztitle { color: #065f46; }
+.zone-bad  .ztitle { color: #991b1b; }
+.zcount { margin-left: auto; font-size: 12px; padding: 2px 9px; border-radius: 999px; font-weight: 700; }
+.zone-good .zcount { background: #bbf7d0; color: #065f46; }
+.zone-bad  .zcount { background: #fecaca; color: #991b1b; }
+
+.cat-zone-chips { display: flex; flex-wrap: wrap; gap: 7px; min-height: 60px; }
+.cat-empty-hint { width: 100%; text-align: center; font-size: 12px; color: #9ca3af; padding: 16px 0; font-style: italic; }
+
+.cat-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.cat-score { font-size: 13px; font-weight: 700; color: var(--muted); }
+.cat-score span { color: var(--l1); font-size: 16px; font-family: 'Baloo 2', sans-serif; }
+
+.cat-result {
+  border-radius: var(--radius); padding: 24px; text-align: center; display: none;
+  margin-bottom: 20px;
+}
+.cat-result.show { display: block; animation: fadeUp 0.4s ease; }
+.cat-result.perfect { background: #f0fdf4; border: 2px solid var(--success); }
+.cat-result.partial  { background: #fffbeb; border: 2px solid var(--gold); }
+.cat-result .result-num { font-family: 'Baloo 2', sans-serif; font-size: 44px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+.cat-result.perfect .result-num { color: #065f46; }
+.cat-result.partial  .result-num { color: #92400e; }
+.cat-result h4 { font-family: 'Baloo 2', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.cat-result p  { font-size: 13px; color: var(--muted); max-width: 380px; margin: 0 auto; line-height: 1.6; }
+
+/* ── SPOT ERROR GAME ── */
+.error-passage {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  font-size: 15px;
+  line-height: 2;
+  margin-bottom: 12px;
+}
+.error-word {
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.error-word:hover { background: #fef3c7; }
+.error-word.found { background: #bbf7d0; color: #065f46; text-decoration: line-through; font-weight: 700; }
+.error-word.wrong-click { background: #fecaca; animation: shake 0.3s; }
+#error-score { font-size: 14px; font-weight: 700; min-height: 20px; }
+
+/* ── SPELLING HUNT ── */
+.hunt-passage {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  font-size: 14px;
+  line-height: 2.2;
+  margin-bottom: 12px;
+}
+.hunt-word {
+  display: inline-block;
+  padding: 2px 1px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 3px;
+}
+.hunt-word:hover { background: #fef3c7; }
+.hunt-word.hunt-found {
+  background: #bbf7d0;
+  border-bottom-color: #065f46;
+  font-weight: 700;
+}
+.hunt-word.hunt-wrong { background: #fecaca; animation: shake 0.3s; }
+.hunt-correct-box {
+  display: none;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+.hunt-correct-box.show { display: block; animation: fadeUp 0.3s; }
+
+/* ── TABLE BUILDER ── */
+.table-builder {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+.table-builder th {
+  background: var(--l1);
+  color: white;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  border: 1px solid #5a189a;
+}
+.table-builder td {
+  border: 1px solid var(--border);
+  padding: 0;
+}
+.table-builder input {
+  width: 100%;
+  border: none;
+  padding: 10px 12px;
+  font-size: 13px;
+  background: transparent;
+  border-radius: 0;
+}
+.table-builder input:focus {
+  outline: none;
+  background: var(--l1-light);
+}
+
+/* ── PAW RATING ── */
+.paw-rating {
+  display: flex;
+  gap: 6px;
+  margin: 8px 0;
+}
+.paw-rating .paw {
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: all 0.2s;
+  filter: grayscale(1);
+}
+.paw-rating .paw.active {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.15);
+}
+.paw-rating .paw:hover { opacity: 0.7; filter: none; }
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── END CARD ── */
+.end-card {
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+  margin-top: 8px;
+}
+.end-card.l1 { background: linear-gradient(135deg, var(--l1-light), #fff); border: 2px solid var(--l1); }
+.end-card.l2 { background: linear-gradient(135deg, var(--l2-light), #fff); border: 2px solid var(--l2); }
+.end-card .end-emoji { font-size: 52px; margin-bottom: 12px; }
+.end-card h3 { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.end-card p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 400px; margin: 0 auto 20px; }
+
+/* ── SKILL BADGE ── */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #5a189a;
+  color: white;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 4px 2px;
+}
+.skill-badge .badge-icon { font-size: 14px; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 600px) {
+  .match-area { grid-template-columns: 1fr; }
+  .lesson-banner { padding: 20px; }
+  .banner-icon { font-size: 36px; }
+}
+
+/* ── FORMATTING PAIRS ── */
+.format-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+@media(max-width:580px){ .format-pair { grid-template-columns: 1fr; } }
+.format-example {
+  border-radius: 10px;
+  padding: 14px;
+  border: 2px solid var(--border);
+  font-size: 13px;
+  position: relative;
+}
+.format-example.fmt-bad {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+.format-example.fmt-good {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+.fmt-label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 4px;
+}
+.fmt-bad .fmt-label { background: #fca5a5; color: #991b1b; }
+.fmt-good .fmt-label { background: #bbf7d0; color: #065f46; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-tag">🐾 Year 9 Enrichment</div>
+  <h1>My Favourite <span>Pet</span> Leaflet</h1>
+  <p>Learn Microsoft Word skills by creating an awesome information leaflet all about your favourite pet!</p>
+  <div class="hero-pills">
+    <span class="pill">🐕 Titles &amp; Headings</span>
+    <span class="pill">🐈 Images &amp; Tables</span>
+    <span class="pill">🐹 Spell Check</span>
+    <span class="pill">🐰 Borders &amp; Shading</span>
+  </div>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <button class="nav-tab active-l1" data-panel="compare" onclick="showPanel('compare',this)">
+    <span class="check"></span> 🐾 Compare
+  </button>
+  <button class="nav-tab" data-panel="l1-intro" onclick="showPanel('l1-intro',this)">
+    <span class="check"></span> 🐕 L1 Intro
+  </button>
+  <button class="nav-tab" data-panel="l1-skill" onclick="showPanel('l1-skill',this)">
+    <span class="check"></span> 📝 L1 Skills
+  </button>
+  <button class="nav-tab" data-panel="l1-ws" onclick="showPanel('l1-ws',this)">
+    <span class="check"></span> 📋 L1 Worksheet
+  </button>
+  <button class="nav-tab" data-panel="l2-intro" onclick="showPanel('l2-intro',this)">
+    <span class="check"></span> 🐈 L2 Intro
+  </button>
+  <button class="nav-tab" data-panel="l2-skill" onclick="showPanel('l2-skill',this)">
+    <span class="check"></span> 📝 L2 Skills
+  </button>
+  <button class="nav-tab" data-panel="l2-ws" onclick="showPanel('l2-ws',this)">
+    <span class="check"></span> 📋 L2 Worksheet
+  </button>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PANEL: COMPARE
+══════════════════════════════════════════════════════════════ -->
+<section id="panel-compare" class="panel active">
+
+  <div class="compare-steps">
+    <span class="cstep cs-active" id="cstep-1">1 Look</span>
+    <span class="cstep" id="cstep-2">2 Vote</span>
+    <span class="cstep" id="cstep-3">3 Sort</span>
+  </div>
+
+  <!-- STEP 1: LOOK -->
+  <div id="cp-look">
+    <div class="compare-intro">
+      <h3>🐾 Two Pet Leaflets — Which Is Better?</h3>
+      <p>Below are two leaflets about pets. One was made with care using proper Word skills. The other... not so much! Look closely at both and think about what makes a good information leaflet.</p>
+    </div>
+
+    <div class="leaflet-compare-grid">
+      <!-- GOOD LEAFLET (A) -->
+      <div class="leaflet-compare-card lfa" id="lcard-a">
+        <div class="leaflet-compare-label">📄 Leaflet A</div>
+        <div class="leaflet-doc-good">
+          <div class="ldg-title">My Amazing Golden Retriever 🐕</div>
+          <div class="ldg-img">🐕</div>
+          <div class="ldg-subtitle">Why They Make Great Pets</div>
+          <p style="font-size:10px; margin-bottom:6px;">Golden Retrievers are one of the most popular dog breeds in the world. They are friendly, loyal and love being around people. They are perfect family pets.</p>
+          <div class="ldg-tipbox"><strong>🐾 Top Tip:</strong> Golden Retrievers need at least 2 hours of exercise every day!</div>
+          <div class="ldg-subtitle">Fun Facts</div>
+          <ul style="font-size:10px; padding-left:15px; margin-bottom:6px;">
+            <li>They can learn over 200 commands</li>
+            <li>Their fur is actually waterproof</li>
+            <li>They were first bred in Scotland</li>
+          </ul>
+          <div class="ldg-subtitle">Care Schedule</div>
+          <table class="ldg-table">
+            <tr><th>Task</th><th>How Often</th><th>Time</th><th>Notes</th></tr>
+            <tr><td>Feeding</td><td>Twice daily</td><td>7am &amp; 5pm</td><td>Measured portions</td></tr>
+            <tr><td>Walking</td><td>Daily</td><td>1 hour</td><td>Morning &amp; evening</td></tr>
+            <tr><td>Brushing</td><td>3x a week</td><td>15 mins</td><td>Reduces shedding</td></tr>
+            <tr><td>Vet check</td><td>Yearly</td><td>30 mins</td><td>Vaccinations</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- BAD LEAFLET (B) -->
+      <div class="leaflet-compare-card lfb" id="lcard-b">
+        <div class="leaflet-compare-label">📄 Leaflet B</div>
+        <div class="leaflet-doc-bad">
+          <div class="ldb-title">my pet cat</div>
+          <div class="ldb-random">cats r the best!!!</div>
+          <p style="font-size:10px; margin-top:4px;">i luv my cat her name is <span class="ldb-highlight">whiskers</span> she is grey and <span style="font-size:16px; font-weight:bold; color:blue;">really cute</span> and she sleeps alot. cats r amazing becuz they dont need <span style="font-size:7px;">walks like dogs do they just sleep and eat</span> and purr which is nice i guess.</p>
+          <p style="font-size:12px; color:red; font-weight:bold; margin-top:6px;">FACTS ABOUT MY CAT</p>
+          <p style="font-size:9px;">she is 3 yeers old. she eats fish. she dosent like water. she scratvhes the sofa sometimes wich is anoying.</p>
+          <div class="ldb-tiny">thats all i know about cats bye</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-purple" onclick="cGoStep(2)">I've looked at both — Next Step 🐾</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: VOTE -->
+  <div id="cp-decide" style="display:none;">
+    <div class="card">
+      <h3>🗳️ Which Leaflet Would You Use?</h3>
+      <p>If you had to give one of these leaflets to a friend to teach them about a pet, which would you choose?</p>
+
+      <div class="vote-row">
+        <button class="vote-choice va" id="pvote-a" onclick="pCastVote('A')">🐕 Leaflet A</button>
+        <button class="vote-choice vb" id="pvote-b" onclick="pCastVote('B')">🐈 Leaflet B</button>
+      </div>
+
+      <div class="justify-wrap" id="p-justify">
+        <label>🐾 Explain your choice (use the sentence starters or write your own):</label>
+        <div class="starter-row">
+          <span class="s-chip" onclick="pAppend('I think Leaflet A is better because...')">I think Leaflet A is better because...</span>
+          <span class="s-chip" onclick="pAppend('The good leaflet has...')">The good leaflet has...</span>
+          <span class="s-chip" onclick="pAppend('The bad leaflet is missing...')">The bad leaflet is missing...</span>
+          <span class="s-chip" onclick="pAppend('A good leaflet needs...')">A good leaflet needs...</span>
+        </div>
+        <textarea id="p-justify-box" rows="3" placeholder="Write your reason here..."></textarea>
+        <div class="btn-row">
+          <button class="btn btn-purple btn-sm" onclick="pSubmitJustify()">Submit &amp; Continue 🐾</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-boxes" id="p-reveal">
+      <div class="reveal-box good-box">
+        <h4>🐾 Paw-fect Features (Leaflet A)</h4>
+        <div class="reveal-list-item"><span>✅</span> Clear, colourful title at the top</div>
+        <div class="reveal-list-item"><span>✅</span> Underlined sub-headings for each section</div>
+        <div class="reveal-list-item"><span>✅</span> A cute pet image with text wrapping</div>
+        <div class="reveal-list-item"><span>✅</span> A tip box with borders and shading</div>
+        <div class="reveal-list-item"><span>✅</span> A care schedule in a neat table</div>
+        <div class="reveal-list-item"><span>✅</span> Consistent font and formatting</div>
+        <div class="reveal-list-item"><span>✅</span> No spelling or grammar mistakes</div>
+      </div>
+      <div class="reveal-box bad-box">
+        <h4>🙀 In the Doghouse (Leaflet B)</h4>
+        <div class="reveal-list-item"><span>❌</span> No proper title — lowercase, no colour</div>
+        <div class="reveal-list-item"><span>❌</span> Spelling mistakes everywhere</div>
+        <div class="reveal-list-item"><span>❌</span> No images of the pet at all</div>
+        <div class="reveal-list-item"><span>❌</span> Random font sizes, colours and styles</div>
+        <div class="reveal-list-item"><span>❌</span> No table for care information</div>
+        <div class="reveal-list-item"><span>❌</span> No sub-headings — just a wall of text</div>
+        <div class="reveal-list-item"><span>❌</span> Text-speak and informal language</div>
+      </div>
+    </div>
+
+    <div id="p-reveal-btn" style="display:none;" class="btn-row" style="justify-content:center;">
+      <button class="btn btn-purple" onclick="cGoStep(3)">Now Sort the Features! 🐾</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: CATEGORY SORT -->
+  <div id="cp-sort" style="display:none;">
+    <div class="cat-game-header">
+      <h3>🐾 Paw-fect or In the Doghouse?</h3>
+      <p>Drag each feature into the correct category. Is it something a great pet leaflet should have, or a mistake to avoid?</p>
+    </div>
+
+    <div class="cat-pool-wrap">
+      <h4>🐾 Features to sort <span id="cat-remaining"></span></h4>
+      <div class="cat-pool" id="cat-pool"></div>
+    </div>
+
+    <div class="cat-zones">
+      <div class="cat-zone zone-good" id="cat-zone-good">
+        <div class="cat-zone-hdr">
+          <span style="font-size:22px;">🐾</span>
+          <span class="ztitle">Paw-fect!</span>
+          <span class="zcount" id="cat-good-count">0</span>
+        </div>
+        <div class="cat-zone-chips" id="cat-good-chips">
+          <span class="cat-empty-hint">Drag great features here</span>
+        </div>
+      </div>
+      <div class="cat-zone zone-bad" id="cat-zone-bad">
+        <div class="cat-zone-hdr">
+          <span style="font-size:22px;">🙀</span>
+          <span class="ztitle">In the Doghouse!</span>
+          <span class="zcount" id="cat-bad-count">0</span>
+        </div>
+        <div class="cat-zone-chips" id="cat-bad-chips">
+          <span class="cat-empty-hint">Drag mistakes here</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-controls">
+      <div class="cat-score">Score: <span id="cat-score-num">0</span> / <span id="cat-total">16</span></div>
+      <button class="btn btn-orange btn-sm" onclick="catCheck()">Check Answers 🐾</button>
+    </div>
+
+    <div class="cat-result" id="cat-result"></div>
+
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-dark" onclick="goTo('l1-intro')">Start Lesson 1 🐕</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PANEL: L1-INTRO
+══════════════════════════════════════════════════════════════ -->
+<section id="panel-l1-intro" class="panel">
+  <div class="lesson-banner l1">
+    <div class="banner-icon">🐕</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1</div>
+      <h2>Titles, Formatting &amp; Spell Check</h2>
+      <p>Learn the building blocks of an awesome pet information leaflet — headings, formatting and how to catch every spelling mistake!</p>
+    </div>
+  </div>
+
+  <div class="objectives">
+    <h3>🎯 Learning Objectives</h3>
+    <div class="obj-list">
+      <div class="obj-item"><span class="obj-num">1</span> Create a colourful, bold title for your leaflet</div>
+      <div class="obj-item"><span class="obj-num">2</span> Add consistent sub-headings with underline and colour</div>
+      <div class="obj-item"><span class="obj-num">3</span> Use Spell Check (F7) to find and fix spelling mistakes</div>
+      <div class="obj-item"><span class="obj-num">4</span> Use Find &amp; Replace (Ctrl+H) to change words quickly</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📋 What Makes a Great Pet Leaflet?</h3>
+    <p>An information leaflet is a document that gives someone useful facts about a topic. For your pet leaflet, you need:</p>
+    <ul style="padding-left:20px; font-size:14px; line-height:2;">
+      <li><strong>A big, colourful title</strong> — so people know what the leaflet is about</li>
+      <li><strong>Clear sub-headings</strong> — to organise your information into sections</li>
+      <li><strong>No spelling mistakes</strong> — so your leaflet looks professional</li>
+      <li><strong>Consistent formatting</strong> — same font, same style throughout</li>
+      <li><strong>Pet images</strong> — to make it eye-catching and fun</li>
+      <li><strong>A care table</strong> — to show how to look after the pet</li>
+      <li><strong>Tip boxes with borders</strong> — to highlight important facts</li>
+    </ul>
+  </div>
+
+  <!-- MATCHING GAME -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Game</span>
+      <h3>🎮 Match the Word Tool to Its Purpose</h3>
+    </div>
+    <p>Click a tool on the left, then click the matching purpose on the right. Match all 6 pairs!</p>
+
+    <div class="match-area" id="match-area">
+      <div class="match-col" id="match-left">
+        <h4>🔧 Word Tool</h4>
+      </div>
+      <div class="match-col" id="match-right">
+        <h4>🎯 Purpose</h4>
+      </div>
+    </div>
+    <div id="match-status"></div>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-body">
+      <strong>Key Shortcuts to Remember</strong>
+      <span class="kbd">Ctrl</span>+<span class="kbd">B</span> = Bold &nbsp;&nbsp;
+      <span class="kbd">Ctrl</span>+<span class="kbd">U</span> = Underline &nbsp;&nbsp;
+      <span class="kbd">F7</span> = Spell Check &nbsp;&nbsp;
+      <span class="kbd">Ctrl</span>+<span class="kbd">H</span> = Find &amp; Replace
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-purple" onclick="goTo('l1-skill')">Continue to Skills 📝</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PANEL: L1-SKILL
+══════════════════════════════════════════════════════════════ -->
+<section id="panel-l1-skill" class="panel">
+  <div class="lesson-banner l1">
+    <div class="banner-icon">📝</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1 — Skills</div>
+      <h2>Step-by-Step Word Instructions</h2>
+      <p>Follow these steps carefully to create your pet leaflet title, sub-headings, and fix spelling mistakes.</p>
+    </div>
+  </div>
+
+  <!-- SKILL A: Title -->
+  <div class="card">
+    <h3>🎨 Skill A: Creating a Colourful Title</h3>
+    <p>Your leaflet needs a big, bold, colourful title that grabs attention. Here's how to create one:</p>
+
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Type your title</strong>
+          <p>At the top of your document, type your pet leaflet title. For example: <em>"My Amazing Golden Retriever"</em> or <em>"Everything You Need to Know About Hamsters"</em></p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Select the title text</strong>
+          <p>Click and drag to highlight all the title text, or triple-click to select the whole line.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Make it big and bold</strong>
+          <p>Change the font size to <strong>24pt</strong> or larger using the size dropdown. Press <span class="kbd">Ctrl</span>+<span class="kbd">B</span> to make it bold.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Add colour</strong>
+          <p>Click the <strong>Font Colour</strong> dropdown (the "A" with a coloured line underneath) in the Home tab. Choose a colour that stands out but is still easy to read.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Centre it</strong>
+          <p>Press <span class="kbd">Ctrl</span>+<span class="kbd">E</span> to centre your title on the page.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout word">
+      <div class="callout-body">
+        <strong>What it should look like in Word</strong>
+        Your title should be big, bold, colourful and centred at the top of the page. It should immediately tell the reader what the leaflet is about.
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL B: Sub-headings -->
+  <div class="card">
+    <h3>📑 Skill B: Adding Sub-Headings</h3>
+    <p>Sub-headings break your leaflet into clear sections. They should all look the same (consistent formatting).</p>
+
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Plan your sections</strong>
+          <p>Good sections for a pet leaflet: <em>"Why They Make Great Pets"</em>, <em>"Fun Facts"</em>, <em>"How to Care for Them"</em>, <em>"Top Tips"</em></p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Type and format each sub-heading</strong>
+          <p>Type your sub-heading, select it, then make it: <strong>Bold</strong> (<span class="kbd">Ctrl</span>+<span class="kbd">B</span>), <strong>Underlined</strong> (<span class="kbd">Ctrl</span>+<span class="kbd">U</span>), <strong>Size 14-16pt</strong>, and a <strong>matching colour</strong>.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Keep them consistent!</strong>
+          <p>Every sub-heading should look exactly the same — same size, same colour, same bold + underline. This makes your leaflet look professional.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-body">
+        <strong>Pro Tip: Use Format Painter!</strong>
+        Format one sub-heading perfectly, then double-click the <strong>Format Painter</strong> (paintbrush icon) and click on your other sub-headings to copy the formatting instantly!
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL C: Spell Check -->
+  <div class="card">
+    <h3>🔍 Skill C: Using Spell Check</h3>
+    <p>Spelling mistakes make your leaflet look careless. Word helps you find and fix them!</p>
+
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Look for squiggly lines</strong>
+          <p><span style="text-decoration: wavy underline red;">Red squiggly lines</span> = spelling error. <span style="text-decoration: wavy underline blue;">Blue squiggly lines</span> = grammar error. These appear automatically as you type.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Right-click to fix</strong>
+          <p>Right-click on any underlined word and Word will suggest the correct spelling. Click the right one to fix it!</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Run the full Spell Check</strong>
+          <p>Press <span class="kbd">F7</span> to open the Spelling &amp; Grammar checker. This goes through your WHOLE document and finds every mistake. Click <strong>Change</strong> to fix each one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL D: Find & Replace -->
+  <div class="card">
+    <h3>🔄 Skill D: Find &amp; Replace</h3>
+    <p>If you've spelled a word wrong in lots of places, Find &amp; Replace can fix them all at once!</p>
+
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Open Find &amp; Replace</strong>
+          <p>Press <span class="kbd">Ctrl</span>+<span class="kbd">H</span> to open the Find and Replace dialog box.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Type the wrong word</strong>
+          <p>In the <strong>"Find what"</strong> box, type the misspelled word. For example: <em>hamstar</em></p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Type the correct word</strong>
+          <p>In the <strong>"Replace with"</strong> box, type the correct spelling. For example: <em>hamster</em></p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Replace All</strong>
+          <p>Click <strong>"Replace All"</strong> and Word will fix every single one! A message will tell you how many replacements were made.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPOT THE ERROR GAME -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Game</span>
+      <h3>🔍 Spot the Spelling Mistakes!</h3>
+    </div>
+    <p>Click on each word that is spelled incorrectly. There are <strong>8 mistakes</strong> hiding in this paragraph. Can you find them all?</p>
+
+    <div class="error-passage" id="error-passage"></div>
+    <div id="error-score">Found: 0 / 8</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="divider">Quiz Time 🐾</div>
+
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Quiz</span>
+      <h3>📝 Lesson 1 Quiz</h3>
+    </div>
+
+    <div class="quiz-wrap">
+      <div class="q-block">
+        <div class="q-text">1. What keyboard shortcut opens the Spell Checker?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> Ctrl+S</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">B</span> F7</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">C</span> Ctrl+B</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> F5</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">2. What does a red squiggly line under a word mean in Microsoft Word?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> The word is bold</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">B</span> The word is a heading</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">C</span> The word may be spelled incorrectly</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> The word is in a different language</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">3. What keyboard shortcut opens Find &amp; Replace?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> Ctrl+F</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">B</span> Ctrl+R</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">C</span> Ctrl+H</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> Ctrl+G</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">4. Why should all your sub-headings look the same?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> It saves time</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">B</span> Word requires it</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">C</span> It makes the leaflet look professional and consistent</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> It makes the file smaller</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">5. What does the Format Painter tool do?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> Changes the page colour</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">B</span> Copies formatting from one piece of text to another</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">C</span> Inserts a picture</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> Draws shapes on the page</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-purple" onclick="goTo('l1-ws')">Go to Worksheet 📋</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PANEL: L1-WS
+══════════════════════════════════════════════════════════════ -->
+<section id="panel-l1-ws" class="panel">
+  <div class="lesson-banner l1">
+    <div class="banner-icon">📋</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1 — Worksheet</div>
+      <h2>Plan Your Pet Leaflet</h2>
+      <p>Choose your pet, plan your content, and see a live preview of your leaflet as you type!</p>
+    </div>
+  </div>
+
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <span class="ws-icon">🐾</span>
+      <div>
+        <h3>My Pet Leaflet Planner</h3>
+        <p>Fill in the fields below — your leaflet preview will update as you type!</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>🐕 What type of pet?</label>
+      <span class="hint">e.g. Dog, Cat, Hamster, Rabbit, Fish, Lizard, Guinea Pig</span>
+      <select id="ws-pet-type" onchange="updateLeafletPreview()">
+        <option value="">Choose a pet type...</option>
+        <option value="Dog">🐕 Dog</option>
+        <option value="Cat">🐈 Cat</option>
+        <option value="Hamster">🐹 Hamster</option>
+        <option value="Rabbit">🐰 Rabbit</option>
+        <option value="Fish">🐠 Fish</option>
+        <option value="Lizard">🦎 Lizard</option>
+        <option value="Guinea Pig">🐹 Guinea Pig</option>
+        <option value="Bird">🐦 Bird</option>
+        <option value="other">Other (type below)</option>
+      </select>
+    </div>
+
+    <div class="field" id="other-pet-field" style="display:none;">
+      <label>🐾 What pet?</label>
+      <input type="text" id="ws-pet-other" placeholder="Type your pet type..." oninput="updateLeafletPreview()">
+    </div>
+
+    <div class="field">
+      <label>🏷️ Pet name or breed</label>
+      <span class="hint">e.g. "Golden Retriever", "My Cat Whiskers", "Syrian Hamster"</span>
+      <input type="text" id="ws-pet-name" placeholder="e.g. Golden Retriever" oninput="updateLeafletPreview()">
+    </div>
+
+    <div class="field">
+      <label>💜 Why is this pet the best?</label>
+      <span class="hint">Write 2-3 sentences explaining why this pet is amazing</span>
+      <textarea id="ws-why-best" rows="3" placeholder="e.g. Golden Retrievers are the best because they are loyal, friendly and love to play..." oninput="updateLeafletPreview()"></textarea>
+    </div>
+
+    <div class="field">
+      <label>🌟 Fun Fact 1</label>
+      <input type="text" id="ws-fact1" placeholder="e.g. They can learn over 200 commands" oninput="updateLeafletPreview()">
+    </div>
+    <div class="field">
+      <label>🌟 Fun Fact 2</label>
+      <input type="text" id="ws-fact2" placeholder="e.g. Their fur is waterproof" oninput="updateLeafletPreview()">
+    </div>
+    <div class="field">
+      <label>🌟 Fun Fact 3</label>
+      <input type="text" id="ws-fact3" placeholder="e.g. They were first bred in Scotland" oninput="updateLeafletPreview()">
+    </div>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="leaflet-preview">
+    <div class="leaflet-preview-bar">
+      <span>🐾 Live Leaflet Preview</span>
+      <span style="font-size:12px; opacity:0.7;">Updates as you type!</span>
+    </div>
+    <div class="leaflet-preview-body">
+      <div class="leaflet-pet-img" id="preview-pet-emoji">🐾</div>
+      <div class="leaflet-title" id="preview-title">My Favourite Pet</div>
+
+      <div class="leaflet-section">
+        <div class="leaflet-section-title">🐾 Why They're the Best</div>
+        <div class="leaflet-body" id="preview-why">Your description will appear here as you type above...</div>
+      </div>
+
+      <div class="leaflet-section">
+        <div class="leaflet-section-title">🌟 Fun Facts</div>
+        <div class="leaflet-fact-box" id="preview-facts">
+          <div>Your fun facts will appear here...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="card">
+    <h3>✅ Lesson 1 Checklist</h3>
+    <p>Tick off each task as you complete it in Microsoft Word:</p>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> I have typed a title for my leaflet</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> My title is bold, size 24, and colourful</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> My title is centred on the page</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> I have added at least 3 sub-headings</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> All sub-headings are bold, underlined and the same colour</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> I have written content under each sub-heading</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> I have run Spell Check (F7) and fixed all errors</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> I have used Find &amp; Replace if needed</div>
+    </div>
+  </div>
+
+  <div class="end-card l1">
+    <div class="end-emoji">🐾</div>
+    <h3>Lesson 1 Complete!</h3>
+    <p>Well done! Your leaflet has a great title, sub-headings, and no spelling mistakes. In Lesson 2, you'll add images, tables and tip boxes!</p>
+    <button class="btn btn-purple" onclick="goTo('l2-intro')">Start Lesson 2 🐈</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PANEL: L2-INTRO
+══════════════════════════════════════════════════════════════ -->
+<section id="panel-l2-intro" class="panel">
+  <div class="lesson-banner l2">
+    <div class="banner-icon">🐈</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2</div>
+      <h2>Images, Tables &amp; Borders</h2>
+      <p>Make your pet leaflet look amazing with photos, a care schedule table, and colourful tip boxes!</p>
+    </div>
+  </div>
+
+  <div class="objectives">
+    <h3>🎯 Learning Objectives</h3>
+    <div class="obj-list">
+      <div class="obj-item"><span class="obj-num">1</span> Insert at least 2 images with text wrapping</div>
+      <div class="obj-item"><span class="obj-num">2</span> Create a pet care schedule table</div>
+      <div class="obj-item"><span class="obj-num">3</span> Add borders and shading to tip/fact boxes</div>
+      <div class="obj-item"><span class="obj-num">4</span> Check your formatting is consistent throughout</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📸 Why Do Leaflets Need Images and Tables?</h3>
+    <p>An information leaflet without images is like a pet without a name — it just doesn't feel right! Images make your leaflet eye-catching and help the reader understand your content.</p>
+    <p>Tables are perfect for organising information neatly. A pet care schedule table lets the reader see quickly what needs doing and when.</p>
+    <p>Borders and shading help you create "tip boxes" and "fact boxes" that draw the reader's eye to the most important information.</p>
+  </div>
+
+  <!-- ORDERING ACTIVITY -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Game</span>
+      <h3>📋 Put the Steps in Order!</h3>
+    </div>
+    <p>These are the steps to create a pet leaflet, but they're mixed up! Drag them into the correct order.</p>
+
+    <div class="sort-list" id="sort-list"></div>
+
+    <div class="btn-row">
+      <button class="btn btn-orange btn-sm" id="sort-check-btn" onclick="checkSort()">Check Order 🐾</button>
+      <button class="btn btn-outline btn-sm" onclick="shuffleSort()">Shuffle Again 🔀</button>
+    </div>
+    <div id="sort-feedback"></div>
+  </div>
+
+  <!-- SPOT THE FORMATTING MISTAKE -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Activity</span>
+      <h3>👀 Spot the Formatting Mistake!</h3>
+    </div>
+    <p>Look at each pair below. One example uses good formatting, the other has a mistake. Can you spot the difference?</p>
+
+    <div class="format-pair">
+      <div class="format-example fmt-bad">
+        <span class="fmt-label">BAD</span>
+        <div style="margin-top:8px;">
+          <span style="font-size:11px; font-weight:bold; color:red;">Why Dogs Are Great</span><br>
+          <span style="font-size:14px; color:blue; text-decoration:underline;">Fun Facts</span><br>
+          <span style="font-size:9px; font-weight:bold; color:green;">How to Care for Them</span>
+        </div>
+        <p style="font-size:11px; color:#991b1b; margin-top:8px; margin-bottom:0;">Every sub-heading is a different size, colour and style!</p>
+      </div>
+      <div class="format-example fmt-good">
+        <span class="fmt-label">GOOD</span>
+        <div style="margin-top:8px;">
+          <span style="font-size:13px; font-weight:bold; color:#7b2cbf; text-decoration:underline;">Why Dogs Are Great</span><br>
+          <span style="font-size:13px; font-weight:bold; color:#7b2cbf; text-decoration:underline;">Fun Facts</span><br>
+          <span style="font-size:13px; font-weight:bold; color:#7b2cbf; text-decoration:underline;">How to Care for Them</span>
+        </div>
+        <p style="font-size:11px; color:#065f46; margin-top:8px; margin-bottom:0;">All sub-headings match — consistent and professional!</p>
+      </div>
+    </div>
+
+    <div class="format-pair">
+      <div class="format-example fmt-good">
+        <span class="fmt-label">GOOD</span>
+        <div style="margin-top:8px;">
+          <div style="font-size:11px;">
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect fill='%23f3e8ff' width='40' height='40' rx='4'/><text x='20' y='28' text-anchor='middle' font-size='20'>🐕</text></svg>" style="float:right; margin:0 0 4px 8px; border-radius:4px;" alt="Pet photo">
+            Dogs are loyal and loving companions. They make great family pets because they are friendly and protective.
+          </div>
+        </div>
+        <p style="font-size:11px; color:#065f46; margin-top:8px; margin-bottom:0;">Image with text wrapping — text flows around it neatly.</p>
+      </div>
+      <div class="format-example fmt-bad">
+        <span class="fmt-label">BAD</span>
+        <div style="margin-top:8px; font-size:11px;">
+          <div style="text-align:center; margin-bottom:4px; font-size:28px;">🐕</div>
+          <div style="text-align:center;">Dogs are loyal.</div>
+          <div style="height:20px;"></div>
+          <div>The text is pushed far away from the image.</div>
+        </div>
+        <p style="font-size:11px; color:#991b1b; margin-top:8px; margin-bottom:0;">Image pushes text away — looks messy with big gaps.</p>
+      </div>
+    </div>
+
+    <div class="format-pair">
+      <div class="format-example fmt-bad">
+        <span class="fmt-label">BAD</span>
+        <div style="margin-top:8px; font-size:10px;">
+          Feeding - Every day - Morning and evening<br>
+          Walking - Twice a day - 30 mins each<br>
+          Brushing - Weekly - 15 mins
+        </div>
+        <p style="font-size:11px; color:#991b1b; margin-top:8px; margin-bottom:0;">Care info just written as text — hard to read and compare!</p>
+      </div>
+      <div class="format-example fmt-good">
+        <span class="fmt-label">GOOD</span>
+        <div style="margin-top:8px;">
+          <table style="width:100%; border-collapse:collapse; font-size:9px;">
+            <tr style="background:#f3e8ff;"><th style="border:1px solid #d8b4fe; padding:2px 4px;">Task</th><th style="border:1px solid #d8b4fe; padding:2px 4px;">How Often</th><th style="border:1px solid #d8b4fe; padding:2px 4px;">Time</th></tr>
+            <tr><td style="border:1px solid #d8b4fe; padding:2px 4px;">Feeding</td><td style="border:1px solid #d8b4fe; padding:2px 4px;">Daily</td><td style="border:1px solid #d8b4fe; padding:2px 4px;">7am &amp; 5pm</td></tr>
+            <tr><td style="border:1px solid #d8b4fe; padding:2px 4px;">Walking</td><td style="border:1px solid #d8b4fe; padding:2px 4px;">Twice daily</td><td style="border:1px solid #d8b4fe; padding:2px 4px;">30 mins</td></tr>
+          </table>
+        </div>
+        <p style="font-size:11px; color:#065f46; margin-top:8px; margin-bottom:0;">A table makes care info clear and easy to scan!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-lav" onclick="goTo('l2-skill')">Continue to Skills 📝</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PANEL: L2-SKILL
+══════════════════════════════════════════════════════════════ -->
+<section id="panel-l2-skill" class="panel">
+  <div class="lesson-banner l2">
+    <div class="banner-icon">📝</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2 — Skills</div>
+      <h2>Step-by-Step Word Instructions</h2>
+      <p>Follow these steps to add images, tables, and borders to your pet leaflet.</p>
+    </div>
+  </div>
+
+  <!-- SKILL A: Images -->
+  <div class="card">
+    <h3>📸 Skill A: Inserting Pet Images</h3>
+    <p>Your leaflet needs at least 2 images of your pet. Here's how to insert them and make them look great:</p>
+
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Find your images</strong>
+          <p>Search online for images of your pet. Right-click and choose <strong>"Save image as..."</strong> to save it to your computer. Save at least 2 images.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Insert the image</strong>
+          <p>In Word, click <strong>Insert</strong> tab &rarr; <strong>Pictures</strong> &rarr; <strong>This Device</strong>. Find your saved image and click <strong>Insert</strong>.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Resize the image</strong>
+          <p>Click on the image and drag the <strong>corner handles</strong> (the small circles at the corners) to make it smaller. Hold <span class="kbd">Shift</span> while dragging to keep it in proportion!</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Set text wrapping</strong>
+          <p>Click the image, then click the small <strong>Layout Options</strong> icon that appears (or go to <strong>Format</strong> tab &rarr; <strong>Wrap Text</strong>). Choose <strong>"Square"</strong> so text wraps neatly around the image.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Position the image</strong>
+          <p>Now you can drag the image anywhere on the page! Place one near the top of your leaflet and another further down.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout watch">
+      <div class="callout-body">
+        <strong>Common Mistake!</strong>
+        If you don't set text wrapping, the image will push your text down and leave big ugly gaps. Always set wrapping to <strong>"Square"</strong> or <strong>"Tight"</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL B: Tables -->
+  <div class="card">
+    <h3>📊 Skill B: Creating a Pet Care Table</h3>
+    <p>A care schedule table organises your pet care information neatly. Here's how to create one:</p>
+
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Insert a table</strong>
+          <p>Click <strong>Insert</strong> tab &rarr; <strong>Table</strong> &rarr; drag to select <strong>4 columns and 5 rows</strong> (or more if you need them).</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Add the column headings</strong>
+          <p>In the first row, type these headings: <strong>Task</strong>, <strong>How Often</strong>, <strong>Time</strong>, <strong>Notes</strong>. Make them bold.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Fill in the care tasks</strong>
+          <p>Add care tasks like: Feeding, Walking, Brushing, Cleaning cage/tank, Vet visits. Fill in how often, how long, and any notes.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Format the header row</strong>
+          <p>Select the top row, then go to <strong>Table Design</strong> tab. Add <strong>shading</strong> (a background colour) to the header row to make it stand out. Use a colour that matches your leaflet theme.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📘 Microsoft Word — Pet Care Table Example</span></div>
+      <div class="word-mock-ribbon">
+        <span class="ribbon-btn highlight">Table Design</span>
+        <span class="ribbon-btn">Shading ▾</span>
+        <span class="ribbon-btn">Borders ▾</span>
+      </div>
+      <div class="word-mock-body">
+        <div class="word-page">
+          <table>
+            <tr><th style="background:#f3e8ff; color:#5a189a;">Task</th><th style="background:#f3e8ff; color:#5a189a;">How Often</th><th style="background:#f3e8ff; color:#5a189a;">Time</th><th style="background:#f3e8ff; color:#5a189a;">Notes</th></tr>
+            <tr><td>Feeding</td><td>Twice daily</td><td>7am &amp; 5pm</td><td>Measured portions</td></tr>
+            <tr><td>Walking</td><td>Daily</td><td>1 hour</td><td>Morning &amp; evening</td></tr>
+            <tr><td>Brushing</td><td>3x a week</td><td>15 mins</td><td>Reduces shedding</td></tr>
+            <tr><td>Vet check</td><td>Yearly</td><td>30 mins</td><td>Vaccinations</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL C: Borders & Shading -->
+  <div class="card">
+    <h3>🔲 Skill C: Borders &amp; Shading for Tip Boxes</h3>
+    <p>Tip boxes and fact boxes make important information stand out. Here's how to create them:</p>
+
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Type your tip text</strong>
+          <p>Type something like: <em>"🐾 Top Tip: Golden Retrievers need at least 2 hours of exercise every day!"</em></p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Select the text</strong>
+          <p>Highlight all the text you want in the tip box.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Add shading (background colour)</strong>
+          <p>Go to <strong>Home</strong> tab &rarr; click the <strong>Shading</strong> button (paint bucket icon) &rarr; choose a light colour like pale purple or pale yellow.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Add a border</strong>
+          <p>Go to <strong>Home</strong> tab &rarr; click the <strong>Borders</strong> dropdown arrow &rarr; choose <strong>"Outside Borders"</strong>. This adds a box around your text!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-body">
+        <strong>This is what a tip box looks like!</strong>
+        You're looking at one right now. It has a light background colour (shading) and a border around it. In Word, you can create the same effect using the Shading and Borders buttons.
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL D: Consistency Check -->
+  <div class="card">
+    <h3>🔍 Skill D: Final Formatting Check</h3>
+    <p>Before you finish, check that your entire leaflet is consistent. Ask yourself these questions:</p>
+
+    <div class="callout check">
+      <div class="callout-body">
+        <strong>Consistency Checklist</strong>
+        <ul style="padding-left:16px; margin-top:4px; font-size:13px; line-height:1.8;">
+          <li>Are all sub-headings the <strong>same size, colour and style</strong>?</li>
+          <li>Is the body text all the <strong>same font and size</strong>?</li>
+          <li>Are images a <strong>similar size</strong> with text wrapping set?</li>
+          <li>Do tip boxes all have the <strong>same shading and border style</strong>?</li>
+          <li>Have you run <strong>Spell Check (F7)</strong> one final time?</li>
+          <li>Is there a <strong>clear gap</strong> between each section?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="divider">Quiz Time 🐾</div>
+
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Quiz</span>
+      <h3>📝 Lesson 2 Quiz</h3>
+    </div>
+
+    <div class="quiz-wrap">
+      <div class="q-block">
+        <div class="q-text">1. Where do you find the option to insert a picture in Word?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> Home tab</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">B</span> Insert tab</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">C</span> View tab</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> Review tab</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">2. What text wrapping option lets text flow neatly around an image?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> In Line with Text</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">B</span> Square</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">C</span> Behind Text</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> Top and Bottom</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">3. What should you hold while resizing an image to keep it in proportion?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> Ctrl key</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">B</span> Alt key</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">C</span> Shift key</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> Tab key</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">4. What is the purpose of adding shading to a paragraph in Word?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> To make text invisible</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">B</span> To add a background colour that highlights important text</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">C</span> To add a shadow behind the page</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> To change the font colour</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">5. How many columns should a pet care schedule table typically have?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">A</span> 2 — Task and Time</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">B</span> 3 — Task, How Often, Time</div>
+          <div class="q-opt" onclick="answerQ(this, true)"><span class="opt-badge">C</span> 4 — Task, How Often, Time, Notes</div>
+          <div class="q-opt" onclick="answerQ(this, false)"><span class="opt-badge">D</span> 1 — just a list of tasks</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-lav" onclick="goTo('l2-ws')">Go to Final Worksheet 📋</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PANEL: L2-WS
+══════════════════════════════════════════════════════════════ -->
+<section id="panel-l2-ws" class="panel">
+  <div class="lesson-banner l2">
+    <div class="banner-icon">📋</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2 — Final Worksheet</div>
+      <h2>Complete Your Pet Leaflet</h2>
+      <p>Build your care table, create a fun facts box, hunt for spelling errors, and check off everything!</p>
+    </div>
+  </div>
+
+  <!-- TABLE BUILDER -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <span class="ws-icon">📊</span>
+      <div>
+        <h3>Pet Care Schedule Builder</h3>
+        <p>Fill in 5 care tasks for your pet. Copy this table into Word when you're done!</p>
+      </div>
+    </div>
+
+    <table class="table-builder" id="care-table">
+      <tr>
+        <th>Task</th>
+        <th>How Often</th>
+        <th>Time</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="e.g. Feeding"></td>
+        <td><input type="text" placeholder="e.g. Twice daily"></td>
+        <td><input type="text" placeholder="e.g. 7am & 5pm"></td>
+        <td><input type="text" placeholder="e.g. Measured portions"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="e.g. Walking"></td>
+        <td><input type="text" placeholder="e.g. Daily"></td>
+        <td><input type="text" placeholder="e.g. 1 hour"></td>
+        <td><input type="text" placeholder="e.g. Morning walk"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="e.g. Brushing"></td>
+        <td><input type="text" placeholder="e.g. 3x a week"></td>
+        <td><input type="text" placeholder="e.g. 15 mins"></td>
+        <td><input type="text" placeholder="e.g. Reduces shedding"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="e.g. Cleaning"></td>
+        <td><input type="text" placeholder="e.g. Weekly"></td>
+        <td><input type="text" placeholder="e.g. 30 mins"></td>
+        <td><input type="text" placeholder="e.g. Change bedding"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="e.g. Vet visit"></td>
+        <td><input type="text" placeholder="e.g. Yearly"></td>
+        <td><input type="text" placeholder="e.g. 30 mins"></td>
+        <td><input type="text" placeholder="e.g. Vaccinations"></td>
+      </tr>
+    </table>
+
+    <div class="callout tip">
+      <div class="callout-body">
+        <strong>Copy to Word</strong>
+        Once you've planned your table here, create the same table in Microsoft Word using <strong>Insert &rarr; Table</strong>. Don't forget to add shading to the header row!
+      </div>
+    </div>
+  </div>
+
+  <!-- FUN FACTS BOX BUILDER -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <span class="ws-icon">🌟</span>
+      <div>
+        <h3>Fun Facts Box Builder</h3>
+        <p>Write 3-5 fun facts about your pet. These will go in a shaded tip box in your leaflet!</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>🌟 Fun Fact 1</label>
+      <input type="text" id="ws2-fact1" placeholder="e.g. Dogs can understand up to 250 words">
+    </div>
+    <div class="field">
+      <label>🌟 Fun Fact 2</label>
+      <input type="text" id="ws2-fact2" placeholder="e.g. A dog's nose print is unique, like a fingerprint">
+    </div>
+    <div class="field">
+      <label>🌟 Fun Fact 3</label>
+      <input type="text" id="ws2-fact3" placeholder="e.g. The oldest dog ever lived to 29 years old">
+    </div>
+    <div class="field">
+      <label>🌟 Fun Fact 4 (bonus)</label>
+      <input type="text" id="ws2-fact4" placeholder="Add another fact if you can!">
+    </div>
+    <div class="field">
+      <label>🌟 Fun Fact 5 (bonus)</label>
+      <input type="text" id="ws2-fact5" placeholder="One more for a top-level leaflet!">
+    </div>
+
+    <div class="callout word">
+      <div class="callout-body">
+        <strong>In Word</strong>
+        Type these facts, select them all, then add <strong>Shading</strong> (light purple) and <strong>Outside Borders</strong> to create your fun facts box!
+      </div>
+    </div>
+  </div>
+
+  <!-- SPELLING ERROR HUNT -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Game</span>
+      <h3>🔍 Spelling Error Hunt!</h3>
+    </div>
+    <p>This passage about pets has <strong>8 spelling mistakes</strong> hidden in it. Click on each misspelled word to fix it. Can you find them all?</p>
+
+    <div class="hunt-passage" id="hunt-passage"></div>
+    <div id="hunt-score" style="font-size:14px; font-weight:700;">Found: 0 / 8</div>
+    <div class="hunt-correct-box" id="hunt-corrections"></div>
+  </div>
+
+  <!-- FINAL CHECKLIST -->
+  <div class="card">
+    <h3>✅ Final Leaflet Checklist</h3>
+    <p>Go through your leaflet in Word and tick off every item. Your leaflet should have ALL of these!</p>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 🐾 A bold, colourful, centred title (size 24+)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 📑 At least 3 sub-headings (bold, underlined, same colour)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 📝 Text under each sub-heading explaining about the pet</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 📸 At least 2 images with text wrapping set to "Square"</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 📊 A pet care schedule table (4 columns, 5+ rows)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 🌟 A fun facts box with borders and shading</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 🐾 A tip box with borders and shading</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 🔍 Spell Check (F7) run — no red squiggly lines</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 🎨 Consistent formatting throughout</div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span> 🔤 Same font used for all body text</div>
+    </div>
+  </div>
+
+  <!-- PAW PRINT SELF-ASSESSMENT -->
+  <div class="card">
+    <h3>🐾 Self-Assessment: Rate Your Skills!</h3>
+    <p>For each skill, give yourself a paw-print rating. Click the paw prints to rate yourself from 1 (still learning) to 5 (totally confident).</p>
+
+    <div style="display:flex; flex-direction:column; gap:16px; margin-top:12px;">
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Creating a bold, colourful title</div>
+        <div class="paw-rating" data-skill="title">
+          <span class="paw" onclick="ratePaw(this,1)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,2)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,3)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,4)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,5)">🐾</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Formatting consistent sub-headings</div>
+        <div class="paw-rating" data-skill="subheadings">
+          <span class="paw" onclick="ratePaw(this,1)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,2)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,3)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,4)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,5)">🐾</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Using Spell Check (F7)</div>
+        <div class="paw-rating" data-skill="spellcheck">
+          <span class="paw" onclick="ratePaw(this,1)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,2)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,3)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,4)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,5)">🐾</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Using Find &amp; Replace (Ctrl+H)</div>
+        <div class="paw-rating" data-skill="findreplace">
+          <span class="paw" onclick="ratePaw(this,1)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,2)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,3)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,4)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,5)">🐾</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Inserting and formatting images</div>
+        <div class="paw-rating" data-skill="images">
+          <span class="paw" onclick="ratePaw(this,1)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,2)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,3)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,4)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,5)">🐾</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Creating a table for care schedule</div>
+        <div class="paw-rating" data-skill="tables">
+          <span class="paw" onclick="ratePaw(this,1)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,2)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,3)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,4)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,5)">🐾</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Adding borders and shading</div>
+        <div class="paw-rating" data-skill="borders">
+          <span class="paw" onclick="ratePaw(this,1)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,2)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,3)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,4)">🐾</span>
+          <span class="paw" onclick="ratePaw(this,5)">🐾</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="end-card l2">
+    <div class="end-emoji">🏆</div>
+    <h3>You're a Pet Leaflet Pro!</h3>
+    <p>Amazing work! You've learned how to create titles, sub-headings, spell check, find &amp; replace, insert images, create tables, and add borders &amp; shading. Your pet leaflet should look paw-fect! 🐾</p>
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-dark" onclick="goTo('compare')">Back to Start 🐾</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════ -->
+<script>
+// ── PANEL NAVIGATION ──
+const panels = ['compare','l1-intro','l1-skill','l1-ws','l2-intro','l2-skill','l2-ws'];
+const done = new Set();
+
+function showPanel(id, btn) {
+  panels.forEach(p => {
+    document.getElementById('panel-'+p).classList.remove('active');
+  });
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    t.classList.remove('active-l1','active-l2');
+  });
+  document.getElementById('panel-'+id).classList.add('active');
+  const isL2 = id.startsWith('l2');
+  if (btn) btn.classList.add(isL2 ? 'active-l2' : 'active-l1');
+  done.add(id);
+  updateNavDone();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function goTo(id) {
+  const btn = document.querySelector(`[data-panel="${id}"]`);
+  showPanel(id, btn);
+}
+
+function updateNavDone() {
+  panels.forEach(p => {
+    if (done.has(p)) {
+      const tab = document.querySelector(`[data-panel="${p}"]`);
+      if (tab) { tab.classList.add('done'); tab.querySelector('.check').textContent = '✓'; }
+    }
+  });
+}
+
+// ── COMPARE ACTIVITY ──
+let pVoteChoice = null;
+
+function cGoStep(n) {
+  ['cp-look','cp-decide','cp-sort'].forEach((id,i) => {
+    document.getElementById(id).style.display = (i === n-1) ? 'block' : 'none';
+  });
+  ['cstep-1','cstep-2','cstep-3'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.className = 'cstep' + (i < n-1 ? ' cs-done' : i === n-1 ? ' cs-active' : '');
+  });
+  if (n === 3) catBuild();
+  window.scrollTo({top: document.getElementById('panel-compare').offsetTop - 60, behavior:'smooth'});
+}
+
+function pCastVote(which) {
+  if (pVoteChoice) return;
+  pVoteChoice = which;
+  document.getElementById('pvote-a').classList.remove('selected');
+  document.getElementById('pvote-b').classList.remove('selected');
+  document.getElementById('pvote-'+which.toLowerCase()).classList.add('selected');
+  document.getElementById('p-justify').classList.add('show');
+}
+
+function pAppend(text) {
+  const el = document.getElementById('p-justify-box');
+  el.value += (el.value && !el.value.endsWith(' ') ? ' ' : '') + text;
+  el.focus();
+}
+
+function pSubmitJustify() {
+  const val = document.getElementById('p-justify-box').value.trim();
+  if (val.length < 10) {
+    alert('Please write at least a short sentence explaining your choice!');
+    return;
+  }
+  document.getElementById('p-reveal').classList.add('show');
+  document.getElementById('p-reveal-btn').style.display = 'flex';
+}
+
+// ── CATEGORY SORT GAME ──
+const CAT_FEATURES = [
+  { id:'cf1',  text:'Clear title with colour',               correct:'good', icon:'🎨' },
+  { id:'cf2',  text:'Spelling mistakes throughout',           correct:'bad',  icon:'❌' },
+  { id:'cf3',  text:'Photos of the pet',                     correct:'good', icon:'📸' },
+  { id:'cf4',  text:'Five different fonts used',              correct:'bad',  icon:'🔤' },
+  { id:'cf5',  text:'Care schedule in a table',              correct:'good', icon:'📊' },
+  { id:'cf6',  text:'No headings — just a wall of text',     correct:'bad',  icon:'📄' },
+  { id:'cf7',  text:'Tip boxes with borders and shading',    correct:'good', icon:'💡' },
+  { id:'cf8',  text:'Text is tiny and hard to read',         correct:'bad',  icon:'🔍' },
+  { id:'cf9',  text:'Consistent font throughout',            correct:'good', icon:'✅' },
+  { id:'cf10', text:'Random bold and italic everywhere',     correct:'bad',  icon:'😵' },
+  { id:'cf11', text:'Sub-headings that are underlined',      correct:'good', icon:'📑' },
+  { id:'cf12', text:'Text-speak like "u" and "r"',          correct:'bad',  icon:'💬' },
+  { id:'cf13', text:'Fun facts in a shaded box',             correct:'good', icon:'🌟' },
+  { id:'cf14', text:'No images at all',                      correct:'bad',  icon:'🚫' },
+  { id:'cf15', text:'Images with text wrapping',             correct:'good', icon:'🖼️' },
+  { id:'cf16', text:'No spell check run',                    correct:'bad',  icon:'⚠️' },
+];
+
+let catDragSrc = null;
+let catTouchSel = null;
+const catPlacements = {};
+
+function catBuild() {
+  const pool = document.getElementById('cat-pool');
+  pool.innerHTML = '';
+  const shuffled = [...CAT_FEATURES].sort(() => Math.random() - 0.5);
+  document.getElementById('cat-total').textContent = CAT_FEATURES.length;
+
+  shuffled.forEach(f => {
+    const chip = document.createElement('div');
+    chip.className = 'cat-chip';
+    chip.dataset.id = f.id;
+    chip.innerHTML = `<span>${f.icon}</span> ${f.text}`;
+    chip.draggable = true;
+
+    chip.addEventListener('dragstart', e => {
+      catDragSrc = f.id;
+      chip.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    chip.addEventListener('dragend', () => {
+      chip.classList.remove('dragging');
+    });
+
+    // Touch support
+    chip.addEventListener('click', () => {
+      if (catTouchSel === f.id) {
+        catTouchSel = null;
+        document.querySelectorAll('.cat-chip').forEach(c => c.style.outline = '');
+        return;
+      }
+      catTouchSel = f.id;
+      document.querySelectorAll('.cat-chip').forEach(c => c.style.outline = '');
+      chip.style.outline = '3px solid var(--accent)';
+    });
+
+    pool.appendChild(chip);
+  });
+
+  // Set up drop zones
+  ['good','bad'].forEach(zone => {
+    const el = document.getElementById('cat-zone-' + zone);
+    el.addEventListener('dragover', e => {
+      e.preventDefault();
+      el.classList.add('dz-' + zone);
+    });
+    el.addEventListener('dragleave', () => {
+      el.classList.remove('dz-' + zone);
+    });
+    el.addEventListener('drop', e => {
+      e.preventDefault();
+      el.classList.remove('dz-' + zone);
+      if (catDragSrc) {
+        catPlaceChip(catDragSrc, zone);
+        catDragSrc = null;
+      }
+    });
+    el.addEventListener('click', () => {
+      if (catTouchSel) {
+        catPlaceChip(catTouchSel, zone);
+        catTouchSel = null;
+        document.querySelectorAll('.cat-chip').forEach(c => c.style.outline = '');
+      }
+    });
+  });
+
+  catUpdateCounts();
+}
+
+function catPlaceChip(fId, zone) {
+  const f = CAT_FEATURES.find(x => x.id === fId);
+  if (!f) return;
+  catPlacements[fId] = zone;
+
+  const chip = document.querySelector(`.cat-chip[data-id="${fId}"]`);
+  if (!chip) return;
+
+  const target = document.getElementById('cat-' + zone + '-chips');
+  const hint = target.querySelector('.cat-empty-hint');
+  if (hint) hint.remove();
+
+  chip.classList.remove('in-good','in-bad');
+  chip.classList.add(zone === 'good' ? 'in-good' : 'in-bad');
+  chip.style.outline = '';
+  target.appendChild(chip);
+  catUpdateCounts();
+}
+
+function catUpdateCounts() {
+  const goodChips = document.getElementById('cat-good-chips').querySelectorAll('.cat-chip').length;
+  const badChips = document.getElementById('cat-bad-chips').querySelectorAll('.cat-chip').length;
+  document.getElementById('cat-good-count').textContent = goodChips;
+  document.getElementById('cat-bad-count').textContent = badChips;
+  const remaining = CAT_FEATURES.length - goodChips - badChips;
+  document.getElementById('cat-remaining').textContent = remaining > 0 ? `(${remaining} left)` : '(all sorted!)';
+}
+
+function catCheck() {
+  let score = 0;
+  CAT_FEATURES.forEach(f => {
+    const chip = document.querySelector(`.cat-chip[data-id="${f.id}"]`);
+    if (!chip) return;
+    const placed = catPlacements[f.id];
+    if (placed === f.correct) {
+      chip.classList.remove('wrong-chip');
+      chip.classList.add('correct-chip');
+      score++;
+    } else if (placed) {
+      chip.classList.remove('correct-chip');
+      chip.classList.add('wrong-chip');
+    }
+  });
+
+  document.getElementById('cat-score-num').textContent = score;
+  const result = document.getElementById('cat-result');
+  const total = CAT_FEATURES.length;
+  if (score === total) {
+    result.className = 'cat-result show perfect';
+    result.innerHTML = `<div class="result-num">${score}/${total}</div><h4>🐾 Paw-fect Score!</h4><p>You correctly sorted every single feature. You know exactly what makes a great pet leaflet!</p>`;
+  } else {
+    result.className = 'cat-result show partial';
+    result.innerHTML = `<div class="result-num">${score}/${total}</div><h4>Almost there!</h4><p>Good effort! The ones with a red border are in the wrong category. Try moving them and check again!</p>`;
+  }
+}
+
+// ── MATCHING GAME ──
+const MATCH_PAIRS = [
+  { left: 'Spell Check (F7)',     right: 'Find and fix spelling mistakes' },
+  { left: 'Find & Replace',       right: 'Change a word everywhere at once' },
+  { left: 'Font Colour',          right: 'Make your title colourful' },
+  { left: 'Borders & Shading',    right: 'Add a box around important tips' },
+  { left: 'Bold + Size 24',       right: 'Create a big main title' },
+  { left: 'Underline',            right: 'Make sub-headings stand out' },
+];
+
+let matchSelLeft = null;
+let matchSelRight = null;
+let matchCount = 0;
+
+function buildMatchGame() {
+  const leftCol = document.getElementById('match-left');
+  const rightCol = document.getElementById('match-right');
+  // keep headers
+  const leftH = leftCol.querySelector('h4');
+  const rightH = rightCol.querySelector('h4');
+  leftCol.innerHTML = '';
+  rightCol.innerHTML = '';
+  leftCol.appendChild(leftH);
+  rightCol.appendChild(rightH);
+
+  const leftOrder = [...MATCH_PAIRS].sort(() => Math.random() - 0.5);
+  const rightOrder = [...MATCH_PAIRS].sort(() => Math.random() - 0.5);
+
+  leftOrder.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'match-card';
+    card.textContent = p.left;
+    card.dataset.pair = MATCH_PAIRS.indexOf(p);
+    card.dataset.side = 'left';
+    card.onclick = () => matchClick(card);
+    leftCol.appendChild(card);
+  });
+
+  rightOrder.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'match-card';
+    card.textContent = p.right;
+    card.dataset.pair = MATCH_PAIRS.indexOf(p);
+    card.dataset.side = 'right';
+    card.onclick = () => matchClick(card);
+    rightCol.appendChild(card);
+  });
+}
+
+function matchClick(card) {
+  if (card.classList.contains('matched')) return;
+  const side = card.dataset.side;
+
+  if (side === 'left') {
+    document.querySelectorAll('#match-left .match-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    matchSelLeft = card;
+  } else {
+    document.querySelectorAll('#match-right .match-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    matchSelRight = card;
+  }
+
+  if (matchSelLeft && matchSelRight) {
+    if (matchSelLeft.dataset.pair === matchSelRight.dataset.pair) {
+      matchSelLeft.classList.remove('selected');
+      matchSelRight.classList.remove('selected');
+      matchSelLeft.classList.add('matched');
+      matchSelRight.classList.add('matched');
+      matchCount++;
+      if (matchCount === MATCH_PAIRS.length) {
+        document.getElementById('match-status').innerHTML = '🐾 <span style="color:#065f46;">Paw-fect! All matched correctly!</span>';
+      }
+    } else {
+      matchSelLeft.classList.add('wrong');
+      matchSelRight.classList.add('wrong');
+      setTimeout(() => {
+        matchSelLeft.classList.remove('wrong','selected');
+        matchSelRight.classList.remove('wrong','selected');
+        matchSelLeft = null;
+        matchSelRight = null;
+      }, 600);
+      return;
+    }
+    matchSelLeft = null;
+    matchSelRight = null;
+  }
+}
+
+// ── SPOT THE ERROR GAME ──
+const ERROR_PARAGRAPH = [
+  {w:'Hamsters', e:false},
+  {w:'are', e:false},
+  {w:'wonderfull', e:true, fix:'wonderful'},
+  {w:'little', e:false},
+  {w:'pets', e:false},
+  {w:'that', e:false},
+  {w:'are', e:false},
+  {w:'easy', e:false},
+  {w:'to', e:false},
+  {w:'look', e:false},
+  {w:'after.', e:false},
+  {w:'They', e:false},
+  {w:'luv', e:true, fix:'love'},
+  {w:'running', e:false},
+  {w:'on', e:false},
+  {w:'there', e:true, fix:'their'},
+  {w:'wheel', e:false},
+  {w:'at', e:false},
+  {w:'night.', e:false},
+  {w:'You', e:false},
+  {w:'shuld', e:true, fix:'should'},
+  {w:'clean', e:false},
+  {w:'the', e:false},
+  {w:'cage', e:false},
+  {w:'every', e:false},
+  {w:'weak', e:true, fix:'week'},
+  {w:'to', e:false},
+  {w:'keep', e:false},
+  {w:'it', e:false},
+  {w:'hygenick.', e:true, fix:'hygienic.'},
+  {w:'Hamsters', e:false},
+  {w:'eat', e:false},
+  {w:'seeds,', e:false},
+  {w:'vegitables', e:true, fix:'vegetables'},
+  {w:'and', e:false},
+  {w:'sometimes', e:false},
+  {w:'small', e:false},
+  {w:'peices', e:true, fix:'pieces'},
+  {w:'of', e:false},
+  {w:'fruit.', e:false},
+  {w:'They', e:false},
+  {w:'are', e:false},
+  {w:'nocternal', e:false},
+  {w:'animals,', e:false},
+  {w:'wich', e:false},
+  {w:'means', e:false},
+  {w:'they', e:false},
+  {w:'sleep', e:false},
+  {w:'during', e:false},
+  {w:'the', e:false},
+  {w:'day.', e:false},
+];
+
+let errorFound = 0;
+const totalErrors = 8;
+
+function buildErrorGame() {
+  const el = document.getElementById('error-passage');
+  el.innerHTML = '';
+  ERROR_PARAGRAPH.forEach((item, i) => {
+    const span = document.createElement('span');
+    span.className = 'error-word';
+    span.textContent = item.w;
+    span.dataset.index = i;
+    span.onclick = () => clickError(span, item);
+    el.appendChild(span);
+    el.appendChild(document.createTextNode(' '));
+  });
+}
+
+function clickError(span, item) {
+  if (span.classList.contains('found')) return;
+  if (item.e) {
+    span.classList.add('found');
+    span.title = 'Correct: ' + item.fix;
+    errorFound++;
+    document.getElementById('error-score').innerHTML = `Found: ${errorFound} / ${totalErrors}` +
+      (errorFound === totalErrors ? ' — <span style="color:#065f46;">🐾 All found! Well done!</span>' : '');
+  } else {
+    span.classList.add('wrong-click');
+    setTimeout(() => span.classList.remove('wrong-click'), 400);
+  }
+}
+
+// ── SORTING GAME ──
+const SORT_STEPS = [
+  'Open a new blank document in Microsoft Word',
+  'Type a bold, colourful title at the top',
+  'Add sub-headings for each section',
+  'Write text content under each sub-heading',
+  'Insert at least 2 pet images with text wrapping',
+  'Create a care schedule table (4 columns)',
+  'Add tip boxes with borders and shading',
+  'Run Spell Check (F7) to fix all errors',
+  'Check all formatting is consistent',
+  'Save your finished leaflet',
+];
+
+let sortDragEl = null;
+
+function buildSortGame() {
+  const list = document.getElementById('sort-list');
+  list.innerHTML = '';
+  const shuffled = [...SORT_STEPS];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  shuffled.forEach((text, i) => {
+    const item = document.createElement('div');
+    item.className = 'sort-item';
+    item.draggable = true;
+    item.dataset.correct = SORT_STEPS.indexOf(text);
+    item.innerHTML = `<span class="sort-handle">☰</span><span class="sort-pos">${i+1}</span><span>${text}</span>`;
+
+    item.addEventListener('dragstart', e => {
+      sortDragEl = item;
+      item.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging');
+      sortDragEl = null;
+      updatePositions();
+    });
+    item.addEventListener('dragover', e => {
+      e.preventDefault();
+      item.classList.add('over');
+    });
+    item.addEventListener('dragleave', () => {
+      item.classList.remove('over');
+    });
+    item.addEventListener('drop', e => {
+      e.preventDefault();
+      item.classList.remove('over');
+      if (sortDragEl && sortDragEl !== item) {
+        const list = item.parentNode;
+        const items = [...list.children];
+        const fromIdx = items.indexOf(sortDragEl);
+        const toIdx = items.indexOf(item);
+        if (fromIdx < toIdx) {
+          list.insertBefore(sortDragEl, item.nextSibling);
+        } else {
+          list.insertBefore(sortDragEl, item);
+        }
+      }
+      updatePositions();
+    });
+
+    // Touch: tap to select, tap another to swap
+    item.addEventListener('click', () => {
+      const selected = list.querySelector('.sort-item.over');
+      if (selected && selected !== item) {
+        selected.classList.remove('over');
+        // swap
+        const parent = item.parentNode;
+        const itemNext = item.nextSibling;
+        const selectedNext = selected.nextSibling;
+        if (itemNext === selected) {
+          parent.insertBefore(selected, item);
+        } else if (selectedNext === item) {
+          parent.insertBefore(item, selected);
+        } else {
+          parent.insertBefore(selected, itemNext);
+          parent.insertBefore(item, selectedNext);
+        }
+        updatePositions();
+      } else {
+        list.querySelectorAll('.sort-item').forEach(s => s.classList.remove('over'));
+        item.classList.add('over');
+      }
+    });
+
+    list.appendChild(item);
+  });
+}
+
+function updatePositions() {
+  const items = document.querySelectorAll('#sort-list .sort-item');
+  items.forEach((item, i) => {
+    item.querySelector('.sort-pos').textContent = i + 1;
+  });
+}
+
+function checkSort() {
+  const items = document.querySelectorAll('#sort-list .sort-item');
+  let correct = 0;
+  items.forEach((item, i) => {
+    const pos = item.querySelector('.sort-pos');
+    if (parseInt(item.dataset.correct) === i) {
+      pos.style.background = 'var(--success)';
+      pos.style.color = 'white';
+      correct++;
+    } else {
+      pos.style.background = '#e63946';
+      pos.style.color = 'white';
+    }
+  });
+  const fb = document.getElementById('sort-feedback');
+  if (correct === items.length) {
+    fb.innerHTML = '<span style="color:#065f46;">🐾 Paw-fect! All steps in the right order!</span>';
+  } else {
+    fb.innerHTML = `<span style="color:#92400e;">${correct}/${items.length} correct. The green numbers are right — try moving the red ones!</span>`;
+  }
+}
+
+function shuffleSort() {
+  const list = document.getElementById('sort-list');
+  const items = [...list.children];
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    list.insertBefore(items[j], items[i]);
+  }
+  updatePositions();
+  document.getElementById('sort-feedback').textContent = '';
+  items.forEach(item => {
+    const pos = item.querySelector('.sort-pos');
+    pos.style.background = '';
+    pos.style.color = '';
+  });
+}
+
+// ── SPELLING HUNT (L2 Worksheet) ──
+const HUNT_WORDS = [
+  'Dogs','are','one','of','the','most','populer','pets','in','the','world.',
+  'They','are','loyl','and','loving','companions','who','enjoy','being','around',
+  'there','owners.','A','dog','needs','plenty','of','exercize','every','day',
+  'to','stay','helthy','and','happy.','You','should','take','your','dog',
+  'for','at','least','one','long','walk','each','day.','It','is',
+  'importent','to','brush','your','dog','regulary','to','keep','their',
+  'fur','clean','and','tangle-free.','Dogs','also','need','fresh','water',
+  'and','nutrious','food','every','day.','Remember','to','take','your',
+  'dog','to','the','vet','for','regular','check-ups!'
+];
+
+const HUNT_ERRORS = {
+  6:  'popular',    // populer
+  13: 'loyal',      // loyl
+  21: 'their',      // there
+  28: 'exercise',   // exercize
+  33: 'healthy',    // helthy
+  50: 'important',  // importent
+  55: 'regularly',  // regulary
+  70: 'nutritious', // nutrious
+};
+
+let huntFound = 0;
+const huntTotal = Object.keys(HUNT_ERRORS).length;
+
+function buildHuntGame() {
+  const el = document.getElementById('hunt-passage');
+  el.innerHTML = '';
+  HUNT_WORDS.forEach((word, i) => {
+    const span = document.createElement('span');
+    span.className = 'hunt-word';
+    span.textContent = word;
+    span.dataset.index = i;
+    span.onclick = () => clickHunt(span, i);
+    el.appendChild(span);
+    el.appendChild(document.createTextNode(' '));
+  });
+}
+
+function clickHunt(span, index) {
+  if (span.classList.contains('hunt-found')) return;
+  if (HUNT_ERRORS[index]) {
+    span.classList.add('hunt-found');
+    span.title = 'Correct spelling: ' + HUNT_ERRORS[index];
+    huntFound++;
+    document.getElementById('hunt-score').innerHTML = `Found: ${huntFound} / ${huntTotal}` +
+      (huntFound === huntTotal ? ' — <span style="color:#065f46;">🐾 All errors found! Brilliant!</span>' : '');
+    if (huntFound === huntTotal) {
+      const box = document.getElementById('hunt-corrections');
+      box.classList.add('show');
+      let html = '<strong>Corrections:</strong><br>';
+      for (const [idx, correct] of Object.entries(HUNT_ERRORS)) {
+        html += `<span style="text-decoration:line-through; color:#991b1b;">${HUNT_WORDS[idx]}</span> → <strong style="color:#065f46;">${correct}</strong> &nbsp; `;
+      }
+      box.innerHTML = html;
+    }
+  } else {
+    span.classList.add('hunt-wrong');
+    setTimeout(() => span.classList.remove('hunt-wrong'), 400);
+  }
+}
+
+// ── QUIZ ──
+function answerQ(el, correct) {
+  const block = el.closest('.q-block');
+  if (block.querySelector('.correct, .wrong')) return;
+  const fb = block.querySelector('.q-feedback');
+  if (correct) {
+    el.classList.add('correct');
+    fb.textContent = '✓ Correct! Well done. 🐾';
+    fb.className = 'q-feedback good';
+  } else {
+    el.classList.add('wrong');
+    fb.textContent = '✗ Not quite — look back at the information above and try again.';
+    fb.className = 'q-feedback bad';
+    block.querySelectorAll('.q-opt').forEach(o => o.classList.add('locked'));
+    setTimeout(() => {
+      el.classList.remove('wrong');
+      block.querySelectorAll('.q-opt').forEach(o => o.classList.remove('locked'));
+      fb.textContent = '';
+    }, 1400);
+  }
+}
+
+// ── CHECKLIST ──
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  el.querySelector('.check-box').textContent = el.classList.contains('checked') ? '✓' : '';
+}
+
+// ── LEAFLET LIVE PREVIEW ──
+const PET_EMOJIS = {
+  'Dog': '🐕', 'Cat': '🐈', 'Hamster': '🐹', 'Rabbit': '🐰',
+  'Fish': '🐠', 'Lizard': '🦎', 'Guinea Pig': '🐹', 'Bird': '🐦'
+};
+
+function updateLeafletPreview() {
+  const petType = document.getElementById('ws-pet-type').value;
+  const petOther = document.getElementById('ws-pet-other') ? document.getElementById('ws-pet-other').value.trim() : '';
+  const petName = document.getElementById('ws-pet-name').value.trim();
+  const whyBest = document.getElementById('ws-why-best').value.trim();
+  const fact1 = document.getElementById('ws-fact1').value.trim();
+  const fact2 = document.getElementById('ws-fact2').value.trim();
+  const fact3 = document.getElementById('ws-fact3').value.trim();
+
+  // Show/hide other field
+  const otherField = document.getElementById('other-pet-field');
+  if (petType === 'other') {
+    otherField.style.display = 'block';
+  } else {
+    otherField.style.display = 'none';
+  }
+
+  const displayPet = petType === 'other' ? (petOther || 'My Pet') : (petType || 'My Pet');
+  const emoji = PET_EMOJIS[petType] || '🐾';
+
+  // Title
+  const titleText = petName ? `My Amazing ${petName}` : `My Favourite ${displayPet}`;
+  document.getElementById('preview-title').textContent = titleText;
+
+  // Emoji
+  document.getElementById('preview-pet-emoji').textContent = emoji;
+
+  // Why best
+  document.getElementById('preview-why').textContent = whyBest || 'Your description will appear here as you type above...';
+
+  // Facts
+  const facts = [fact1, fact2, fact3].filter(Boolean);
+  const factsEl = document.getElementById('preview-facts');
+  if (facts.length > 0) {
+    factsEl.innerHTML = facts.map(f => `<div style="margin-bottom:4px;">🌟 ${f}</div>`).join('');
+  } else {
+    factsEl.innerHTML = '<div>Your fun facts will appear here...</div>';
+  }
+}
+
+// ── PAW RATING ──
+function ratePaw(el, rating) {
+  const container = el.parentElement;
+  const paws = container.querySelectorAll('.paw');
+  paws.forEach((p, i) => {
+    if (i < rating) {
+      p.classList.add('active');
+    } else {
+      p.classList.remove('active');
+    }
+  });
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  buildMatchGame();
+  buildErrorGame();
+  buildSortGame();
+  buildHuntGame();
+  done.add('compare');
+  updateNavDone();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Football Club Programme – Word Skills for Y9</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #f0f5f0;
+  --card: #ffffff;
+  --l1: #1b4332;
+  --l1-light: #e6f0eb;
+  --l2: #40916c;
+  --l2-light: #e4f2ec;
+  --accent: #f77f00;
+  --gold: #f4a261;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --success: #06d6a0;
+  --radius: 14px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #1b4332 0%, #0b2118 100%);
+  color: white;
+  padding: 52px 24px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.02) 40px,
+    rgba(255,255,255,0.02) 80px
+  );
+}
+/* Pitch lines decoration */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 50%; transform: translateX(-50%);
+  width: 160px; height: 80px;
+  border: 2px solid rgba(255,255,255,0.08);
+  border-radius: 0 0 80px 80px;
+  border-top: none;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.hero h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(26px, 5vw, 46px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  position: relative;
+}
+.hero h1 span { color: var(--accent); }
+.hero p {
+  font-size: 16px;
+  opacity: 0.75;
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+  font-weight: 300;
+  position: relative;
+}
+.hero-pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── NAV ── */
+nav {
+  background: white;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-tab {
+  flex-shrink: 0;
+  padding: 16px 22px;
+  border: none;
+  background: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-tab:hover { color: var(--ink); }
+.nav-tab.active-l1 { color: var(--l1); border-bottom-color: var(--l1); }
+.nav-tab.active-l2 { color: var(--l2); border-bottom-color: var(--l2); }
+.nav-tab .check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  transition: all 0.2s;
+}
+.nav-tab.done .check { background: var(--success); border-color: var(--success); color: white; }
+
+/* ── MAIN ── */
+main { max-width: 860px; margin: 0 auto; padding: 36px 16px 80px; }
+
+.panel { display: none; animation: fadeUp 0.35s ease; }
+.panel.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── LESSON BANNER ── */
+.lesson-banner {
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  color: white;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.lesson-banner.l1 { background: linear-gradient(130deg, #1b4332 0%, #0d2b1f 100%); }
+.lesson-banner.l2 { background: linear-gradient(130deg, #40916c 0%, #2d6a4f 100%); }
+.banner-icon {
+  font-size: 52px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+.banner-text .lesson-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+.banner-text h2 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.banner-text p { font-size: 14px; opacity: 0.85; line-height: 1.5; }
+
+/* ── OBJECTIVES ── */
+.objectives {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);
+}
+.objectives h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.obj-list { display: flex; flex-direction: column; gap: 8px; }
+.obj-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.obj-num {
+  width: 22px; height: 22px;
+  background: var(--ink);
+  color: white;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── SECTION CARD ── */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.card h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card p { font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 10px; }
+.card p:last-child { margin-bottom: 0; }
+
+/* ── CALLOUTS ── */
+.callout {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-body strong { display: block; font-weight: 700; margin-bottom: 3px; }
+.callout.tip { background: #fffbeb; border: 1px solid #fde68a; }
+.callout.tip::before { content: '💡'; font-size: 18px; }
+.callout.word { background: #eff6ff; border: 1px solid #bfdbfe; }
+.callout.word::before { content: '📘'; font-size: 18px; }
+.callout.watch { background: #fdf4ff; border: 1px solid #e9d5ff; }
+.callout.watch::before { content: '👀'; font-size: 18px; }
+.callout.check { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.callout.check::before { content: '✅'; font-size: 18px; }
+.callout.football { background: #e6f0eb; border: 1px solid #a7d7c5; }
+.callout.football::before { content: '⚽'; font-size: 18px; }
+
+/* ── STEP-BY-STEP ── */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.step.l1 .step-num { background: var(--l1); }
+.step.l2 .step-num { background: var(--l2); }
+.step-body { flex: 1; }
+.step-body strong { display: block; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.step-body p, .step-body span { font-size: 14px; color: #4b5563; line-height: 1.6; }
+.step-body .kbd {
+  display: inline-block;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-bottom: 3px solid #9ca3af;
+  border-radius: 5px;
+  padding: 1px 8px;
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--ink);
+  margin: 0 2px;
+}
+
+/* ── ACTIVITY ── */
+.activity {
+  background: linear-gradient(135deg, #fef9ef, #fff7ed);
+  border: 2px dashed var(--gold);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.activity-header h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #92400e;
+}
+.activity-tag {
+  background: var(--gold);
+  color: #78350f;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.activity p { font-size: 14px; line-height: 1.7; color: #78350f; margin-bottom: 8px; }
+
+/* ── QUIZ ── */
+.quiz-wrap { display: flex; flex-direction: column; gap: 20px; }
+.q-block {}
+.q-block .q-text { font-size: 15px; font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
+.q-options { display: flex; flex-direction: column; gap: 6px; }
+.q-opt {
+  padding: 11px 16px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.18s;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+.q-opt:hover:not(.locked) { border-color: var(--ink); }
+.q-opt .opt-badge {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  background: var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.18s;
+}
+.q-opt.correct { border-color: var(--success); background: #f0fdf4; }
+.q-opt.correct .opt-badge { background: var(--success); color: white; }
+.q-opt.wrong { border-color: #e63946; background: #fdecea; }
+.q-opt.wrong .opt-badge { background: #e63946; color: white; }
+.q-feedback { font-size: 13px; font-weight: 600; margin-top: 8px; min-height: 18px; }
+.q-feedback.good { color: #065f46; }
+.q-feedback.bad { color: #e63946; }
+
+/* ── MATCH GAME ── */
+.match-area { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.match-col { display: flex; flex-direction: column; gap: 8px; }
+.match-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.match-card {
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: white;
+  user-select: none;
+}
+.match-card:hover:not(.matched):not(.locked) { border-color: var(--ink); }
+.match-card.selected { border-color: var(--l2); background: var(--l2-light); color: var(--l2); }
+.match-card.matched { border-color: var(--success); background: #f0fdf4; color: #065f46; cursor: default; }
+.match-card.wrong { border-color: #e63946; background: #fdecea; animation: shake 0.3s; }
+@keyframes shake { 0%,100%{transform:none} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+#match-status { font-size: 14px; font-weight: 700; min-height: 20px; text-align: center; margin-top: 8px; }
+
+/* ── SORTING ── */
+.sort-list { display: flex; flex-direction: column; gap: 8px; }
+.sort-item {
+  padding: 12px 16px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  user-select: none;
+}
+.sort-item:hover { border-color: var(--l2); box-shadow: 0 2px 10px rgba(64,145,108,0.1); }
+.sort-item.dragging { opacity: 0.45; cursor: grabbing; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.sort-item.over { border-color: var(--l2); background: var(--l2-light); }
+.sort-handle { color: #d1d5db; font-size: 18px; }
+.sort-pos {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--border);
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+/* ── COMPARE / PROGRAMME DOCS ── */
+.compare-intro {
+  background: white;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--l1);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.compare-intro h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.compare-intro p { font-size: 14px; line-height: 1.7; color: #374151; }
+
+.prog-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media(max-width: 680px) { .prog-compare-grid { grid-template-columns: 1fr; } }
+
+.prog-compare-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.22s;
+  box-shadow: var(--shadow);
+}
+.prog-compare-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+.prog-compare-card.picked-good { border-color: var(--success); box-shadow: 0 0 0 3px rgba(6,214,160,0.25); }
+.prog-compare-card.picked-bad  { border-color: #e63946; box-shadow: 0 0 0 3px rgba(230,57,70,0.2); }
+
+.prog-compare-label {
+  padding: 10px 16px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.prog-compare-card.pa .prog-compare-label { background: #fdecea; color: #991b1b; }
+.prog-compare-card.pb .prog-compare-label { background: #e6f0eb; color: #065f46; }
+
+/* Bad programme mock */
+.prog-doc-bad {
+  background: #fffef0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #111;
+  padding: 14px;
+  font-size: 10px;
+  line-height: 1.35;
+  min-height: 340px;
+}
+
+/* Good programme mock */
+.prog-doc-good {
+  background: white;
+  padding: 16px;
+  font-family: 'Times New Roman', serif;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #1a1a2e;
+  min-height: 340px;
+}
+
+/* Vote */
+.vote-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.vote-choice {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: white;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow);
+}
+.vote-choice:hover { transform: translateY(-2px); }
+.vote-choice.va:hover, .vote-choice.va.selected { border-color: #e63946; background: #fdecea; color: #e63946; }
+.vote-choice.vb:hover, .vote-choice.vb.selected { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+
+.justify-wrap { display: none; animation: fadeUp 0.3s ease; }
+.justify-wrap.show { display: block; }
+.justify-wrap label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); display: block; margin-bottom: 8px; }
+.starter-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.s-chip {
+  background: #f3f4f6; border: 1px solid var(--border); color: #374151;
+  border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.s-chip:hover { border-color: var(--l1); color: var(--l1); background: var(--l1-light); }
+
+/* Reveal boxes */
+.reveal-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; display: none; }
+.reveal-boxes.show { display: grid; }
+@media(max-width:600px){ .reveal-boxes { grid-template-columns: 1fr; } }
+.reveal-box { border-radius: var(--radius); padding: 18px; }
+.reveal-box.good-box { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.reveal-box.bad-box  { background: #fdecea; border: 1px solid #fca5a5; }
+.reveal-box h4 { font-family: 'Baloo 2', sans-serif; font-size: 15px; font-weight: 800; margin-bottom: 10px; }
+.reveal-box.good-box h4 { color: #065f46; }
+.reveal-box.bad-box h4  { color: #991b1b; }
+.reveal-list-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; color: #374151; margin-bottom: 6px; }
+
+/* CATEGORY SORT GAME */
+.cat-game-header {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e7ff;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.cat-game-header h3 { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+.cat-game-header p { font-size: 14px; color: var(--muted); }
+
+.cat-pool-wrap {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.cat-pool-wrap h4 {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.cat-pool {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  min-height: 56px; padding: 8px;
+  border: 2px dashed var(--border); border-radius: 10px;
+  transition: border-color 0.2s;
+}
+.cat-pool.drag-over { border-color: var(--accent); background: #fff8f0; }
+
+.cat-chip {
+  padding: 9px 14px;
+  border-radius: 9px;
+  border: 1.5px solid var(--border);
+  background: #f9fafb;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: grab;
+  transition: all 0.18s;
+  user-select: none;
+  display: flex; align-items: center; gap: 7px;
+  position: relative;
+}
+.cat-chip:hover { border-color: var(--accent); color: #92400e; background: #fffbeb; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+.cat-chip.dragging { opacity: 0.4; cursor: grabbing; }
+.cat-chip.in-good { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.cat-chip.in-bad  { border-color: #e63946; background: #fdecea; color: #991b1b; }
+.cat-chip.correct-chip { border-color: var(--success); background: #f0fdf4; color: #065f46; }
+.cat-chip.wrong-chip   { border-color: #e63946; background: #fdecea; color: #991b1b; animation: shake 0.35s; }
+
+.cat-chip-tooltip {
+  position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+  background: #1a1a2e; color: white; border-radius: 8px; padding: 7px 11px;
+  font-size: 11px; font-weight: 400; white-space: normal; text-align: center;
+  max-width: 200px; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 20;
+}
+.cat-chip:hover .cat-chip-tooltip { opacity: 1; }
+
+.cat-zones { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+@media(max-width:580px){ .cat-zones { grid-template-columns: 1fr; } }
+
+.cat-zone {
+  border-radius: var(--radius); padding: 16px; min-height: 180px;
+  border: 2px dashed; transition: all 0.2s;
+}
+.cat-zone.zone-good { border-color: rgba(6,214,160,0.4); background: #f0fdf4; }
+.cat-zone.zone-bad  { border-color: rgba(230,57,70,0.3); background: #fdecea; }
+.cat-zone.dz-good { border-color: var(--success); background: #e0faf2; transform: scale(1.01); }
+.cat-zone.dz-bad  { border-color: #e63946; background: #fce8e8; transform: scale(1.01); }
+
+.cat-zone-hdr { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.cat-zone-hdr .ztitle { font-family: 'Baloo 2', sans-serif; font-size: 16px; font-weight: 800; }
+.zone-good .ztitle { color: #065f46; }
+.zone-bad  .ztitle { color: #e63946; }
+.zcount { margin-left: auto; font-family: monospace; font-size: 12px; padding: 2px 9px; border-radius: 999px; font-weight: 700; }
+.zone-good .zcount { background: #bbf7d0; color: #065f46; }
+.zone-bad  .zcount { background: #fecaca; color: #991b1b; }
+
+.cat-zone-chips { display: flex; flex-wrap: wrap; gap: 7px; min-height: 60px; }
+.cat-empty-hint { width: 100%; text-align: center; font-size: 12px; color: #9ca3af; padding: 16px 0; font-style: italic; }
+
+.cat-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.cat-score { font-size: 13px; font-weight: 700; color: var(--muted); }
+.cat-score span { color: var(--l1); font-size: 16px; font-family: 'Baloo 2', sans-serif; }
+
+.cat-result {
+  border-radius: var(--radius); padding: 24px; text-align: center; display: none;
+  margin-bottom: 20px;
+}
+.cat-result.show { display: block; animation: fadeUp 0.4s ease; }
+.cat-result.perfect { background: #f0fdf4; border: 2px solid var(--success); }
+.cat-result.partial  { background: #fffbeb; border: 2px solid var(--gold); }
+.cat-result .result-num { font-family: 'Baloo 2', sans-serif; font-size: 44px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+.cat-result.perfect .result-num { color: #065f46; }
+.cat-result.partial  .result-num { color: #92400e; }
+.cat-result h4 { font-family: 'Baloo 2', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.cat-result p  { font-size: 13px; color: var(--muted); max-width: 380px; margin: 0 auto; line-height: 1.6; }
+
+/* Compare step dots */
+.compare-steps {
+  display: flex; justify-content: center; gap: 6px; margin-bottom: 22px;
+}
+.cstep {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border);
+  background: white;
+}
+.cstep.cs-active { color: var(--l1); border-color: var(--l1); background: var(--l1-light); }
+.cstep.cs-done   { color: #065f46; border-color: var(--success); background: #f0fdf4; }
+
+/* ── WORKSHEET ── */
+.worksheet {
+  background: white;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.worksheet-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+}
+.ws-icon { font-size: 28px; }
+.worksheet-header h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+}
+.worksheet-header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.field { margin-bottom: 18px; }
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field .hint { font-size: 12px; color: #9ca3af; font-weight: 400; text-transform: none; letter-spacing: 0; margin-bottom: 6px; display: block; font-style: italic; }
+input[type=text], textarea, select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fafafa;
+  transition: border-color 0.2s, background 0.2s;
+  resize: vertical;
+}
+input[type=text]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--l2);
+  background: white;
+}
+textarea { min-height: 80px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:540px){ .field-row { grid-template-columns: 1fr; } }
+
+/* ── WORD VISUAL MOCK ── */
+.word-mock {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+}
+.word-mock-bar {
+  background: #2b579a;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.word-mock-bar span { color: white; font-size: 13px; font-weight: 600; opacity: 0.9; }
+.word-mock-ribbon {
+  background: #f3f3f3;
+  border-bottom: 1px solid #d1d5db;
+  padding: 6px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ribbon-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ribbon-btn.highlight { background: #fff3cd; border-color: var(--gold); }
+.word-mock-body {
+  background: #e5e7eb;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+.word-page {
+  background: white;
+  width: 100%;
+  max-width: 460px;
+  min-height: 120px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.word-page table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.word-page td, .word-page th { border: 1px solid #d1d5db; padding: 6px 8px; text-align: left; }
+.word-page th { background: #f9fafb; font-weight: 700; }
+
+/* ── CHECKLIST ── */
+.checklist { display: flex; flex-direction: column; gap: 10px; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+}
+.check-item:hover { border-color: var(--l2); }
+.check-item.checked { border-color: var(--success); background: #f0fdf4; }
+.check-box {
+  width: 22px; height: 22px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: all 0.18s;
+}
+.check-item.checked .check-box { background: var(--success); border-color: var(--success); color: white; }
+
+/* ── PROGRAMME PREVIEW ── */
+.prog-preview {
+  background: white;
+  border: 2px solid var(--l1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.prog-preview-bar {
+  background: var(--l1);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.prog-preview-bar span { color: white; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 14px; }
+.prog-preview-body { padding: 24px; }
+.prog-header-strip {
+  background: #e6f0eb;
+  padding: 4px 12px;
+  font-size: 10px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.prog-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--l1);
+  text-align: center;
+  margin-bottom: 4px;
+}
+.prog-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: var(--l2);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.prog-section { margin-bottom: 14px; }
+.prog-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--l1);
+  margin-bottom: 6px;
+  border-bottom: 2px solid var(--l2);
+  padding-bottom: 3px;
+  display: inline-block;
+}
+.prog-squad-list { list-style: none; font-size: 13px; color: #374151; }
+.prog-squad-list li { padding: 2px 0; }
+.prog-squad-list li span { font-weight: 700; color: var(--l1); margin-right: 6px; }
+.prog-badge-placeholder {
+  width: 50px; height: 50px;
+  border: 2px dashed var(--l2);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  float: right;
+  margin-left: 10px;
+}
+.prog-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+.prog-table td, .prog-table th { border: 1px solid #d1d5db; padding: 5px 8px; text-align: center; }
+.prog-table th { background: var(--l1); color: white; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-dark { background: var(--ink); color: white; }
+.btn-dark:hover { background: #2d2d44; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+.btn-green { background: var(--l1); color: white; }
+.btn-green:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(27,67,50,0.3); }
+.btn-teal { background: var(--l2); color: white; }
+.btn-teal:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(64,145,108,0.3); }
+.btn-accent { background: var(--accent); color: white; }
+.btn-accent:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(247,127,0,0.3); }
+.btn-outline { background: transparent; border: 2px solid var(--ink); color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ── PROGRESS ── */
+.progress-strip {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow);
+}
+.progress-strip .label { font-size: 13px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.progress-bar { flex: 1; height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.l1 { background: var(--l1); }
+.progress-fill.l2 { background: var(--l2); }
+.progress-strip .pct { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 15px; }
+
+/* ── SKILL BADGE ── */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--l1);
+  color: white;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 4px 2px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── END CARD ── */
+.end-card {
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+  margin-top: 8px;
+}
+.end-card.l1 { background: linear-gradient(135deg, var(--l1-light), #fff); border: 2px solid var(--l1); }
+.end-card.l2 { background: linear-gradient(135deg, var(--l2-light), #fff); border: 2px solid var(--l2); }
+.end-card .end-emoji { font-size: 52px; margin-bottom: 12px; }
+.end-card h3 { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.end-card p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 400px; margin: 0 auto 20px; }
+
+/* ── LEAGUE TABLE BUILDER ── */
+.league-builder { margin-top: 12px; }
+.league-builder table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.league-builder th {
+  background: var(--l1); color: white; padding: 8px 6px; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.5px; text-align: center;
+}
+.league-builder td { padding: 4px 4px; text-align: center; border-bottom: 1px solid var(--border); }
+.league-builder input[type=text], .league-builder input[type=number] {
+  width: 100%; padding: 6px 4px; border: 1.5px solid var(--border); border-radius: 6px;
+  font-size: 13px; text-align: center; background: #fafafa;
+}
+.league-builder input:focus { border-color: var(--l2); background: white; outline: none; }
+
+/* ── SELF-ASSESSMENT ── */
+.self-assess { display: flex; flex-direction: column; gap: 10px; }
+.assess-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  background: white; border: 2px solid var(--border); border-radius: 10px;
+}
+.assess-skill { flex: 1; font-size: 14px; font-weight: 500; }
+.assess-balls { display: flex; gap: 4px; }
+.assess-ball {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: white;
+  user-select: none;
+}
+.assess-ball.filled { border-color: var(--accent); background: #fff3e0; }
+
+/* ── MOBILE TOUCH ZONES ── */
+.touch-zones { display: none; gap: 8px; margin-bottom: 12px; }
+@media(max-width:700px){ .touch-zones { display: flex; } }
+.touch-zone-btn {
+  flex: 1; padding: 12px; border-radius: 10px; border: 2px solid var(--border);
+  font-family: 'Baloo 2', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; text-align: center; transition: all 0.2s; background: white;
+}
+.touch-zone-btn.tz-good { color: #065f46; }
+.touch-zone-btn.tz-good:hover, .touch-zone-btn.tz-good.active { border-color: var(--success); background: #f0fdf4; }
+.touch-zone-btn.tz-bad { color: #991b1b; }
+.touch-zone-btn.tz-bad:hover, .touch-zone-btn.tz-bad.active { border-color: #e63946; background: #fdecea; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 600px) {
+  .match-area { grid-template-columns: 1fr; }
+  .lesson-banner { padding: 20px; }
+  .banner-icon { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ══════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-tag">⚽ ENRICHMENT · WORD SKILLS</div>
+  <h1>Build a <span>Football Programme</span></h1>
+  <p>Learn Microsoft Word skills by creating a professional matchday programme for your own football club.</p>
+  <div class="hero-pills">
+    <span class="pill">🏆 Headings &amp; Lists</span>
+    <span class="pill">📋 Tables &amp; Layout</span>
+    <span class="pill">🖼️ Images &amp; Shapes</span>
+    <span class="pill">📄 Headers &amp; Footers</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- NAV -->
+<!-- ══════════════════════════════════════ -->
+<nav>
+  <button class="nav-tab active-l1" data-panel="compare" onclick="showPanel('compare',this)">
+    <span class="check"></span> ⚽ Compare
+  </button>
+  <button class="nav-tab" data-panel="l1-intro" onclick="showPanel('l1-intro',this)">
+    <span class="check"></span> 📖 L1 Intro
+  </button>
+  <button class="nav-tab" data-panel="l1-skill" onclick="showPanel('l1-skill',this)">
+    <span class="check"></span> 🛠️ L1 Skills
+  </button>
+  <button class="nav-tab" data-panel="l1-ws" onclick="showPanel('l1-ws',this)">
+    <span class="check"></span> ✏️ L1 Build
+  </button>
+  <button class="nav-tab" data-panel="l2-intro" onclick="showPanel('l2-intro',this)">
+    <span class="check"></span> 📖 L2 Intro
+  </button>
+  <button class="nav-tab" data-panel="l2-skill" onclick="showPanel('l2-skill',this)">
+    <span class="check"></span> 🛠️ L2 Skills
+  </button>
+  <button class="nav-tab" data-panel="l2-ws" onclick="showPanel('l2-ws',this)">
+    <span class="check"></span> 🏆 L2 Final
+  </button>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PANEL: COMPARE
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-compare" class="panel active">
+
+  <!-- Step progress -->
+  <div class="compare-steps">
+    <span class="cstep cs-active" id="cstep-1">1 Look</span>
+    <span class="cstep" id="cstep-2">2 Vote</span>
+    <span class="cstep" id="cstep-3">3 Sort</span>
+  </div>
+
+  <!-- STEP 1: LOOK -->
+  <div id="cp-look">
+    <div class="compare-intro">
+      <h3>⚽ Which Programme Would You Buy?</h3>
+      <p>Imagine you arrive at a football match. Two programmes are on sale. Look at both carefully — which one looks <strong>professional</strong> and which one looks like a <strong>red card</strong> offence?</p>
+    </div>
+
+    <div class="prog-compare-grid">
+      <!-- BAD Programme -->
+      <div class="prog-compare-card pa" id="pcard-a" onclick="pPickProg('A')">
+        <div class="prog-compare-label">📄 Programme A</div>
+        <div class="prog-doc-bad">
+          <div style="font-size:28px;color:red;font-weight:bold;">footbal game!!</div>
+          <div style="font-size:8px;color:purple;">some teams r playing today</div>
+          <br>
+          <div style="font-size:16px;color:green;font-weight:bold;">PLAYERS</div>
+          <div style="font-size:10px;line-height:2.2;">
+            john smith, dave jones, mike brown, chris wilson, alex taylor, sam davis, james miller, tom anderson, ben thomas, jack white, ryan moore (theyre all good players i think lol)
+          </div>
+          <br>
+          <div style="font-size:18px;color:blue;font-weight:bold;">GAMES</div>
+          <div style="font-size:9px;">we played some teams and won some and lost some. next game is soon maybe tuesday or wednesday</div>
+          <div style="font-size:14px;color:orange;font-weight:bold;margin-top:6px;">RULES</div>
+          <div style="font-size:9px;">no fighting be nice have fun bring boots dont forget stuff</div>
+          <div style="margin-top:8px;width:30px;height:30px;background:#ff0;border:1px solid red;display:inline-block;"></div>
+          <span style="font-size:8px;color:gray;"> &lt;-- badge (couldnt find it)</span>
+        </div>
+      </div>
+
+      <!-- GOOD Programme -->
+      <div class="prog-compare-card pb" id="pcard-b" onclick="pPickProg('B')">
+        <div class="prog-compare-label">📄 Programme B</div>
+        <div class="prog-doc-good">
+          <div style="text-align:center;font-size:8px;color:#888;border-bottom:1px solid #ddd;padding-bottom:2px;margin-bottom:4px;">Riverside FC &nbsp;|&nbsp; Official Match Day Programme &nbsp;|&nbsp; Page 1</div>
+          <div style="float:right;width:36px;height:36px;background:#e6f0eb;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;border:1px solid #1b4332;">⚽</div>
+          <div style="text-align:center;font-size:18px;font-weight:bold;color:#1b4332;margin-bottom:2px;">RIVERSIDE FC</div>
+          <div style="text-align:center;font-size:11px;font-weight:bold;color:#40916c;margin-bottom:8px;">vs City United — Saturday 15th March 2025</div>
+
+          <div style="font-size:9px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;color:#1b4332;border-bottom:1px solid #a7d7c5;padding-bottom:2px;margin-bottom:4px;">Squad List</div>
+          <div style="font-size:9px;color:#333;">
+            <div><strong>1.</strong> T. Williams (GK)</div>
+            <div><strong>2.</strong> J. Henderson</div>
+            <div><strong>3.</strong> M. Carter</div>
+            <div><strong>4.</strong> R. Patel (C)</div>
+            <div><strong>5.</strong> D. Singh</div>
+          </div>
+
+          <div style="font-size:9px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;color:#1b4332;border-bottom:1px solid #a7d7c5;padding-bottom:2px;margin:6px 0 4px;">Fixtures</div>
+          <table style="width:100%;border-collapse:collapse;font-size:8px;">
+            <tr style="background:#e6f0eb;"><th style="border:1px solid #ccc;padding:2px 4px;">Date</th><th style="border:1px solid #ccc;padding:2px 4px;">Opponent</th><th style="border:1px solid #ccc;padding:2px 4px;">Score</th></tr>
+            <tr><td style="border:1px solid #ccc;padding:2px 4px;">1 Mar</td><td style="border:1px solid #ccc;padding:2px 4px;">Town Rovers</td><td style="border:1px solid #ccc;padding:2px 4px;">3–1 W</td></tr>
+            <tr><td style="border:1px solid #ccc;padding:2px 4px;">8 Mar</td><td style="border:1px solid #ccc;padding:2px 4px;">Park Rangers</td><td style="border:1px solid #ccc;padding:2px 4px;">2–2 D</td></tr>
+          </table>
+
+          <div style="font-size:9px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;color:#1b4332;border-bottom:1px solid #a7d7c5;padding-bottom:2px;margin:6px 0 4px;">Ground Rules</div>
+          <div style="font-size:9px;color:#333;">
+            <div>• Respect all players and officials</div>
+            <div>• Arrive 15 minutes before kick-off</div>
+            <div>• Full kit required including shin pads</div>
+          </div>
+          <div style="text-align:center;font-size:7px;color:#888;margin-top:8px;border-top:1px solid #ddd;padding-top:3px;">Riverside FC — Founded 2019 &nbsp;|&nbsp; Page 1 of 2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-green" onclick="cGoStep(2)">I've looked at both — let me vote ➜</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: VOTE -->
+  <div id="cp-decide" style="display:none;">
+    <div class="card">
+      <h3>🗳️ Cast Your Vote</h3>
+      <p>Which programme would you actually want to buy at a match? Choose one:</p>
+
+      <div class="vote-row">
+        <button class="vote-choice va" id="pvote-a" onclick="pCastVote('A')">📄 Programme A</button>
+        <button class="vote-choice vb" id="pvote-b" onclick="pCastVote('B')">📄 Programme B</button>
+      </div>
+
+      <div class="justify-wrap" id="p-justify">
+        <label>Why did you choose that one? Use a sentence starter:</label>
+        <div class="starter-row">
+          <span class="s-chip" onclick="pAppend('I chose this because...')">I chose this because...</span>
+          <span class="s-chip" onclick="pAppend('It looks more professional because...')">It looks more professional because...</span>
+          <span class="s-chip" onclick="pAppend('The layout is better because...')">The layout is better because...</span>
+          <span class="s-chip" onclick="pAppend('It has clear headings and...')">It has clear headings and...</span>
+        </div>
+        <textarea id="p-justify-box" rows="3" placeholder="Write your reason here..."></textarea>
+        <div class="btn-row">
+          <button class="btn btn-green btn-sm" onclick="pSubmitJustify()">Submit ✓</button>
+        </div>
+      </div>
+
+      <div class="reveal-boxes" id="p-reveal">
+        <div class="reveal-box good-box">
+          <h4>🏆 Match Day Ready (Programme B)</h4>
+          <div class="reveal-list-item"><span>✓</span> Clear bold title with club name</div>
+          <div class="reveal-list-item"><span>✓</span> Header and footer on every page</div>
+          <div class="reveal-list-item"><span>✓</span> Numbered squad list (1–11)</div>
+          <div class="reveal-list-item"><span>✓</span> Fixtures shown in a neat table</div>
+          <div class="reveal-list-item"><span>✓</span> Bullet point ground rules</div>
+          <div class="reveal-list-item"><span>✓</span> Club badge image positioned neatly</div>
+        </div>
+        <div class="reveal-box bad-box">
+          <h4>🟥 Red Card (Programme A)</h4>
+          <div class="reveal-list-item"><span>✗</span> Spelling mistake in the title</div>
+          <div class="reveal-list-item"><span>✗</span> No header or footer</div>
+          <div class="reveal-list-item"><span>✗</span> Players dumped in a messy paragraph</div>
+          <div class="reveal-list-item"><span>✗</span> No table — just vague text</div>
+          <div class="reveal-list-item"><span>✗</span> Multiple random fonts and colours</div>
+          <div class="reveal-list-item"><span>✗</span> Missing badge / broken image</div>
+        </div>
+      </div>
+
+      <div id="p-to-sort" style="display:none;" class="btn-row" style="justify-content:center;">
+        <button class="btn btn-accent" onclick="cGoStep(3)">Now sort the features! ➜</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: SORT (Category Drag & Drop) -->
+  <div id="cp-sort" style="display:none;">
+    <div class="cat-game-header">
+      <h3>⚽ Match Day Ready or Red Card? 🟥</h3>
+      <p>Drag each feature into the correct category. On mobile, tap a feature then tap a zone button below.</p>
+    </div>
+
+    <!-- Mobile touch zone buttons -->
+    <div class="touch-zones">
+      <button class="touch-zone-btn tz-good" onclick="catMobilePlace('good')">🏆 Match Day Ready</button>
+      <button class="touch-zone-btn tz-bad" onclick="catMobilePlace('bad')">🟥 Red Card</button>
+    </div>
+
+    <div class="cat-pool-wrap">
+      <h4>📦 Features to sort <span id="cat-remaining" style="font-weight:400;font-style:italic;font-size:11px;"></span></h4>
+      <div class="cat-pool" id="cat-pool"
+        ondragover="catPoolOver(event)" ondragleave="catPoolLeave(event)" ondrop="catPoolDrop(event)">
+      </div>
+    </div>
+
+    <div class="cat-zones">
+      <div class="cat-zone zone-good" id="cat-zone-good"
+        ondragover="catZoneOver(event,'good')" ondragleave="catZoneLeave(event)" ondrop="catZoneDrop(event,'good')">
+        <div class="cat-zone-hdr">
+          <span>🏆</span>
+          <span class="ztitle">Match Day Ready</span>
+          <span class="zcount" id="cz-good-count">0</span>
+        </div>
+        <div class="cat-zone-chips" id="czchips-good">
+          <div class="cat-empty-hint">Drop features here...</div>
+        </div>
+      </div>
+      <div class="cat-zone zone-bad" id="cat-zone-bad"
+        ondragover="catZoneOver(event,'bad')" ondragleave="catZoneLeave(event)" ondrop="catZoneDrop(event,'bad')">
+        <div class="cat-zone-hdr">
+          <span>🟥</span>
+          <span class="ztitle">Red Card</span>
+          <span class="zcount" id="cz-bad-count">0</span>
+        </div>
+        <div class="cat-zone-chips" id="czchips-bad">
+          <div class="cat-empty-hint">Drop features here...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-controls">
+      <div class="cat-score">Score: <span id="cat-score-val">0</span> / <span id="cat-score-total"></span></div>
+      <div>
+        <button class="btn btn-green btn-sm" id="cat-check-btn" onclick="catCheck()" disabled>Check Answers ✓</button>
+        <button class="btn btn-outline btn-sm" onclick="catReset()">Reset ↻</button>
+      </div>
+    </div>
+
+    <div class="cat-result" id="cat-result">
+      <div class="result-num" id="cat-result-num"></div>
+      <h4 id="cat-result-title"></h4>
+      <p id="cat-result-msg"></p>
+    </div>
+
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-green" onclick="goTo('l1-intro')">Start Lesson 1 ➜ ⚽</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PANEL: L1-INTRO — Headlines, Headers & Lists
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-l1-intro" class="panel">
+
+  <div class="lesson-banner l1">
+    <div class="banner-icon">📣</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1</div>
+      <h2>Headlines, Headers &amp; Lists</h2>
+      <p>Make your matchday programme look professional with bold titles, headers, footers, and organised lists.</p>
+    </div>
+  </div>
+
+  <div class="objectives">
+    <h3>⚽ Learning Goals</h3>
+    <div class="obj-list">
+      <div class="obj-item"><div class="obj-num">1</div>Create a bold, coloured match title using font formatting</div>
+      <div class="obj-item"><div class="obj-num">2</div>Add a header and footer with your club name and page numbers</div>
+      <div class="obj-item"><div class="obj-num">3</div>Use numbered lists for your squad and bullet lists for rules</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📋 What Makes a Professional Programme?</h3>
+    <p>Real football clubs spend time and money making their matchday programmes look brilliant. Fans buy them to keep as souvenirs! Here is what makes them look professional:</p>
+    <div class="callout football">
+      <div class="callout-body">
+        <strong>Key features of a great programme:</strong>
+        A big bold title with the club name and match details. A header showing the club name on every page. A footer with page numbers. A numbered squad list (1 = goalkeeper, then defenders, midfielders, forwards). Bullet points for rules, facilities, or information.
+      </div>
+    </div>
+    <p>In Microsoft Word, you have all the tools to create these features. Let's learn which tools to use!</p>
+  </div>
+
+  <!-- MATCHING GAME -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Activity</span>
+      <h3>⚽ Match the Word Tool to the Programme Feature</h3>
+    </div>
+    <p>Click a tool on the left, then click the matching programme feature on the right. Get all 6 to win!</p>
+
+    <div class="match-area" id="match-area-1">
+      <div class="match-col">
+        <h4>🛠️ Word Tool</h4>
+        <div class="match-card" data-id="m1" data-group="left" onclick="matchClick(this)">📐 Header &amp; Footer</div>
+        <div class="match-card" data-id="m2" data-group="left" onclick="matchClick(this)">🔢 Numbered List</div>
+        <div class="match-card" data-id="m3" data-group="left" onclick="matchClick(this)">🔤 Font Size 36pt</div>
+        <div class="match-card" data-id="m4" data-group="left" onclick="matchClick(this)">✏️ Bold + Colour</div>
+        <div class="match-card" data-id="m5" data-group="left" onclick="matchClick(this)">• Bullet Points</div>
+        <div class="match-card" data-id="m6" data-group="left" onclick="matchClick(this)">↔️ Centre Align</div>
+      </div>
+      <div class="match-col">
+        <h4>⚽ Programme Feature</h4>
+        <div class="match-card" data-id="m3" data-group="right" onclick="matchClick(this)">Big match title at the top</div>
+        <div class="match-card" data-id="m1" data-group="right" onclick="matchClick(this)">Club name on every page</div>
+        <div class="match-card" data-id="m5" data-group="right" onclick="matchClick(this)">Club rules or facilities list</div>
+        <div class="match-card" data-id="m6" data-group="right" onclick="matchClick(this)">Title in the middle of the page</div>
+        <div class="match-card" data-id="m2" data-group="right" onclick="matchClick(this)">Squad list 1–11</div>
+        <div class="match-card" data-id="m4" data-group="right" onclick="matchClick(this)">Section headings that stand out</div>
+      </div>
+    </div>
+
+    <div id="match-status"></div>
+    <button class="btn btn-outline btn-sm" onclick="resetMatch()" style="margin-top:8px;">Reset Game ↻</button>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-body">
+      <strong>Pro tip!</strong>
+      Professional programmes always use the same font throughout — just like a real club would have brand guidelines. Pick ONE font and stick with it!
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-green" onclick="goTo('l1-skill')">Learn the Word Skills ➜</button>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PANEL: L1-SKILL — Step-by-step Word instructions
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-l1-skill" class="panel">
+
+  <div class="lesson-banner l1">
+    <div class="banner-icon">🛠️</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1 — Skills</div>
+      <h2>Word Skills: Titles, Headers &amp; Lists</h2>
+      <p>Follow each step carefully. Try it in Word as you go!</p>
+    </div>
+  </div>
+
+  <!-- SKILL A: Bold Coloured Title -->
+  <div class="card">
+    <h3>⚽ Skill A: Create a Bold, Coloured Match Title</h3>
+    <p>The title is the first thing people see. It needs to be <strong>big, bold, and eye-catching</strong> — like the front of a real matchday programme.</p>
+
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📄 Microsoft Word — Programme.docx</span></div>
+      <div class="word-mock-ribbon">
+        <span class="ribbon-btn highlight">B</span>
+        <span class="ribbon-btn highlight">36</span>
+        <span class="ribbon-btn highlight">A<span style="color:#1b4332;">▼</span></span>
+        <span class="ribbon-btn highlight">≡ Centre</span>
+      </div>
+      <div class="word-mock-body">
+        <div class="word-page">
+          <div style="text-align:center;font-size:22px;font-weight:bold;color:#1b4332;">RIVERSIDE FC</div>
+          <div style="text-align:center;font-size:14px;color:#40916c;font-weight:600;">vs City United</div>
+          <div style="text-align:center;font-size:11px;color:#888;">Saturday 15th March 2025 — 3:00 PM Kick-off</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Type your club name</strong>
+          <p>Open a new blank document. Type your club name in CAPITALS, e.g. <strong>RIVERSIDE FC</strong></p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Select the text</strong>
+          <p>Triple-click on the club name to select the whole line, or use <span class="kbd">Ctrl</span> + <span class="kbd">A</span></p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Make it bold</strong>
+          <p>Press <span class="kbd">Ctrl</span> + <span class="kbd">B</span> or click the <strong>B</strong> button on the ribbon.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Change the font size</strong>
+          <p>With the text selected, change the font size box to <strong>36</strong>. You can type the number directly into the size box.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Change the colour</strong>
+          <p>Click the <strong>Font Colour</strong> dropdown (the <strong>A</strong> with a coloured bar). Choose a dark green or your club colour.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Centre the title</strong>
+          <p>Press <span class="kbd">Ctrl</span> + <span class="kbd">E</span> to centre the text. Your title should now be big, bold, coloured, and in the middle!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL B: Headers and Footers -->
+  <div class="card">
+    <h3>📄 Skill B: Add a Header and Footer</h3>
+    <p>Headers and footers appear on <strong>every page</strong> of your document. Real programmes always have the club name at the top and page numbers at the bottom.</p>
+
+    <div class="callout word">
+      <div class="callout-body">
+        <strong>Where to find it in Word:</strong>
+        Go to the <strong>Insert</strong> tab on the ribbon. Look for the <strong>Header &amp; Footer</strong> section on the right side. Click <strong>Header</strong> to add text at the top, or <strong>Footer</strong> to add text at the bottom.
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Open the Header</strong>
+          <p>Click <strong>Insert</strong> → <strong>Header</strong> → Choose <strong>Blank</strong> (the first option).</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Type your club name</strong>
+          <p>In the header area, type your club name. Make it bold and a smaller font size (e.g. 10pt).</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Add a Footer with page numbers</strong>
+          <p>Click <strong>Insert</strong> → <strong>Footer</strong> → Choose <strong>Blank</strong>. Then click <strong>Insert</strong> → <strong>Page Number</strong> → <strong>Current Position</strong>.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Close the header/footer</strong>
+          <p>Double-click on the main document area, or press <span class="kbd">Esc</span> to close the header/footer editing mode.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL C: Lists -->
+  <div class="card">
+    <h3>📝 Skill C: Numbered Lists &amp; Bullet Points</h3>
+    <p>Your squad list should be <strong>numbered</strong> (1, 2, 3...) and your rules should use <strong>bullet points</strong> (•). Word makes this easy!</p>
+
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📄 Programme.docx — Lists</span></div>
+      <div class="word-mock-ribbon">
+        <span class="ribbon-btn highlight">1. 2. 3.</span>
+        <span class="ribbon-btn highlight">• — —</span>
+      </div>
+      <div class="word-mock-body">
+        <div class="word-page">
+          <div style="font-weight:bold;color:#1b4332;font-size:13px;margin-bottom:6px;">SQUAD LIST</div>
+          <div style="font-size:12px;color:#333;">
+            <div>1. T. Williams (GK)</div>
+            <div>2. J. Henderson</div>
+            <div>3. M. Carter</div>
+            <div>4. R. Patel (C)</div>
+            <div>5. D. Singh</div>
+          </div>
+          <div style="font-weight:bold;color:#1b4332;font-size:13px;margin:10px 0 6px;">GROUND RULES</div>
+          <div style="font-size:12px;color:#333;">
+            <div>• Respect all players and officials</div>
+            <div>• Arrive 15 minutes before kick-off</div>
+            <div>• Full kit required including shin pads</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step l1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Start a numbered list</strong>
+          <p>Click the <strong>Numbering</strong> button (1. 2. 3.) on the Home tab. Type your first player name and press <span class="kbd">Enter</span> — the next number appears automatically!</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Type all your players</strong>
+          <p>Keep typing player names and pressing Enter. Word numbers them for you. Press <span class="kbd">Enter</span> twice to stop the list.</p>
+        </div>
+      </div>
+      <div class="step l1">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Start bullet points</strong>
+          <p>For your rules section, click the <strong>Bullets</strong> button (• — —) on the Home tab. Type each rule and press Enter.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-body">
+        <strong>Keyboard shortcut!</strong>
+        You can start a numbered list by typing <span class="kbd">1.</span> then <span class="kbd">Space</span> and Word will automatically switch to a numbered list! For bullets, type <span class="kbd">*</span> then <span class="kbd">Space</span>.
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card">
+    <h3>🧠 Lesson 1 Quiz</h3>
+    <p>Test what you have learned! Click the correct answer. You can retry if you get it wrong.</p>
+
+    <div class="quiz-wrap">
+      <div class="q-block">
+        <div class="q-text">1. Which keyboard shortcut makes text bold?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> Ctrl + I</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">B</span> Ctrl + B</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">C</span> Ctrl + U</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> Ctrl + S</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">2. Where do you find the Header &amp; Footer options?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> Home tab</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">B</span> Design tab</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">C</span> Insert tab</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> View tab</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">3. What does Ctrl + E do to selected text?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> Makes it bold</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">B</span> Deletes it</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">C</span> Centres it on the page</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> Changes the font</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">4. A squad list should use a ________ list so players are numbered 1–11.</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> Bullet point</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">B</span> Numbered</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">C</span> Table</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> Paragraph</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">5. What appears on every page of a document when you add a header?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> A picture</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">B</span> A table</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">C</span> Text at the top of every page (e.g. club name)</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> A title in the middle of the page</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-outline" onclick="goTo('l1-intro')">← Back</button>
+    <button class="btn btn-green" onclick="goTo('l1-ws')">Go to Worksheet ➜</button>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PANEL: L1-WS — Worksheet: Plan your programme
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-l1-ws" class="panel">
+
+  <div class="lesson-banner l1">
+    <div class="banner-icon">✏️</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 1 — Worksheet</div>
+      <h2>Plan Your Football Programme</h2>
+      <p>Fill in the details below, then use them to build your programme in Word!</p>
+    </div>
+  </div>
+
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <span class="ws-icon">⚽</span>
+      <div>
+        <h3>Programme Planner</h3>
+        <p>Type your details — watch the live preview update!</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>🏟️ Your Club Name</label>
+      <span class="hint">Make up a cool football club name!</span>
+      <input type="text" id="ws-club" placeholder="e.g. Riverside FC, Thunder United, Star City..." oninput="updateProgPreview()">
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>⚔️ Home Team</label>
+        <input type="text" id="ws-home" placeholder="e.g. Riverside FC" oninput="updateProgPreview()">
+      </div>
+      <div class="field">
+        <label>⚔️ Away Team</label>
+        <input type="text" id="ws-away" placeholder="e.g. City Rovers" oninput="updateProgPreview()">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>📅 Match Date</label>
+      <input type="text" id="ws-date" placeholder="e.g. Saturday 15th March 2025" oninput="updateProgPreview()">
+    </div>
+
+    <div class="divider">Squad List — Type 5 player names</div>
+
+    <div class="field">
+      <label>🧤 1. Goalkeeper</label>
+      <input type="text" id="ws-p1" placeholder="e.g. T. Williams" oninput="updateProgPreview()">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>🛡️ 2. Defender</label>
+        <input type="text" id="ws-p2" placeholder="e.g. J. Henderson" oninput="updateProgPreview()">
+      </div>
+      <div class="field">
+        <label>🛡️ 3. Defender</label>
+        <input type="text" id="ws-p3" placeholder="e.g. M. Carter" oninput="updateProgPreview()">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>🎯 4. Midfielder</label>
+        <input type="text" id="ws-p4" placeholder="e.g. R. Patel (C)" oninput="updateProgPreview()">
+      </div>
+      <div class="field">
+        <label>⚡ 5. Forward</label>
+        <input type="text" id="ws-p5" placeholder="e.g. D. Singh" oninput="updateProgPreview()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Preview -->
+  <div class="prog-preview">
+    <div class="prog-preview-bar">
+      <span>⚽ Live Programme Preview</span>
+      <span style="font-size:12px;opacity:0.7;">Updates as you type!</span>
+    </div>
+    <div class="prog-header-strip">
+      <span id="prev-header-left">Your Club Name</span>
+      <span>Official Match Day Programme</span>
+      <span>Page 1</span>
+    </div>
+    <div class="prog-preview-body">
+      <div class="prog-badge-placeholder" id="prev-badge">⚽</div>
+      <div class="prog-title" id="prev-title">YOUR CLUB NAME</div>
+      <div class="prog-subtitle" id="prev-subtitle">Home Team vs Away Team</div>
+      <div style="text-align:center;font-size:12px;color:#888;margin-bottom:14px;" id="prev-date">Match Date — Kick-off TBC</div>
+
+      <div class="prog-section">
+        <div class="prog-section-title">Squad List</div>
+        <ol class="prog-squad-list" id="prev-squad" style="padding-left:20px;">
+          <li style="color:#ccc;">Goalkeeper</li>
+          <li style="color:#ccc;">Defender</li>
+          <li style="color:#ccc;">Defender</li>
+          <li style="color:#ccc;">Midfielder</li>
+          <li style="color:#ccc;">Forward</li>
+        </ol>
+      </div>
+    </div>
+    <div class="prog-header-strip">
+      <span id="prev-footer-left">Your Club Name — Founded 2025</span>
+      <span>Page 1 of 2</span>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="card">
+    <h3>✅ Lesson 1 Checklist</h3>
+    <p>Tick off each item as you complete it in Word:</p>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Created a bold, coloured club name title (36pt)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Centred the title using Ctrl + E</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Added a match title (Home vs Away)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Added a Header with the club name</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Added a Footer with page numbers</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Created a numbered squad list (at least 5 players)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> Created bullet point ground rules (at least 3 rules)</div>
+    </div>
+  </div>
+
+  <div class="end-card l1">
+    <div class="end-emoji">⚽</div>
+    <h3>Lesson 1 Complete!</h3>
+    <p>Great work! You have created a programme with titles, headers, footers, and lists. In Lesson 2, you will add images, tables, and shapes!</p>
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-green" onclick="goTo('l2-intro')">Start Lesson 2 ➜ 🏆</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PANEL: L2-INTRO — Images, Tables & Shapes
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-l2-intro" class="panel">
+
+  <div class="lesson-banner l2">
+    <div class="banner-icon">🖼️</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2</div>
+      <h2>Images, Tables &amp; Shapes</h2>
+      <p>Add a club badge, fixture table, and shapes to make your programme look like the real thing!</p>
+    </div>
+  </div>
+
+  <div class="objectives">
+    <h3>🏆 Learning Goals</h3>
+    <div class="obj-list">
+      <div class="obj-item"><div class="obj-num">1</div>Insert and position images (club badge and action photo)</div>
+      <div class="obj-item"><div class="obj-num">2</div>Create a fixtures or league table with columns</div>
+      <div class="obj-item"><div class="obj-num">3</div>Use shapes for section dividers or a simple badge design</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📸 Why Do Programmes Need Images and Tables?</h3>
+    <p>Look at any real matchday programme — they are full of <strong>photos</strong>, <strong>club badges</strong>, and <strong>league tables</strong>. These make the programme exciting to read and help fans find important information quickly.</p>
+    <div class="callout football">
+      <div class="callout-body">
+        <strong>Images</strong> — A club badge at the top makes it look official. Action photos make it exciting.<br>
+        <strong>Tables</strong> — League tables and fixture lists need rows, columns, and headings to be clear.<br>
+        <strong>Shapes</strong> — Divider lines, circles for badges, and coloured boxes for section headers.
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDERING ACTIVITY: Steps to create a programme -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Activity</span>
+      <h3>🔢 Put the Programme Steps in Order</h3>
+    </div>
+    <p>Drag the steps into the correct order to build a complete matchday programme. On mobile, use the arrow buttons.</p>
+
+    <div class="sort-list" id="sort-list">
+      <div class="sort-item" draggable="true" data-correct="1">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">1</span>
+        <span>Open a new blank Word document</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="2">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">2</span>
+        <span>Add a header with the club name</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="3">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">3</span>
+        <span>Type and format the match title (bold, 36pt, centred)</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="4">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">4</span>
+        <span>Insert the club badge image</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="5">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">5</span>
+        <span>Create a numbered squad list</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="6">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">6</span>
+        <span>Insert a fixtures table with columns</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="7">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">7</span>
+        <span>Add bullet point ground rules</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="8">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">8</span>
+        <span>Add shapes for section dividers</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="9">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">9</span>
+        <span>Add a footer with page numbers</span>
+        <span class="sort-arrows"></span>
+      </div>
+      <div class="sort-item" draggable="true" data-correct="10">
+        <span class="sort-handle">☰</span>
+        <span class="sort-pos">10</span>
+        <span>Proofread, save, and print</span>
+        <span class="sort-arrows"></span>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-green btn-sm" onclick="checkSort()">Check Order ✓</button>
+      <button class="btn btn-outline btn-sm" onclick="shuffleSort()">Shuffle ↻</button>
+    </div>
+    <div id="sort-feedback" style="font-size:14px;font-weight:700;margin-top:10px;min-height:18px;"></div>
+  </div>
+
+  <!-- FIX THE FORMATION ACTIVITY -->
+  <div class="activity">
+    <div class="activity-header">
+      <span class="activity-tag">Activity</span>
+      <h3>🥅 Fix the Formation — Word Skills Edition</h3>
+    </div>
+    <p>Each "player" below is a Word skill. Click the correct position (what it does) to score a goal!</p>
+
+    <div class="match-area" id="match-area-2">
+      <div class="match-col">
+        <h4>🛠️ Word Skill</h4>
+        <div class="match-card" data-id="f1" data-group="left" onclick="matchClick2(this)">Insert → Picture</div>
+        <div class="match-card" data-id="f2" data-group="left" onclick="matchClick2(this)">Insert → Table</div>
+        <div class="match-card" data-id="f3" data-group="left" onclick="matchClick2(this)">Insert → Shapes</div>
+        <div class="match-card" data-id="f4" data-group="left" onclick="matchClick2(this)">Text Wrapping</div>
+        <div class="match-card" data-id="f5" data-group="left" onclick="matchClick2(this)">Merge Cells</div>
+      </div>
+      <div class="match-col">
+        <h4>⚽ What It Does</h4>
+        <div class="match-card" data-id="f3" data-group="right" onclick="matchClick2(this)">Add lines, circles, and rectangles</div>
+        <div class="match-card" data-id="f5" data-group="right" onclick="matchClick2(this)">Join table cells together into one</div>
+        <div class="match-card" data-id="f1" data-group="right" onclick="matchClick2(this)">Add a photo or badge from your files</div>
+        <div class="match-card" data-id="f4" data-group="right" onclick="matchClick2(this)">Control how text flows around an image</div>
+        <div class="match-card" data-id="f2" data-group="right" onclick="matchClick2(this)">Create rows and columns for data</div>
+      </div>
+    </div>
+
+    <div id="match-status-2" style="font-size:14px;font-weight:700;min-height:20px;text-align:center;margin-top:8px;"></div>
+    <button class="btn btn-outline btn-sm" onclick="resetMatch2()" style="margin-top:8px;">Reset Game ↻</button>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-teal" onclick="goTo('l2-skill')">Learn the Word Skills ➜</button>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PANEL: L2-SKILL — Step-by-step Word instructions
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-l2-skill" class="panel">
+
+  <div class="lesson-banner l2">
+    <div class="banner-icon">🛠️</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2 — Skills</div>
+      <h2>Word Skills: Images, Tables &amp; Shapes</h2>
+      <p>Follow each step carefully. Try it in Word as you go!</p>
+    </div>
+  </div>
+
+  <!-- SKILL A: Inserting Images -->
+  <div class="card">
+    <h3>🖼️ Skill A: Insert and Position Images</h3>
+    <p>Your programme needs at least <strong>two images</strong> — a club badge and an action photo. Here is how to add them and control where they appear.</p>
+
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📄 Programme.docx — Images</span></div>
+      <div class="word-mock-ribbon">
+        <span class="ribbon-btn highlight">📷 Pictures</span>
+        <span class="ribbon-btn highlight">📐 Wrap Text</span>
+        <span class="ribbon-btn">📏 Size</span>
+      </div>
+      <div class="word-mock-body">
+        <div class="word-page">
+          <div style="float:right;width:50px;height:50px;background:#e6f0eb;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid #1b4332;margin-left:10px;">⚽</div>
+          <div style="font-size:16px;font-weight:bold;color:#1b4332;text-align:center;">RIVERSIDE FC</div>
+          <div style="font-size:10px;text-align:center;color:#40916c;margin-bottom:10px;">vs City United</div>
+          <div style="width:100%;height:60px;background:linear-gradient(135deg,#2d6a4f,#40916c);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;">📸 Action Photo Here</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Click where you want the image</strong>
+          <p>Put your cursor where you want the image to appear in your document.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Insert the image</strong>
+          <p>Click <strong>Insert</strong> → <strong>Pictures</strong> → <strong>This Device</strong>. Find your image file and click <strong>Insert</strong>.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Resize the image</strong>
+          <p>Click the image. Drag one of the <strong>corner handles</strong> to make it bigger or smaller. Always use corners — not sides — to keep the image in proportion!</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Set text wrapping</strong>
+          <p>Click the image → click the <strong>Layout Options</strong> icon (or go to <strong>Format</strong> → <strong>Wrap Text</strong>). Choose <strong>Square</strong> so text flows neatly around the image. For a badge in the corner, use <strong>Tight</strong> or <strong>In Front of Text</strong>.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Position the image</strong>
+          <p>Once wrapping is set, you can <strong>drag the image</strong> to exactly where you want it on the page.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout watch">
+      <div class="callout-body">
+        <strong>Common mistake!</strong>
+        If your image is "In Line with Text" (the default), you cannot drag it freely. Always change the text wrapping first!
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL B: Tables -->
+  <div class="card">
+    <h3>📊 Skill B: Create a Fixtures / League Table</h3>
+    <p>Tables are perfect for showing match results, fixtures, and league standings. Let's create one!</p>
+
+    <div class="word-mock">
+      <div class="word-mock-bar"><span>📄 Programme.docx — Table</span></div>
+      <div class="word-mock-ribbon">
+        <span class="ribbon-btn highlight">📊 Table</span>
+        <span class="ribbon-btn">🎨 Table Design</span>
+        <span class="ribbon-btn">📐 Layout</span>
+      </div>
+      <div class="word-mock-body">
+        <div class="word-page">
+          <div style="font-weight:bold;color:#1b4332;font-size:13px;margin-bottom:6px;">LEAGUE TABLE</div>
+          <table>
+            <tr><th style="background:#1b4332;color:white;">Team</th><th style="background:#1b4332;color:white;">P</th><th style="background:#1b4332;color:white;">W</th><th style="background:#1b4332;color:white;">D</th><th style="background:#1b4332;color:white;">L</th><th style="background:#1b4332;color:white;">Pts</th></tr>
+            <tr><td><strong>Riverside FC</strong></td><td>10</td><td>7</td><td>2</td><td>1</td><td><strong>23</strong></td></tr>
+            <tr style="background:#f9fafb;"><td>City United</td><td>10</td><td>6</td><td>1</td><td>3</td><td>19</td></tr>
+            <tr><td>Town Rovers</td><td>10</td><td>5</td><td>3</td><td>2</td><td>18</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Insert a table</strong>
+          <p>Click <strong>Insert</strong> → <strong>Table</strong>. Drag to select <strong>6 columns</strong> and <strong>7 rows</strong> (1 header row + 6 teams).</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Type the column headings</strong>
+          <p>In the first row, type: <strong>Team</strong>, <strong>P</strong> (played), <strong>W</strong> (won), <strong>D</strong> (drawn), <strong>L</strong> (lost), <strong>Pts</strong> (points). Make them <strong>bold</strong>.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Fill in the data</strong>
+          <p>Type team names and their stats in each row. Press <span class="kbd">Tab</span> to move to the next cell.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Style the table</strong>
+          <p>Click inside the table. Go to <strong>Table Design</strong> tab. Choose a style you like — something with shaded headers looks professional.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Centre the numbers</strong>
+          <p>Select the number columns. Click <strong>Centre Align</strong> so the numbers line up neatly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-body">
+        <strong>Keyboard shortcut!</strong>
+        Press <span class="kbd">Tab</span> to move to the next cell in a table. Press <span class="kbd">Shift</span> + <span class="kbd">Tab</span> to go back. If you press Tab in the last cell, a new row is added automatically!
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL C: Shapes -->
+  <div class="card">
+    <h3>🔷 Skill C: Using Shapes for Dividers and Badge Design</h3>
+    <p>Shapes add a professional touch. Use them for <strong>section dividers</strong>, coloured banners, or even a simple badge design.</p>
+
+    <div class="steps">
+      <div class="step l2">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Insert a shape</strong>
+          <p>Click <strong>Insert</strong> → <strong>Shapes</strong>. Choose a shape — try a <strong>rectangle</strong> for a section divider or a <strong>circle</strong> for a badge.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Draw the shape</strong>
+          <p>Click and drag on your document to draw the shape. Hold <span class="kbd">Shift</span> while dragging to make a perfect circle or square.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Change the colour</strong>
+          <p>Click the shape → <strong>Shape Format</strong> tab → <strong>Shape Fill</strong> to change the background colour. Use <strong>Shape Outline</strong> to change the border.</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Add text to a shape</strong>
+          <p>Right-click the shape → <strong>Add Text</strong>. Type your club name or section heading inside the shape!</p>
+        </div>
+      </div>
+      <div class="step l2">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Use a line as a section divider</strong>
+          <p>Insert → Shapes → choose a <strong>Line</strong>. Draw it across the page between sections. Change its colour and thickness using Shape Outline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card">
+    <h3>🧠 Lesson 2 Quiz</h3>
+    <p>Test what you have learned about images, tables, and shapes!</p>
+
+    <div class="quiz-wrap">
+      <div class="q-block">
+        <div class="q-text">1. Where do you find the "Pictures" button to insert an image?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> Home tab</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">B</span> Insert tab</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">C</span> Design tab</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> View tab</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">2. What must you change before you can freely drag an image around the page?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> The font size</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">B</span> The page colour</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">C</span> The text wrapping setting</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> The file name</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">3. When resizing an image, which handle should you drag to keep it in proportion?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">A</span> A corner handle</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">B</span> A side handle</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">C</span> The top handle</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> Any handle — they all work the same</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">4. How do you move to the next cell in a Word table?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> Press Enter</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">B</span> Press Tab</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">C</span> Press Space</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> Click the Home tab</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-text">5. How do you add text inside a shape?</div>
+        <div class="q-options">
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">A</span> Double-click outside the shape</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">B</span> Use Insert → Text Box</div>
+          <div class="q-opt" onclick="answerQ(this,true)"><span class="opt-badge">C</span> Right-click the shape → Add Text</div>
+          <div class="q-opt" onclick="answerQ(this,false)"><span class="opt-badge">D</span> You cannot add text to shapes</div>
+        </div>
+        <div class="q-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-outline" onclick="goTo('l2-intro')">← Back</button>
+    <button class="btn btn-teal" onclick="goTo('l2-ws')">Go to Final Worksheet ➜ 🏆</button>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PANEL: L2-WS — Final Worksheet
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-l2-ws" class="panel">
+
+  <div class="lesson-banner l2">
+    <div class="banner-icon">🏆</div>
+    <div class="banner-text">
+      <div class="lesson-label">Lesson 2 — Final Build</div>
+      <h2>Complete Your Football Programme</h2>
+      <p>Build your league table, finalise your squad, and complete the ultimate matchday programme!</p>
+    </div>
+  </div>
+
+  <!-- LEAGUE TABLE BUILDER -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <span class="ws-icon">📊</span>
+      <div>
+        <h3>League Table Builder</h3>
+        <p>Fill in the league table below — then recreate it in Word using Insert → Table!</p>
+      </div>
+    </div>
+
+    <div class="league-builder">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left;width:30%;">Team</th>
+            <th>P</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody id="league-tbody">
+          <tr>
+            <td><input type="text" id="lt-t1" placeholder="1st place team" oninput="calcPoints(1)"></td>
+            <td><input type="number" id="lt-p1" min="0" max="38" value="" oninput="calcPoints(1)"></td>
+            <td><input type="number" id="lt-w1" min="0" max="38" value="" oninput="calcPoints(1)"></td>
+            <td><input type="number" id="lt-d1" min="0" max="38" value="" oninput="calcPoints(1)"></td>
+            <td><input type="number" id="lt-l1" min="0" max="38" value="" oninput="calcPoints(1)"></td>
+            <td><strong id="lt-pts1">—</strong></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="lt-t2" placeholder="2nd place team" oninput="calcPoints(2)"></td>
+            <td><input type="number" id="lt-p2" min="0" max="38" value="" oninput="calcPoints(2)"></td>
+            <td><input type="number" id="lt-w2" min="0" max="38" value="" oninput="calcPoints(2)"></td>
+            <td><input type="number" id="lt-d2" min="0" max="38" value="" oninput="calcPoints(2)"></td>
+            <td><input type="number" id="lt-l2" min="0" max="38" value="" oninput="calcPoints(2)"></td>
+            <td><strong id="lt-pts2">—</strong></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="lt-t3" placeholder="3rd place team" oninput="calcPoints(3)"></td>
+            <td><input type="number" id="lt-p3" min="0" max="38" value="" oninput="calcPoints(3)"></td>
+            <td><input type="number" id="lt-w3" min="0" max="38" value="" oninput="calcPoints(3)"></td>
+            <td><input type="number" id="lt-d3" min="0" max="38" value="" oninput="calcPoints(3)"></td>
+            <td><input type="number" id="lt-l3" min="0" max="38" value="" oninput="calcPoints(3)"></td>
+            <td><strong id="lt-pts3">—</strong></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="lt-t4" placeholder="4th place team" oninput="calcPoints(4)"></td>
+            <td><input type="number" id="lt-p4" min="0" max="38" value="" oninput="calcPoints(4)"></td>
+            <td><input type="number" id="lt-w4" min="0" max="38" value="" oninput="calcPoints(4)"></td>
+            <td><input type="number" id="lt-d4" min="0" max="38" value="" oninput="calcPoints(4)"></td>
+            <td><input type="number" id="lt-l4" min="0" max="38" value="" oninput="calcPoints(4)"></td>
+            <td><strong id="lt-pts4">—</strong></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="lt-t5" placeholder="5th place team" oninput="calcPoints(5)"></td>
+            <td><input type="number" id="lt-p5" min="0" max="38" value="" oninput="calcPoints(5)"></td>
+            <td><input type="number" id="lt-w5" min="0" max="38" value="" oninput="calcPoints(5)"></td>
+            <td><input type="number" id="lt-d5" min="0" max="38" value="" oninput="calcPoints(5)"></td>
+            <td><input type="number" id="lt-l5" min="0" max="38" value="" oninput="calcPoints(5)"></td>
+            <td><strong id="lt-pts5">—</strong></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="lt-t6" placeholder="6th place team" oninput="calcPoints(6)"></td>
+            <td><input type="number" id="lt-p6" min="0" max="38" value="" oninput="calcPoints(6)"></td>
+            <td><input type="number" id="lt-w6" min="0" max="38" value="" oninput="calcPoints(6)"></td>
+            <td><input type="number" id="lt-d6" min="0" max="38" value="" oninput="calcPoints(6)"></td>
+            <td><input type="number" id="lt-l6" min="0" max="38" value="" oninput="calcPoints(6)"></td>
+            <td><strong id="lt-pts6">—</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout tip" style="margin-top:14px;">
+      <div class="callout-body">
+        <strong>How points work:</strong>
+        Win = 3 points, Draw = 1 point, Loss = 0 points. The points column calculates automatically! Also, Played (P) should equal W + D + L.
+      </div>
+    </div>
+  </div>
+
+  <!-- SQUAD LIST BUILDER -->
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <span class="ws-icon">📋</span>
+      <div>
+        <h3>Full Squad List Builder</h3>
+        <p>Build your complete squad — numbered 1 to 11, just like a real programme!</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="squad-builder">
+      <div class="field" style="margin-bottom:8px;">
+        <label>🧤 1. GK</label>
+        <input type="text" id="sq-1" placeholder="Goalkeeper" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🛡️ 2. RB</label>
+        <input type="text" id="sq-2" placeholder="Right Back" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🛡️ 3. CB</label>
+        <input type="text" id="sq-3" placeholder="Centre Back" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🛡️ 4. CB</label>
+        <input type="text" id="sq-4" placeholder="Centre Back" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🛡️ 5. LB</label>
+        <input type="text" id="sq-5" placeholder="Left Back" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🎯 6. RM</label>
+        <input type="text" id="sq-6" placeholder="Right Midfield" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🎯 7. CM</label>
+        <input type="text" id="sq-7" placeholder="Centre Midfield" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🎯 8. CM</label>
+        <input type="text" id="sq-8" placeholder="Centre Midfield" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>🎯 9. LM</label>
+        <input type="text" id="sq-9" placeholder="Left Midfield" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>⚡ 10. ST</label>
+        <input type="text" id="sq-10" placeholder="Striker" oninput="updateSquadPreview()">
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>⚡ 11. ST</label>
+        <input type="text" id="sq-11" placeholder="Striker" oninput="updateSquadPreview()">
+      </div>
+    </div>
+
+    <!-- Squad Preview -->
+    <div style="background:#e6f0eb;border-radius:10px;padding:16px;margin-top:8px;">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:#1b4332;font-size:14px;margin-bottom:8px;">⚽ Squad Preview</div>
+      <ol id="squad-preview-list" style="font-size:13px;color:#374151;padding-left:20px;">
+        <li style="color:#ccc;">Goalkeeper</li>
+        <li style="color:#ccc;">Right Back</li>
+        <li style="color:#ccc;">Centre Back</li>
+        <li style="color:#ccc;">Centre Back</li>
+        <li style="color:#ccc;">Left Back</li>
+        <li style="color:#ccc;">Right Midfield</li>
+        <li style="color:#ccc;">Centre Midfield</li>
+        <li style="color:#ccc;">Centre Midfield</li>
+        <li style="color:#ccc;">Left Midfield</li>
+        <li style="color:#ccc;">Striker</li>
+        <li style="color:#ccc;">Striker</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- FINAL CHECKLIST -->
+  <div class="card">
+    <h3>✅ Final Programme Checklist</h3>
+    <p>This is the complete checklist for your matchday programme. Tick everything off before you submit!</p>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> ⚽ Bold, coloured club name title (36pt, centred)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> ⚔️ Match title with both team names</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 📄 Header with club name on every page</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 📄 Footer with page numbers</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 🔢 Numbered squad list (at least 11 players)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> • Bullet point ground rules (at least 3)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 🖼️ Club badge image inserted and positioned</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 📸 Action photo inserted (with text wrapping)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 📊 League table OR fixtures table (at least 6 rows)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 🔷 At least one shape used (divider, banner, or badge)</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> ✅ Proofread — no spelling mistakes</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div> 💾 Saved as Programme_YourName.docx</div>
+    </div>
+  </div>
+
+  <!-- SELF-ASSESSMENT -->
+  <div class="card">
+    <h3>⚽ Self-Assessment — Rate Your Skills</h3>
+    <p>Click the footballs to rate how confident you feel with each skill. 1 ball = still learning, 5 balls = totally confident!</p>
+
+    <div class="self-assess" id="self-assess">
+      <div class="assess-row">
+        <div class="assess-skill">Bold, coloured, centred titles</div>
+        <div class="assess-balls" data-skill="titles">
+          <div class="assess-ball" onclick="rateBall(this,1)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,2)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,3)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,4)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,5)">⚽</div>
+        </div>
+      </div>
+      <div class="assess-row">
+        <div class="assess-skill">Headers and footers</div>
+        <div class="assess-balls" data-skill="headfoot">
+          <div class="assess-ball" onclick="rateBall(this,1)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,2)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,3)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,4)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,5)">⚽</div>
+        </div>
+      </div>
+      <div class="assess-row">
+        <div class="assess-skill">Numbered &amp; bullet lists</div>
+        <div class="assess-balls" data-skill="lists">
+          <div class="assess-ball" onclick="rateBall(this,1)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,2)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,3)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,4)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,5)">⚽</div>
+        </div>
+      </div>
+      <div class="assess-row">
+        <div class="assess-skill">Inserting &amp; positioning images</div>
+        <div class="assess-balls" data-skill="images">
+          <div class="assess-ball" onclick="rateBall(this,1)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,2)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,3)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,4)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,5)">⚽</div>
+        </div>
+      </div>
+      <div class="assess-row">
+        <div class="assess-skill">Creating tables</div>
+        <div class="assess-balls" data-skill="tables">
+          <div class="assess-ball" onclick="rateBall(this,1)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,2)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,3)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,4)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,5)">⚽</div>
+        </div>
+      </div>
+      <div class="assess-row">
+        <div class="assess-skill">Using shapes</div>
+        <div class="assess-balls" data-skill="shapes">
+          <div class="assess-ball" onclick="rateBall(this,1)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,2)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,3)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,4)">⚽</div>
+          <div class="assess-ball" onclick="rateBall(this,5)">⚽</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- END CARD -->
+  <div class="end-card l2">
+    <div class="end-emoji">🏆</div>
+    <h3>Programme Complete!</h3>
+    <p>Amazing work! You have used Microsoft Word to create a full matchday football programme with titles, headers, footers, lists, images, tables, and shapes. You are a Word champion! ⚽🏅</p>
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn btn-teal" onclick="goTo('compare')">← Back to Start</button>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<script>
+// ── NAVIGATION ──
+const panels = ['compare','l1-intro','l1-skill','l1-ws','l2-intro','l2-skill','l2-ws'];
+const done = new Set();
+
+function showPanel(id, btn) {
+  panels.forEach(p => {
+    document.getElementById('panel-'+p).classList.remove('active');
+  });
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    t.classList.remove('active-l1','active-l2');
+  });
+  document.getElementById('panel-'+id).classList.add('active');
+  const isL2 = id.startsWith('l2');
+  if (btn) btn.classList.add(isL2 ? 'active-l2' : 'active-l1');
+  done.add(id);
+  updateNavDone();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function goTo(id) {
+  const btn = document.querySelector(`[data-panel="${id}"]`);
+  showPanel(id, btn);
+}
+
+function updateNavDone() {
+  panels.forEach(p => {
+    if (done.has(p)) {
+      const tab = document.querySelector(`[data-panel="${p}"]`);
+      if (tab) { tab.classList.add('done'); tab.querySelector('.check').textContent = '✓'; }
+    }
+  });
+}
+
+// ── COMPARE ACTIVITY ──
+let pVoteChoice = null;
+
+function cGoStep(n) {
+  ['cp-look','cp-decide','cp-sort'].forEach((id,i) => {
+    document.getElementById(id).style.display = (i === n-1) ? 'block' : 'none';
+  });
+  ['cstep-1','cstep-2','cstep-3'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.className = 'cstep' + (i < n-1 ? ' cs-done' : i === n-1 ? ' cs-active' : '');
+  });
+  if (n === 3) catBuild();
+  window.scrollTo({top: document.getElementById('panel-compare').offsetTop - 60, behavior:'smooth'});
+}
+
+function pPickProg(which) {
+  document.getElementById('pcard-a').classList.remove('picked-good','picked-bad');
+  document.getElementById('pcard-b').classList.remove('picked-good','picked-bad');
+  if (which === 'A') document.getElementById('pcard-a').classList.add('picked-bad');
+  else document.getElementById('pcard-b').classList.add('picked-good');
+}
+
+function pCastVote(which) {
+  if (pVoteChoice) return;
+  pVoteChoice = which;
+  document.getElementById('pvote-a').classList.remove('selected');
+  document.getElementById('pvote-b').classList.remove('selected');
+  document.getElementById('pvote-'+which.toLowerCase()).classList.add('selected');
+  document.getElementById('p-justify').classList.add('show');
+}
+
+function pAppend(text) {
+  const el = document.getElementById('p-justify-box');
+  el.value += (el.value && !el.value.endsWith(' ') ? ' ' : '') + text;
+  el.focus();
+}
+
+function pSubmitJustify() {
+  const val = document.getElementById('p-justify-box').value.trim();
+  if (val.length < 10) {
+    document.getElementById('p-justify-box').style.borderColor = '#e63946';
+    document.getElementById('p-justify-box').placeholder = 'Please write at least one sentence first!';
+    return;
+  }
+  document.getElementById('p-justify').style.display = 'none';
+  document.getElementById('p-reveal').classList.add('show');
+  document.getElementById('p-to-sort').style.display = 'block';
+}
+
+// ── CATEGORY DRAG & DROP ──
+let cDragSrc = null;
+let cTouchSel = null;
+const cPlacements = {};
+
+const CAT_FEATURES = [
+  { id:'cf1',  text:'Club badge at the top',             correct:'good', icon:'🏅', tip:'Makes it look official — every real programme has one' },
+  { id:'cf2',  text:'Five different fonts on one page',   correct:'bad',  icon:'🔤', tip:'Too many fonts looks messy and unprofessional' },
+  { id:'cf3',  text:'Fixture table with dates and scores',correct:'good', icon:'📊', tip:'Tables make data clear and easy to read' },
+  { id:'cf4',  text:'Players listed in a messy paragraph',correct:'bad',  icon:'📝', tip:'A numbered list would be much easier to read' },
+  { id:'cf5',  text:'Page numbers in the footer',         correct:'good', icon:'📄', tip:'Helps readers find their way through the programme' },
+  { id:'cf6',  text:'No headings or sections',            correct:'bad',  icon:'🚫', tip:'Without headings, nobody knows where to look' },
+  { id:'cf7',  text:'Numbered squad list 1–11',           correct:'good', icon:'🔢', tip:'Numbered lists are clear and match real programmes' },
+  { id:'cf8',  text:'Blurry stretched photos',            correct:'bad',  icon:'📸', tip:'Always resize from corners to keep images sharp' },
+  { id:'cf9',  text:'Bold coloured section headings',     correct:'good', icon:'✏️', tip:'Headings help readers scan the programme quickly' },
+  { id:'cf10', text:'Spelling mistakes in the title',     correct:'bad',  icon:'❌', tip:'Always proofread — "footbal" is not a good look!' },
+  { id:'cf11', text:'Header with club name on every page',correct:'good', icon:'📋', tip:'Professional branding — consistent across all pages' },
+  { id:'cf12', text:'Random bright colours everywhere',   correct:'bad',  icon:'🎨', tip:'Stick to 2-3 colours that match your club colours' },
+  { id:'cf13', text:'Bullet point ground rules',          correct:'good', icon:'•',  tip:'Bullets make short items easy to read' },
+  { id:'cf14', text:'Text in Comic Sans font',            correct:'bad',  icon:'😬', tip:'Comic Sans is not appropriate for a professional document' },
+  { id:'cf15', text:'Action photo with text wrapping',    correct:'good', icon:'🖼️', tip:'Images with proper wrapping look neat and professional' },
+  { id:'cf16', text:'No images at all — just plain text', correct:'bad',  icon:'📃', tip:'Images make the programme engaging and fun to read' },
+];
+
+function catBuild() {
+  const pool = document.getElementById('cat-pool');
+  pool.innerHTML = '';
+  Object.keys(cPlacements).forEach(k => delete cPlacements[k]);
+  document.getElementById('cat-score-total').textContent = CAT_FEATURES.length;
+  const shuffled = [...CAT_FEATURES].sort(() => Math.random() - 0.5);
+  shuffled.forEach(f => pool.appendChild(catMakeChip(f)));
+  catUpdateUI();
+  document.getElementById('cat-check-btn').disabled = true;
+  document.getElementById('cat-result').classList.remove('show','perfect','partial');
+  ['czchips-good','czchips-bad'].forEach(id => {
+    document.getElementById(id).innerHTML = '<div class="cat-empty-hint">Drop features here...</div>';
+  });
+}
+
+function catMakeChip(f) {
+  const chip = document.createElement('div');
+  chip.className = 'cat-chip';
+  chip.id = 'cat-chip-'+f.id;
+  chip.draggable = true;
+  chip.dataset.id = f.id;
+  chip.dataset.correct = f.correct;
+  chip.innerHTML = `<span>${f.icon}</span>${f.text}<div class="cat-chip-tooltip">${f.tip}</div>`;
+  chip.addEventListener('dragstart', e => { cDragSrc = chip; chip.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
+  chip.addEventListener('dragend', () => chip.classList.remove('dragging'));
+  chip.addEventListener('click', () => catTouchTap(chip));
+  return chip;
+}
+
+function catTouchTap(chip) {
+  if (cTouchSel === chip) { chip.style.outline=''; cTouchSel=null; return; }
+  if (cTouchSel) cTouchSel.style.outline='';
+  cTouchSel = chip;
+  chip.style.outline = '2px solid var(--accent)';
+}
+
+function catMobilePlace(zone) {
+  if (!cTouchSel) return;
+  catPlace(cTouchSel, zone);
+  cTouchSel.style.outline = '';
+  cTouchSel = null;
+}
+
+function catPlace(chip, zone) {
+  const fid = chip.dataset.id;
+  cPlacements[fid] = zone;
+  ['cat-pool','czchips-good','czchips-bad'].forEach(id => {
+    const c = document.getElementById(id);
+    if (c && c.contains(chip)) c.removeChild(chip);
+  });
+  chip.classList.remove('in-good','in-bad');
+  chip.classList.add('in-'+zone);
+  const target = document.getElementById('czchips-'+zone);
+  const hint = target.querySelector('.cat-empty-hint');
+  if (hint) hint.remove();
+  target.appendChild(chip);
+  catUpdateUI();
+}
+
+function catZoneOver(e, zone) {
+  e.preventDefault();
+  document.getElementById('cat-zone-'+zone).classList.add('dz-'+zone);
+}
+function catZoneLeave(e) {
+  document.getElementById('cat-zone-good').classList.remove('dz-good');
+  document.getElementById('cat-zone-bad').classList.remove('dz-bad');
+}
+function catZoneDrop(e, zone) {
+  e.preventDefault();
+  catZoneLeave();
+  if (cDragSrc) catPlace(cDragSrc, zone);
+}
+function catPoolOver(e) { e.preventDefault(); document.getElementById('cat-pool').classList.add('drag-over'); }
+function catPoolLeave(e) { document.getElementById('cat-pool').classList.remove('drag-over'); }
+function catPoolDrop(e) {
+  e.preventDefault();
+  document.getElementById('cat-pool').classList.remove('drag-over');
+  if (!cDragSrc) return;
+  const fid = cDragSrc.dataset.id;
+  delete cPlacements[fid];
+  ['czchips-good','czchips-bad'].forEach(id => {
+    const c = document.getElementById(id);
+    if (c && c.contains(cDragSrc)) c.removeChild(cDragSrc);
+  });
+  cDragSrc.classList.remove('in-good','in-bad');
+  document.getElementById('cat-pool').appendChild(cDragSrc);
+  catUpdateUI();
+}
+
+function catUpdateUI() {
+  const gc = document.querySelectorAll('#czchips-good .cat-chip').length;
+  const bc = document.querySelectorAll('#czchips-bad .cat-chip').length;
+  const rem = CAT_FEATURES.length - gc - bc;
+  document.getElementById('cz-good-count').textContent = gc;
+  document.getElementById('cz-bad-count').textContent = bc;
+  document.getElementById('cat-remaining').textContent = rem > 0 ? `(${rem} remaining)` : '(all placed!)';
+  ['czchips-good','czchips-bad'].forEach(id => {
+    const c = document.getElementById(id);
+    if (!c.querySelector('.cat-chip') && !c.querySelector('.cat-empty-hint')) {
+      c.innerHTML = '<div class="cat-empty-hint">Drop features here...</div>';
+    }
+  });
+  document.getElementById('cat-check-btn').disabled = Object.keys(cPlacements).length < CAT_FEATURES.length;
+}
+
+function catCheck() {
+  let correct = 0;
+  CAT_FEATURES.forEach(f => {
+    const chip = document.getElementById('cat-chip-'+f.id);
+    if (!chip) return;
+    chip.classList.remove('correct-chip','wrong-chip','in-good','in-bad');
+    if (cPlacements[f.id] === f.correct) { correct++; chip.classList.add('correct-chip'); }
+    else chip.classList.add('wrong-chip');
+  });
+  document.getElementById('cat-score-val').textContent = correct;
+  const res = document.getElementById('cat-result');
+  const total = CAT_FEATURES.length;
+  res.className = 'cat-result show ' + (correct === total ? 'perfect' : 'partial');
+  document.getElementById('cat-result-num').textContent = `${correct}/${total}`;
+  document.getElementById('cat-result-title').textContent = correct === total
+    ? '🏆 Perfect! Every feature sorted correctly!'
+    : correct >= 12 ? '⚽ Great effort — almost there!' : '🥅 Good try — check the red ones!';
+  document.getElementById('cat-result-msg').textContent = correct === total
+    ? 'You know exactly what makes a matchday programme look professional!'
+    : `You got ${correct} out of ${total}. Look at the red chips — they are in the wrong box!`;
+  res.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function catReset() {
+  document.getElementById('cat-result').classList.remove('show','perfect','partial');
+  CAT_FEATURES.forEach(f => { const c = document.getElementById('cat-chip-'+f.id); if(c) c.remove(); });
+  Object.keys(cPlacements).forEach(k => delete cPlacements[k]);
+  catBuild();
+}
+
+// ── MATCHING GAME (L1) ──
+let matchSel = null;
+let matchDone = new Set();
+
+function matchClick(el) {
+  if (el.classList.contains('matched') || el.classList.contains('locked')) return;
+  if (matchSel === null) {
+    if (matchDone.has(el.dataset.id + el.dataset.group)) return;
+    document.querySelectorAll('#match-area-1 .match-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSel = el;
+  } else {
+    if (el === matchSel) { el.classList.remove('selected'); matchSel = null; return; }
+    if (el.dataset.group === matchSel.dataset.group) {
+      document.querySelectorAll('#match-area-1 .match-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      matchSel = el;
+      return;
+    }
+    if (el.dataset.id === matchSel.dataset.id) {
+      el.classList.add('matched'); matchSel.classList.add('matched');
+      matchDone.add(el.dataset.id + 'left'); matchDone.add(el.dataset.id + 'right');
+      matchSel = null;
+      const total = document.querySelectorAll('#match-area-1 .match-card[data-group="left"]').length;
+      const matched = document.querySelectorAll('#match-area-1 .match-card.matched[data-group="left"]').length;
+      document.getElementById('match-status').textContent = matched === total
+        ? '🏆 Perfect! All matched correctly!' : `✓ ${matched} of ${total} matched — keep going!`;
+      document.getElementById('match-status').style.color = matched === total ? '#065f46' : '#1d4ed8';
+    } else {
+      el.classList.add('wrong'); matchSel.classList.add('wrong');
+      setTimeout(() => { el.classList.remove('wrong','selected'); matchSel.classList.remove('wrong','selected'); matchSel = null; }, 700);
+      document.getElementById('match-status').textContent = '✗ Not quite — try again!';
+      document.getElementById('match-status').style.color = '#e63946';
+    }
+  }
+}
+
+function resetMatch() {
+  document.querySelectorAll('#match-area-1 .match-card').forEach(c => c.classList.remove('matched','selected','wrong'));
+  matchSel = null; matchDone.clear();
+  document.getElementById('match-status').textContent = '';
+}
+
+// ── MATCHING GAME 2 (L2) ──
+let matchSel2 = null;
+let matchDone2 = new Set();
+
+function matchClick2(el) {
+  if (el.classList.contains('matched') || el.classList.contains('locked')) return;
+  if (matchSel2 === null) {
+    if (matchDone2.has(el.dataset.id + el.dataset.group)) return;
+    document.querySelectorAll('#match-area-2 .match-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSel2 = el;
+  } else {
+    if (el === matchSel2) { el.classList.remove('selected'); matchSel2 = null; return; }
+    if (el.dataset.group === matchSel2.dataset.group) {
+      document.querySelectorAll('#match-area-2 .match-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      matchSel2 = el;
+      return;
+    }
+    if (el.dataset.id === matchSel2.dataset.id) {
+      el.classList.add('matched'); matchSel2.classList.add('matched');
+      matchDone2.add(el.dataset.id + 'left'); matchDone2.add(el.dataset.id + 'right');
+      matchSel2 = null;
+      const total = document.querySelectorAll('#match-area-2 .match-card[data-group="left"]').length;
+      const matched = document.querySelectorAll('#match-area-2 .match-card.matched[data-group="left"]').length;
+      document.getElementById('match-status-2').textContent = matched === total
+        ? '🏆 Perfect! All matched — you know your Word tools!' : `✓ ${matched} of ${total} matched — keep going!`;
+      document.getElementById('match-status-2').style.color = matched === total ? '#065f46' : '#1d4ed8';
+    } else {
+      el.classList.add('wrong'); matchSel2.classList.add('wrong');
+      setTimeout(() => { el.classList.remove('wrong','selected'); matchSel2.classList.remove('wrong','selected'); matchSel2 = null; }, 700);
+      document.getElementById('match-status-2').textContent = '✗ Not quite — try again!';
+      document.getElementById('match-status-2').style.color = '#e63946';
+    }
+  }
+}
+
+function resetMatch2() {
+  document.querySelectorAll('#match-area-2 .match-card').forEach(c => c.classList.remove('matched','selected','wrong'));
+  matchSel2 = null; matchDone2.clear();
+  document.getElementById('match-status-2').textContent = '';
+}
+
+// ── DRAG & DROP SORT ──
+let dragSrc = null;
+
+function initSort() {
+  const list = document.getElementById('sort-list');
+  list.querySelectorAll('.sort-item').forEach((item, i) => {
+    item.querySelector('.sort-pos').textContent = i + 1;
+    item.addEventListener('dragstart', e => { dragSrc = item; item.classList.add('dragging'); });
+    item.addEventListener('dragend', () => { item.classList.remove('dragging'); updatePositions(); });
+    item.addEventListener('dragover', e => { e.preventDefault(); item.classList.add('over'); });
+    item.addEventListener('dragleave', () => item.classList.remove('over'));
+    item.addEventListener('drop', e => {
+      e.preventDefault(); item.classList.remove('over');
+      if (dragSrc !== item) list.insertBefore(dragSrc, item);
+      updatePositions();
+    });
+  });
+  // Add mobile arrow buttons
+  addSortArrows();
+}
+
+function addSortArrows() {
+  const list = document.getElementById('sort-list');
+  list.querySelectorAll('.sort-item').forEach(item => {
+    const arrowWrap = item.querySelector('.sort-arrows');
+    arrowWrap.innerHTML = '';
+    const up = document.createElement('button');
+    up.textContent = '▲';
+    up.style.cssText = 'background:none;border:1px solid #ddd;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:10px;margin-left:auto;';
+    up.onclick = (e) => { e.stopPropagation(); const prev = item.previousElementSibling; if(prev) list.insertBefore(item, prev); updatePositions(); };
+    const down = document.createElement('button');
+    down.textContent = '▼';
+    down.style.cssText = 'background:none;border:1px solid #ddd;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:10px;margin-left:4px;';
+    down.onclick = (e) => { e.stopPropagation(); const next = item.nextElementSibling; if(next) list.insertBefore(next, item); updatePositions(); };
+    arrowWrap.appendChild(up);
+    arrowWrap.appendChild(down);
+  });
+}
+
+function updatePositions() {
+  document.querySelectorAll('#sort-list .sort-item').forEach((item, i) => {
+    item.querySelector('.sort-pos').textContent = i + 1;
+  });
+}
+
+function checkSort() {
+  const items = document.querySelectorAll('#sort-list .sort-item');
+  let allCorrect = true;
+  items.forEach((item, i) => {
+    if (parseInt(item.dataset.correct) !== i + 1) allCorrect = false;
+  });
+  const fb = document.getElementById('sort-feedback');
+  fb.textContent = allCorrect
+    ? '🏆 Perfect order! That is exactly how to build a programme.'
+    : '✗ Not quite — try moving the steps around and check again!';
+  fb.style.color = allCorrect ? '#065f46' : '#e63946';
+}
+
+function shuffleSort() {
+  const list = document.getElementById('sort-list');
+  const items = [...list.children];
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    list.insertBefore(items[j], items[i]);
+  }
+  updatePositions();
+  document.getElementById('sort-feedback').textContent = '';
+}
+
+// ── QUIZ ──
+function answerQ(el, correct) {
+  const block = el.closest('.q-block');
+  if (block.querySelector('.correct, .wrong')) return;
+  const fb = block.querySelector('.q-feedback');
+  if (correct) {
+    el.classList.add('correct');
+    fb.textContent = '✓ Correct! Well done.';
+    fb.className = 'q-feedback good';
+  } else {
+    el.classList.add('wrong');
+    fb.textContent = '✗ Not quite — look back at the information above and try again.';
+    fb.className = 'q-feedback bad';
+    block.querySelectorAll('.q-opt').forEach(o => o.classList.add('locked'));
+    setTimeout(() => {
+      el.classList.remove('wrong');
+      block.querySelectorAll('.q-opt').forEach(o => o.classList.remove('locked'));
+      fb.textContent = '';
+    }, 1400);
+  }
+}
+
+// ── CHECKLIST ──
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  el.querySelector('.check-box').textContent = el.classList.contains('checked') ? '✓' : '';
+}
+
+// ── LIVE PROGRAMME PREVIEW (L1-WS) ──
+function updateProgPreview() {
+  const club = document.getElementById('ws-club').value.trim();
+  const home = document.getElementById('ws-home').value.trim();
+  const away = document.getElementById('ws-away').value.trim();
+  const date = document.getElementById('ws-date').value.trim();
+
+  document.getElementById('prev-title').textContent = club ? club.toUpperCase() : 'YOUR CLUB NAME';
+  document.getElementById('prev-header-left').textContent = club || 'Your Club Name';
+  document.getElementById('prev-footer-left').textContent = (club || 'Your Club Name') + ' — Founded 2025';
+
+  const matchTitle = (home && away) ? `${home} vs ${away}` : 'Home Team vs Away Team';
+  document.getElementById('prev-subtitle').textContent = matchTitle;
+
+  document.getElementById('prev-date').textContent = date ? date + ' — 3:00 PM Kick-off' : 'Match Date — Kick-off TBC';
+
+  const players = [];
+  for (let i = 1; i <= 5; i++) {
+    const p = document.getElementById('ws-p'+i).value.trim();
+    players.push(p);
+  }
+  const squad = document.getElementById('prev-squad');
+  squad.innerHTML = '';
+  const positions = ['Goalkeeper','Defender','Defender','Midfielder','Forward'];
+  players.forEach((p, i) => {
+    const li = document.createElement('li');
+    if (p) {
+      li.textContent = p;
+      li.style.color = '#374151';
+    } else {
+      li.textContent = positions[i];
+      li.style.color = '#ccc';
+    }
+    squad.appendChild(li);
+  });
+}
+
+// ── LEAGUE TABLE BUILDER ──
+function calcPoints(row) {
+  const w = parseInt(document.getElementById('lt-w'+row).value) || 0;
+  const d = parseInt(document.getElementById('lt-d'+row).value) || 0;
+  const pts = (w * 3) + (d * 1);
+  document.getElementById('lt-pts'+row).textContent = (w || d) ? pts : '—';
+}
+
+// ── SQUAD LIST BUILDER (L2-WS) ──
+function updateSquadPreview() {
+  const list = document.getElementById('squad-preview-list');
+  const positions = ['Goalkeeper','Right Back','Centre Back','Centre Back','Left Back','Right Midfield','Centre Midfield','Centre Midfield','Left Midfield','Striker','Striker'];
+  list.innerHTML = '';
+  for (let i = 1; i <= 11; i++) {
+    const val = document.getElementById('sq-'+i).value.trim();
+    const li = document.createElement('li');
+    if (val) {
+      li.textContent = val;
+      li.style.color = '#374151';
+    } else {
+      li.textContent = positions[i-1];
+      li.style.color = '#ccc';
+    }
+    list.appendChild(li);
+  }
+}
+
+// ── SELF-ASSESSMENT ──
+function rateBall(el, rating) {
+  const row = el.closest('.assess-balls');
+  const balls = row.querySelectorAll('.assess-ball');
+  balls.forEach((b, i) => {
+    if (i < rating) b.classList.add('filled');
+    else b.classList.remove('filled');
+  });
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  initSort();
+  shuffleSort();
+  done.add('compare');
+  updateNavDone();
+  document.querySelector('[data-panel="compare"]').classList.add('active-l1');
+});
+</script>
+</body>
+</html>
